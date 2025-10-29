@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Pricing Dashboard</title>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="styles.css?v=190">
+    
+    <!-- Embedded Component Styles -->
+    <style>
+        /* Tabs Component Styles */
+        .tabs-container {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 16px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            padding: 14px 24px;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            color: #374151;
+            background-color: #f9fafb;
+        }
+
+        .tab.active {
+            color: #0072ce;
+            border-bottom: 2px solid #0072ce;
+            font-weight: 600;
+        }
+
+        /* Page Header Component - Custom Positioning Options */
+        .page-header.no-breadcrumb {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 998 !important;
+        }
+
+        .page-header.with-breadcrumb {
+            position: sticky !important;
+            top: 105px !important;
+            z-index: 998 !important;
+        }
+
+        /* Tabs sticky positioning options */
+        .tabs-container.sticky-no-breadcrumb {
+            position: sticky;
+            top: 54px;
+            z-index: 997;
+        }
+
+        .tabs-container.sticky-with-breadcrumb {
+            position: sticky;
+            top: 159px;
+            z-index: 997;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- App Header Component -->
+    <header class="header">
+        <div class="header-content">
+            <div class="left-section">
+                <img src="images/crm-iq-logo.png" alt="CRM IQ" class="logo">
+                <nav class="nav-menu">
+                    <div class="nav-item">
+                        <span>Dashboards</span>
+                        <i class="fas fa-caret-down"></i>
+                    </div>
+                    <div class="nav-item">
+                        <span>Reports</span>
+                        <i class="fas fa-caret-down"></i>
+                    </div>
+                    <div class="nav-item">
+                        <span>Communications</span>
+                        <i class="fas fa-caret-down"></i>
+                    </div>
+                    <button class="nav-grid-btn">
+                        <i class="fas fa-th"></i>
+                    </button>
+                </nav>
+                <div class="left-actions">
+                    <div class="search-section">
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search...">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="add-new-btn">
+                        <span>Add New</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <button class="action-btn calendar-btn">
+                        <i class="fas fa-calendar-alt"></i>
+                    </button>
+                    <button class="action-btn calculator-btn">
+                        <i class="fas fa-calculator"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button class="action-btn star-btn">
+                    <i class="fas fa-star"></i>
+                </button>
+                <button class="action-btn help-btn">
+                    <i class="fas fa-question-circle"></i>
+                </button>
+                <button class="action-btn notification-btn">
+                    <span class="notification-count">0</span>
+                </button>
+                <button class="action-btn settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="user-profile">
+                    <div class="user-avatar">ND</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Component -->
+    <div class="page-header no-breadcrumb">
+        <div class="title-section">
+            <h1 class="page-title mr-0">Units & Pricing Dashboard</h1>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <button class="btn btn-light flex items-center gap-2">
+                <i class="fas fa-map"></i>
+                <span>View Floor Plans</span>
+            </button>
+            
+            <div class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-300 rounded-md">
+                <span class="text-sm text-gray-600">Property</span>
+                <div class="flex items-center gap-2 px-2 py-1 bg-gray-100 rounded">
+                    <span class="text-sm font-medium">DNC IQ: Loblolly Pine Villas (lq01)</span>
+                    <button class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-ellipsis-v text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs Component -->
+    <div class="tabs-container sticky-no-breadcrumb">
+        <div class="tabs" id="tabs-content">
+            <button class="tab active" data-tab-index="0">All Units</button>
+            <button class="tab" data-tab-index="1">Leasing Specials</button>
+            <button class="tab" data-tab-index="2">Unit Type Pricing</button>
+            <button class="tab" data-tab-index="3">Amenity Pricing</button>
+            <button class="tab" data-tab-index="4">Term-Based Premiums</button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-6">
+        <div id="tab-content">
+            <h2 class="text-xl font-semibold mb-4">All Units</h2>
+            <p class="text-gray-600">Content for All Units will go here...</p>
+        </div>
+    </main>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab');
+            const contentDiv = document.getElementById('tab-content');
+            
+            const tabNames = [
+                'All Units',
+                'Leasing Specials',
+                'Unit Type Pricing',
+                'Amenity Pricing',
+                'Term-Based Premiums'
+            ];
+            
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Update content
+                    contentDiv.innerHTML = `
+                        <h2 class="text-xl font-semibold mb-4">${tabNames[index]}</h2>
+                        <p class="text-gray-600">Content for ${tabNames[index]} will go here...</p>
+                    `;
+                    
+                    console.log('Tab changed to:', tabNames[index]);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
