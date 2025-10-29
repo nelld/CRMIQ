@@ -83,14 +83,14 @@
         </div>
     </main>
 
-    <!-- Load Components Script -->
-    <script src="components/components.js"></script>
+    <!-- Load Components Script (Standalone Version) -->
+    <script src="components/components-standalone.js"></script>
     
     <!-- Initialize Components -->
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
             // Initialize all components
-            await CRMComponents.initAll({
+            CRMComponents.initAll({
                 appHeader: true,
                 pageHeader: {
                     containerId: 'page-header-container',
