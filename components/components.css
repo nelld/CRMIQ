@@ -1,0 +1,76 @@
+/* ===================================
+   COMPONENTS SHARED STYLES
+   Consistent styling for reusable components
+   =================================== */
+
+/* Tabs Component Styles */
+.tabs-container {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 16px;
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.tab {
+    padding: 14px 24px;
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: #374151;
+    background-color: #f9fafb;
+}
+
+.tab.active {
+    color: #0072ce;
+    border-bottom: 2px solid #0072ce;
+    font-weight: 600;
+}
+
+/* Page Header Component - Custom Positioning Options */
+.page-header.no-breadcrumb {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 998 !important;
+}
+
+.page-header.with-breadcrumb {
+    position: sticky !important;
+    top: 105px !important; /* Header (65px) + Breadcrumb (~40px) */
+    z-index: 998 !important;
+}
+
+/* Tabs sticky positioning options */
+.tabs-container.sticky-no-breadcrumb {
+    position: sticky;
+    top: 54px; /* Page Header height only */
+    z-index: 997;
+}
+
+.tabs-container.sticky-with-breadcrumb {
+    position: sticky;
+    top: 159px; /* Header + Breadcrumb + Page Header */
+    z-index: 997;
+}
+
+/* Breadcrumb Component - Ensure consistent positioning */
+.breadcrumb {
+    position: sticky;
+    top: 65px; /* Header height */
+    z-index: 999;
+}
+
