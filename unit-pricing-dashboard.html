@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Pricing Dashboard</title>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="base.css">
+	<link rel="stylesheet" href="styles.css?v=190">
+    <link rel="stylesheet" href="components/components.css">
+</head>
+
+<body>
+    <!-- App Header Component -->
+    <div id="app-header-container"></div>
+
+    <!-- Page Header Component -->
+    <div id="page-header-container"></div>
+
+    <!-- Tabs Component -->
+    <div id="tabs-container"></div>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-6">
+        <div id="tab-content">
+            <!-- Tab content will be displayed here -->
+        </div>
+    </main>
+
+    <!-- Load Components Script -->
+    <script src="components/components.js"></script>
+    
+    <!-- Initialize Components -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize all components
+            await CRMComponents.initAll({
+                appHeader: true,
+                pageHeader: {
+                    containerId: 'page-header-container',
+                    title: 'Units & Pricing Dashboard',
+                    actionsHtml: `
+                        <button class="btn btn-light flex items-center gap-2">
+                            <i class="fas fa-map"></i>
+                            <span>View Floor Plans</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-300 rounded-md">
+                            <span class="text-sm text-gray-600">Property</span>
+                            <div class="flex items-center gap-2 px-2 py-1 bg-gray-100 rounded">
+                                <span class="text-sm font-medium">DNC IQ: Loblolly Pine Villas (lq01)</span>
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-times text-xs"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-ellipsis-v text-sm"></i>
+                            </button>
+                        </div>
+                    `,
+                    hasBreadcrumb: false  // No breadcrumb on this page
+                },
+                tabs: {
+                    containerId: 'tabs-container',
+                    tabs: [
+                        'All Units',
+                        'Leasing Specials',
+                        'Unit Type Pricing',
+                        'Amenity Pricing',
+                        'Term-Based Premiums'
+                    ],
+                    activeIndex: 0,
+                    hasBreadcrumb: false,  // No breadcrumb on this page
+                    onChange: (index, tabName) => {
+                        console.log('Tab changed to:', tabName);
+                        // Handle tab content switching here
+                        const contentDiv = document.getElementById('tab-content');
+                        contentDiv.innerHTML = `<h2 class="text-xl font-semibold mb-4">${tabName}</h2>
+                                                <p class="text-gray-600">Content for ${tabName} will go here...</p>`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
