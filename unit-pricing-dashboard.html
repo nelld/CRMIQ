@@ -62,8 +62,8 @@
     </script>
     
     <link rel="stylesheet" href="base.css">
-	<link rel="stylesheet" href="styles.css?v=211">
-    <link rel="stylesheet" href="components/components.css?v=4">
+	<link rel="stylesheet" href="styles.css?v=215">
+    <link rel="stylesheet" href="components/components.css?v=7">
 </head>
 
 <body>
@@ -148,8 +148,8 @@
                             </td>
                             <td>
                                 <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
-                                    <span class="badge badge-pill badge-outline-primary">Pet-Friendly Units</span>
+                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
+                                    <span class="badge badge-pill badge-outline-primary-lighten60">Pet-Friendly Units</span>
                                 </div>
                             </td>
                             <td>
@@ -165,13 +165,13 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-pill badge-outline-success">
+                                <span class="badge badge-pill badge-outline-success-lighten60">
                                     <i class="fas fa-check"></i>
                                     Published
                                 </span>
                             </td>
                             <td class="text-right">
-                                <i class="fas fa-chevron-right row-action"></i>
+                                <i class="fas fa-chevron-right row-action" onclick="openFeesPageslide('Oakwood Apartments')" style="cursor: pointer;"></i>
                             </td>
                         </tr>
                         
@@ -191,7 +191,7 @@
                             </td>
                             <td>
                                 <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
+                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
                                 </div>
                             </td>
                             <td>
@@ -207,10 +207,10 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-pill badge-outline-warning">Unpublished</span>
+                                <span class="badge badge-pill badge-outline-warning-lighten60">Unpublished</span>
                             </td>
                             <td class="text-right">
-                                <i class="fas fa-chevron-right row-action"></i>
+                                <i class="fas fa-chevron-right row-action" onclick="openFeesPageslide('Oakwood Apartments')" style="cursor: pointer;"></i>
                             </td>
                         </tr>
                         
@@ -226,8 +226,8 @@
                             </td>
                             <td>
                                 <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary">Luxury Units - Premium Fees</span>
-                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
+                                    <span class="badge badge-pill badge-outline-primary-lighten60">Luxury Units - Premium Fees</span>
+                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
                                     <span class="template-more text-sm text-muted">+1 more</span>
                                 </div>
                             </td>
@@ -244,13 +244,13 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-pill badge-outline-success">
+                                <span class="badge badge-pill badge-outline-success-lighten60">
                                     <i class="fas fa-check"></i>
                                     Published
                                 </span>
                             </td>
                             <td class="text-right">
-                                <i class="fas fa-chevron-right row-action"></i>
+                                <i class="fas fa-chevron-right row-action" onclick="openFeesPageslide('Oakwood Apartments')" style="cursor: pointer;"></i>
                             </td>
                         </tr>
                         
@@ -282,13 +282,13 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-pill badge-outline-danger">
+                                <span class="badge badge-pill badge-outline-danger-lighten60">
                                     <i class="fas fa-exclamation-circle"></i>
                                     Incomplete
                                 </span>
                             </td>
                             <td class="text-right">
-                                <i class="fas fa-chevron-right row-action"></i>
+                                <i class="fas fa-chevron-right row-action" onclick="openFeesPageslide('Oakwood Apartments')" style="cursor: pointer;"></i>
                             </td>
                         </tr>
                         
@@ -308,7 +308,7 @@
                             </td>
                             <td>
                                 <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
+                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
                                 </div>
                             </td>
                             <td>
@@ -323,10 +323,10 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-pill badge-outline-warning">Unpublished</span>
+                                <span class="badge badge-pill badge-outline-warning-lighten60">Unpublished</span>
                             </td>
                             <td class="text-right">
-                                <i class="fas fa-chevron-right row-action"></i>
+                                <i class="fas fa-chevron-right row-action" onclick="openFeesPageslide('Oakwood Apartments')" style="cursor: pointer;"></i>
                             </td>
                         </tr>
                     </tbody>
@@ -479,6 +479,249 @@
                     rows.forEach(row => tbody.appendChild(row));
                 });
             });
+        }
+    </script>
+
+    <!-- Pageslide Container -->
+    <div id="pageslide-container"></div>
+
+    <script>
+        // Initialize pageslide component
+        CRMComponents.initPageslide('pageslide-container');
+
+        // Function to open fees pageslide
+        function openFeesPageslide(propertyName) {
+            const headerContent = `
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 16px 24px; border-bottom: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 24px;">
+                        <div>
+                            <label class="form-label" style="margin-bottom: 4px;">Property</label>
+                            <select class="form-select" style="width: 300px;">
+                                <option>Oakwood Apartments</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span class="text-sm text-muted">Unit Types</span>
+                                <span class="text-sm" style="font-weight: 500;">24</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span class="text-sm text-muted">Last Published</span>
+                                <span class="text-sm" style="font-weight: 500;">Oct 15, 2025</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                            <span class="text-sm text-muted">Deposit Handling</span>
+                            <a href="#" class="text-sm" style="color: #0072ce;">Move-in Charge</a>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-download"></i>
+                            Load Template
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            const bodyContent = `
+                <!-- Alert Banner -->
+                <div style="background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-exclamation-circle" style="color: #856404;"></i>
+                        <span style="color: #856404; font-weight: 500;">Unpublished Changes:</span>
+                        <span style="color: #856404;">Changes here are not visible to applicants until published.</span>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="btn btn-light">
+                            <i class="far fa-eye"></i>
+                            Preview
+                        </button>
+                        <button class="btn btn-primary">
+                            Publish Changes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fees Section -->
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Fees (18)</h3>
+                        <div class="table-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" class="table-search-input" placeholder="Search fees..." style="width: 250px;">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Add Fee
+                    </button>
+                </div>
+
+                <!-- Fees Table -->
+                <div class="fees-table-container">
+                    <table class="fees-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 250px;">Fee Name</th>
+                                <th>
+                                    <div class="unit-type-header">
+                                        <div class="unit-type-name">1BR-A</div>
+                                        <div class="unit-type-info">(16 units)</div>
+                                        <a href="#" class="template-link">Standard Move-In</a>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="unit-type-header">
+                                        <div class="unit-type-name">1BR-B</div>
+                                        <div class="unit-type-info">(12 units)</div>
+                                        <a href="#" class="template-link">Standard Move-In</a>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="unit-type-header">
+                                        <div class="unit-type-name">2BR-A</div>
+                                        <div class="unit-type-info">(24 units)</div>
+                                        <a href="#" class="template-link">Standard Move-In</a>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="unit-type-header">
+                                        <div class="unit-type-name">2BR-B</div>
+                                        <div class="unit-type-info">(18 units)</div>
+                                        <div class="no-template">No template</div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="unit-type-header">
+                                        <div class="unit-type-name">3BR-A</div>
+                                        <div class="unit-type-info">(8 units)</div>
+                                        <a href="#" class="template-link">Luxury Units</a>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- APPLICATION CHARGES -->
+                            <tr class="section-header">
+                                <td colspan="6">APPLICATION CHARGES</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fee-name">
+                                        <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
+                                        <span style="font-weight: 500;">Application Fee</span>
+                                    </div>
+                                    <div class="fee-meta">One-Time • Application • Required</div>
+                                </td>
+                                <td class="fee-amount">$75</td>
+                                <td class="fee-amount">$75</td>
+                                <td class="fee-amount">$75</td>
+                                <td class="fee-amount">$75</td>
+                                <td class="fee-amount">$75</td>
+                            </tr>
+
+                            <!-- MOVE-IN CHARGES -->
+                            <tr class="section-header">
+                                <td colspan="6">MOVE-IN CHARGES</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fee-name">
+                                        <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
+                                        <span style="font-weight: 500;">Security Deposit</span>
+                                    </div>
+                                    <div class="fee-meta">Varies by unit type</div>
+                                </td>
+                                <td class="fee-amount">$500</td>
+                                <td class="fee-amount">$500</td>
+                                <td class="fee-amount fee-highlight">$750</td>
+                                <td class="fee-amount">$750</td>
+                                <td class="fee-amount">$1000</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fee-name">
+                                        <i class="fas fa-circle" style="color: #3b82f6; font-size: 8px;"></i>
+                                        <span style="font-weight: 500;">Administrative Fee</span>
+                                    </div>
+                                    <div class="fee-meta">One-Time • Move-in • Taxable</div>
+                                </td>
+                                <td class="fee-amount">$150</td>
+                                <td class="fee-amount">$150</td>
+                                <td class="fee-amount">$150</td>
+                                <td class="fee-amount">$150</td>
+                                <td class="fee-amount">$150</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fee-name">
+                                        <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
+                                        <span style="font-weight: 500;">Parking Fee</span>
+                                    </div>
+                                    <div class="fee-meta">Varies by unit type</div>
+                                </td>
+                                <td class="fee-amount">$85</td>
+                                <td class="fee-amount">$85</td>
+                                <td class="fee-amount fee-highlight">$85</td>
+                                <td class="fee-amount">$85</td>
+                                <td class="fee-amount fee-highlight">$100</td>
+                            </tr>
+
+                            <!-- MOVE-OUT CHARGES -->
+                            <tr class="section-header">
+                                <td colspan="6">MOVE-OUT CHARGES</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fee-name">
+                                        <i class="fas fa-circle" style="color: #3b82f6; font-size: 8px;"></i>
+                                        <span style="font-weight: 500;">Cleaning Fee</span>
+                                    </div>
+                                    <div class="fee-meta">One-Time • Move-out</div>
+                                </td>
+                                <td class="fee-amount">$200</td>
+                                <td class="fee-amount">$200</td>
+                                <td class="fee-amount">$250</td>
+                                <td class="fee-amount">$250</td>
+                                <td class="fee-amount">$300</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Legend -->
+                <div style="display: flex; align-items: center; gap: 24px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
+                        <span class="text-sm text-muted">Consistent with template</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-circle" style="color: #3b82f6; font-size: 8px;"></i>
+                        <span class="text-sm text-muted">Consistent across unit types</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
+                        <span class="text-sm text-muted">Varies by unit type</span>
+                    </div>
+                </div>
+            `;
+
+            // Open pageslide with custom header
+            openPageslide({
+                title: '', // We'll use custom header
+                size: 'full',
+                content: headerContent + bodyContent,
+                footer: '' // No footer needed
+            });
+
+            // Hide default header and footer, use custom
+            setTimeout(() => {
+                const pageslideHeader = document.querySelector('.pageslide-header');
+                const pageslideFooter = document.querySelector('.pageslide-footer');
+                if (pageslideHeader) pageslideHeader.style.display = 'none';
+                if (pageslideFooter) pageslideFooter.style.display = 'none';
+            }, 50);
         }
     </script>
 </body>
