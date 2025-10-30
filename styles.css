@@ -5726,7 +5726,7 @@ select:focus {
 /* Global form label styles - System-Wide */
 .form-label {
     font-weight: 400 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     font-size: .761775rem !important;
     display: block !important;
     color: #374151 !important;
@@ -5746,7 +5746,7 @@ label {
 /* Pageslide specific label overrides - inherits from global rules above */
 .pageslide .form-label {
     font-weight: 400 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     font-size: .761775rem !important;
     display: block !important;
     color: #374151 !important;
@@ -5921,7 +5921,7 @@ textarea:focus {
 }
 
 .deposit-item .form-label {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     display: block;
 }
 
@@ -6065,13 +6065,22 @@ input[type="number"].form-input {
 
 .fees-table thead th {
     padding: 16px;
-    text-align: left;
+    text-align: center;
     font-size: 14px;
     font-weight: 600;
     color: #1f2937;
     border-bottom: 2px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
     background: #f9fafb;
     vertical-align: top;
+}
+
+.fees-table thead th:first-child {
+    text-align: left;
+}
+
+.fees-table thead th:last-child {
+    border-right: none;
 }
 
 
@@ -6129,8 +6138,15 @@ input[type="number"].form-input {
 }
 
 /* Fee Name Column */
-.fees-table tbody td:first-child {
-    padding: 16px;
+.fee-name-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.fee-name-content {
+    flex: 1;
 }
 
 .fee-name {
@@ -6138,6 +6154,21 @@ input[type="number"].form-input {
     align-items: center;
     gap: 8px;
     margin-bottom: 4px;
+}
+
+.fee-edit-icon {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.fees-table tbody tr:hover .fee-edit-icon {
+    opacity: 1;
+}
+
+.fee-edit-icon:hover {
+    color: #0072ce;
 }
 
 .fee-name span {
@@ -6164,6 +6195,16 @@ input[type="number"].form-input {
     padding: 16px;
     font-size: 14px;
     color: #1f2937;
+    text-align: center;
+    border-right: 1px solid #e5e7eb;
+}
+
+.fees-table tbody td:first-child {
+    text-align: left;
+}
+
+.fees-table tbody td:last-child {
+    border-right: none;
 }
 
 /* Highlighted cells (variation by unit type) */

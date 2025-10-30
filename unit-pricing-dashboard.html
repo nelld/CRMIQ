@@ -62,8 +62,8 @@
     </script>
     
     <link rel="stylesheet" href="base.css">
-	<link rel="stylesheet" href="styles.css?v=307">
-    <link rel="stylesheet" href="components/components.css?v=7">
+	<link rel="stylesheet" href="styles.css?v=316">
+    <link rel="stylesheet" href="components/components.css?v=9">
 </head>
 
 <body>
@@ -403,8 +403,9 @@
             // Table search functionality
             initTableSearch();
             
-            // Initialize pageslide component
+            // Initialize pageslide components
             CRMComponents.initPageslide('pageslide-container');
+            CRMComponents.initPageslide('pageslide-edit-container');
         });
         
         function initTableSearch() {
@@ -491,6 +492,9 @@
 
     <!-- Pageslide Container -->
     <div id="pageslide-container"></div>
+    
+    <!-- Second Pageslide Container for Edit Forms -->
+    <div id="pageslide-edit-container"></div>
 
     <script>
         // Function to open fees pageslide (must be global for onclick handlers)
@@ -518,7 +522,7 @@
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 32px;">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary mr-5" onclick="openLoadTemplatePageslide()">
                             <i class="fas fa-download"></i>
                             Load Template
                         </button>
@@ -557,7 +561,7 @@
 						<div class="count badge rounded-pill badge-primary ml-0">18</div>
 						<div class="count-title">Fees</div>
                     </div>
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="openAddFeePageslide()">
                         <i class="fas fa-circle-plus"></i>
                         Add Fee
                     </button>
@@ -568,7 +572,7 @@
                     <table class="fees-table">
                         <thead>
                             <tr>
-                                <th style="width: 250px;">Fee Name</th>
+                                <th style="width: 300px;">Fee Name</th>
                                 <th>
                                     <div class="unit-type-header">
                                         <div class="unit-type-name">1BR-A</div>
@@ -613,11 +617,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fee-name">
-                                        <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
-                                        <span style="font-weight: 500;">Application Fee</span>
+                                    <div class="fee-name-wrapper">
+                                        <div class="fee-name-content">
+                                            <div class="fee-name">
+                                                <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
+                                                <span style="font-weight: 500;">Application Fee</span>
+                                            </div>
+                                            <div class="fee-meta text-sm text-muted">One-Time • Application • Required</div>
+                                        </div>
+                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Application Fee')" style="cursor: pointer;"></i>
                                     </div>
-                                    <div class="fee-meta text-sm text-muted">One-Time • Application • Required</div>
                                 </td>
                                 <td class="fee-amount">$75</td>
                                 <td class="fee-amount">$75</td>
@@ -632,11 +641,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fee-name">
-                                        <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
-                                        <span style="font-weight: 500;">Security Deposit</span>
+                                    <div class="fee-name-wrapper">
+                                        <div class="fee-name-content">
+                                            <div class="fee-name">
+                                                <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
+                                                <span style="font-weight: 500;">Security Deposit</span>
+                                            </div>
+                                            <div class="fee-meta text-sm text-muted">Varies by unit type</div>
+                                        </div>
+                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Security Deposit')" style="cursor: pointer;"></i>
                                     </div>
-                                    <div class="fee-meta text-sm text-muted">Varies by unit type</div>
                                 </td>
                                 <td class="fee-amount">$500</td>
                                 <td class="fee-amount">$500</td>
@@ -646,11 +660,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fee-name">
-                                        <i class="fas fa-circle" style="color: #3b82f6; font-size: 8px;"></i>
-                                        <span style="font-weight: 500;">Administrative Fee</span>
+                                    <div class="fee-name-wrapper">
+                                        <div class="fee-name-content">
+                                            <div class="fee-name">
+                                                <i class="fas fa-circle" style="color: #3b82f6; font-size: 8px;"></i>
+                                                <span style="font-weight: 500;">Administrative Fee</span>
+                                            </div>
+                                            <div class="fee-meta text-sm text-muted">One-Time • Move-in • Taxable</div>
+                                        </div>
+                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Administrative Fee')" style="cursor: pointer;"></i>
                                     </div>
-                                    <div class="fee-meta text-sm text-muted">One-Time • Move-in • Taxable</div>
                                 </td>
                                 <td class="fee-amount">$150</td>
                                 <td class="fee-amount">$150</td>
@@ -660,11 +679,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fee-name">
-                                        <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
-                                        <span style="font-weight: 500;">Parking Fee</span>
+                                    <div class="fee-name-wrapper">
+                                        <div class="fee-name-content">
+                                            <div class="fee-name">
+                                                <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
+                                                <span style="font-weight: 500;">Parking Fee</span>
+                                            </div>
+                                            <div class="fee-meta text-sm text-muted">Varies by unit type</div>
+                                        </div>
+                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Parking Fee')" style="cursor: pointer;"></i>
                                     </div>
-                                    <div class="fee-meta text-sm text-muted">Varies by unit type</div>
                                 </td>
                                 <td class="fee-amount">$85</td>
                                 <td class="fee-amount">$85</td>
@@ -679,11 +703,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fee-name">
-                                        <i class="fas fa-circle" style="color: #3b82f6; font-size: 8px;"></i>
-                                        <span style="font-weight: 500;">Cleaning Fee</span>
+                                    <div class="fee-name-wrapper">
+                                        <div class="fee-name-content">
+                                            <div class="fee-name">
+                                                <i class="fas fa-circle" style="color: #3b82f6; font-size: 8px;"></i>
+                                                <span style="font-weight: 500;">Cleaning Fee</span>
+                                            </div>
+                                            <div class="fee-meta text-sm text-muted">One-Time • Move-out</div>
+                                        </div>
+                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Cleaning Fee')" style="cursor: pointer;"></i>
                                     </div>
-                                    <div class="fee-meta text-sm text-muted">One-Time • Move-out</div>
                                 </td>
                                 <td class="fee-amount">$200</td>
                                 <td class="fee-amount">$200</td>
@@ -735,6 +764,565 @@
                     pageslideFooter.style.display = 'none';
                 }
             }, 50);
+        }
+
+        // Function to close edit pageslide
+        function closeEditPageslide() {
+            const overlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
+            const pageslide = document.querySelector('#pageslide-edit-container .pageslide');
+            
+            if (!overlay || !pageslide) return;
+            
+            pageslide.classList.remove('active');
+            setTimeout(() => {
+                overlay.classList.remove('active');
+            }, 300);
+        }
+
+        // Function to open Edit Fee pageslide
+        function openEditFeePageslide(feeName) {
+            const headerContent = `
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Edit Fee (All Unit Types)</h2>
+                    <p class="text-sm text-muted" style="margin: 0;">Changes will apply across all unit types at this property</p>
+                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                </div>
+            `;
+
+            const formContent = `
+                <div style="">
+                    <!-- Fee Name and Charge Code -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="fee-name" class="form-label">Fee Name</label>
+                            <input type="text" id="fee-name" class="form-input" value="${feeName}">
+                        </div>
+                        <div class="form-group">
+                            <label for="charge-code" class="form-label">Charge Code</label>
+                            <input type="text" id="charge-code" class="form-input" value="SEC_DEP">
+                        </div>
+                    </div>
+
+                    <!-- Fee Description -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="fee-description" class="form-label">Fee Description</label>
+                        <textarea id="fee-description" class="form-input" rows="3" style="resize: vertical;">Refundable security deposit</textarea>
+                    </div>
+
+                    <!-- Amount Type and Amount -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="amount-type" class="form-label">Amount Type</label>
+                            <select id="amount-type" class="form-select">
+                                <option selected>Fixed</option>
+                                <option>Variable</option>
+                                <option>Percentage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="form-label">Amount</label>
+                            <input type="text" id="amount" class="form-input" value="750">
+                        </div>
+                    </div>
+
+                    <!-- Category, Timing, Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div class="form-group">
+                            <label for="category" class="form-label">Category</label>
+                            <select id="category" class="form-select">
+                                <option selected>Move-in</option>
+                                <option>Application</option>
+                                <option>Move-out</option>
+                                <option>Recurring</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="timing" class="form-label">Timing</label>
+                            <select id="timing" class="form-select">
+                                <option selected>Move-in</option>
+                                <option>Application</option>
+                                <option>Move-out</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency" class="form-label">Frequency</label>
+                            <select id="frequency" class="form-select">
+                                <option selected>Per Lease</option>
+                                <option>Monthly</option>
+                                <option>Annually</option>
+                                <option>One-Time</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Fee Properties -->
+                    <div style="margin-bottom: 24px;">
+                        <label class="form-label" style="margin-bottom: 12px; display: block;">Fee Properties</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="hide-cost" style="width: auto; height: auto;">
+                                <label for="hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="taxable" checked style="width: auto; height: auto;">
+                                <label for="taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="required" checked style="width: auto; height: auto;">
+                                <label for="required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="refundable" checked style="width: auto; height: auto;">
+                                <label for="refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charge Class and Method -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
+                        <div class="form-group">
+                            <label for="charge-class" class="form-label">Charge Class</label>
+                            <select id="charge-class" class="form-select">
+                                <option selected>Admin</option>
+                                <option>Deposit</option>
+                                <option>Rent</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="method" class="form-label">Method</label>
+                            <select id="method" class="form-select">
+                                <option selected>Per Unit</option>
+                                <option>Per Person</option>
+                                <option>Per Pet</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+
+            const footerContent = `
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <button class="btn btn-link text-danger" style="padding-left: 0;">
+                        Remove Fee
+                    </button>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                        <button class="btn btn-primary">
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Open edit pageslide in second container
+            const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
+            const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
+            const editTitle = document.querySelector('#pageslide-edit-container .pageslide-title');
+            const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
+            const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
+            
+            if (editOverlay && editPageslide) {
+                // Set content
+                if (editBody) editBody.innerHTML = formContent;
+                if (editFooter) editFooter.innerHTML = footerContent;
+                
+                // Set size
+                editPageslide.setAttribute('data-pageslide-size', 'md');
+                
+                // Show pageslide
+                editOverlay.classList.add('active');
+                setTimeout(() => {
+                    editPageslide.classList.add('active');
+                }, 10);
+
+                // Replace default header with custom header
+                setTimeout(() => {
+                    const pageslideHeader = document.querySelector('#pageslide-edit-container .pageslide-header');
+                    if (pageslideHeader) {
+                        pageslideHeader.innerHTML = headerContent;
+                        pageslideHeader.style.padding = '0';
+                        pageslideHeader.style.borderBottom = 'none';
+                    }
+                }, 50);
+            }
+        }
+
+        // Function to open Add Fee pageslide
+        function openAddFeePageslide() {
+            const headerContent = `
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Add New Fee</h2>
+                    <p class="text-sm text-muted" style="margin: 0;">Create a new fee and select which unit types to apply it to</p>
+                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                </div>
+            `;
+
+            const formContent = `
+                <div style="">
+                    <!-- Fee Name and Charge Code -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-fee-name" class="form-label">Fee Name</label>
+                            <input type="text" id="new-fee-name" class="form-input" placeholder="e.g., Pet Deposit">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-charge-code" class="form-label">Charge Code</label>
+                            <input type="text" id="new-charge-code" class="form-input" placeholder="e.g., PET_DEP">
+                        </div>
+                    </div>
+
+                    <!-- Fee Description -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="new-fee-description" class="form-label">Fee Description</label>
+                        <textarea id="new-fee-description" class="form-input" rows="3" style="resize: vertical;" placeholder="Describe the fee for applicants"></textarea>
+                    </div>
+
+                    <!-- Amount Type and Amount -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-amount-type" class="form-label">Amount Type</label>
+                            <select id="new-amount-type" class="form-select">
+                                <option selected>Fixed</option>
+                                <option>Variable</option>
+                                <option>Percentage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-amount" class="form-label">Amount</label>
+                            <input type="text" id="new-amount" class="form-input" value="0.00">
+                        </div>
+                    </div>
+
+                    <!-- Category, Timing, Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div class="form-group">
+                            <label for="new-category" class="form-label">Category</label>
+                            <select id="new-category" class="form-select">
+                                <option selected>Move-in</option>
+                                <option>Application</option>
+                                <option>Move-out</option>
+                                <option>Recurring</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-timing" class="form-label">Timing</label>
+                            <select id="new-timing" class="form-select">
+                                <option selected>Move-in</option>
+                                <option>Application</option>
+                                <option>Move-out</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-frequency" class="form-label">Frequency</label>
+                            <select id="new-frequency" class="form-select">
+                                <option selected>One-Time</option>
+                                <option>Monthly</option>
+                                <option>Annually</option>
+                                <option>Per Lease</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Fee Properties -->
+                    <div style="margin-bottom: 24px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-hide-cost" style="width: auto; height: auto;">
+                                <label for="new-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-taxable" style="width: auto; height: auto;">
+                                <label for="new-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-required" checked style="width: auto; height: auto;">
+                                <label for="new-required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-refundable" style="width: auto; height: auto;">
+                                <label for="new-refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apply to Unit Types -->
+                    <div style="margin-bottom: 24px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label class="form-label" style="margin: 0;">Apply to Unit Types</label>
+                            <div style="display: flex; gap: 16px;">
+                                <a href="javascript:void(0)" onclick="selectAllUnitTypes()" style="font-size: 14px;">Select All</a>
+                                <span style="color: #d1d5db;">|</span>
+                                <a href="javascript:void(0)" onclick="deselectAllUnitTypes()" style="font-size: 14px;">Deselect All</a>
+                            </div>
+                        </div>
+                        <div style="max-height: 300px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px;">
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-1br-a" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-1br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">1BR-A</label>
+                                    <span class="text-sm text-muted">16 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-1br-b" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-1br-b" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">1BR-B</label>
+                                    <span class="text-sm text-muted">12 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-2br-a" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-2br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">2BR-A</label>
+                                    <span class="text-sm text-muted">24 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-2br-b" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-2br-b" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">2BR-B</label>
+                                    <span class="text-sm text-muted">18 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-3br-a" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-3br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">3BR-A</label>
+                                    <span class="text-sm text-muted">8 units</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const footerContent = `
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <span class="text-sm text-muted" id="unit-types-count">Adding to 5 unit types</span>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                        <button class="btn btn-primary">
+                            Add Fee
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Open edit pageslide in second container
+            const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
+            const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
+            const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
+            const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
+            
+            if (editOverlay && editPageslide) {
+                // Set content
+                if (editBody) editBody.innerHTML = formContent;
+                if (editFooter) editFooter.innerHTML = footerContent;
+                
+                // Set size
+                editPageslide.setAttribute('data-pageslide-size', 'md');
+                
+                // Show pageslide
+                editOverlay.classList.add('active');
+                setTimeout(() => {
+                    editPageslide.classList.add('active');
+                }, 10);
+
+                // Replace default header with custom header
+                setTimeout(() => {
+                    const pageslideHeader = document.querySelector('#pageslide-edit-container .pageslide-header');
+                    if (pageslideHeader) {
+                        pageslideHeader.innerHTML = headerContent;
+                        pageslideHeader.style.padding = '0';
+                        pageslideHeader.style.borderBottom = 'none';
+                    }
+                    
+                    // Add event listeners for unit type checkboxes
+                    updateUnitTypesCount();
+                    document.querySelectorAll('.unit-type-checkbox').forEach(checkbox => {
+                        checkbox.addEventListener('change', updateUnitTypesCount);
+                    });
+                }, 50);
+            }
+        }
+
+        // Helper functions for unit type selection
+        function selectAllUnitTypes() {
+            document.querySelectorAll('.unit-type-checkbox').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            updateUnitTypesCount();
+        }
+
+        function deselectAllUnitTypes() {
+            document.querySelectorAll('.unit-type-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            updateUnitTypesCount();
+        }
+
+        function updateUnitTypesCount() {
+            const checkedCount = document.querySelectorAll('.unit-type-checkbox:checked').length;
+            const countElement = document.getElementById('unit-types-count');
+            if (countElement) {
+                countElement.textContent = `Adding to ${checkedCount} unit type${checkedCount !== 1 ? 's' : ''}`;
+            }
+        }
+
+        // Function to open Load Template pageslide
+        function openLoadTemplatePageslide() {
+            const headerContent = `
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Load Template</h2>
+                    <p class="text-sm text-muted" style="margin: 0;">Select a template to apply to unit types at this property</p>
+                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                </div>
+            `;
+
+            const formContent = `
+                <div style="">
+                    <!-- Select Template -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="template-select" class="form-label">Select Template</label>
+                        <select id="template-select" class="form-select">
+                            <option selected>Standard Move-In Fees 2025</option>
+                            <option>Pet-Friendly Units</option>
+                            <option>Luxury Units</option>
+                        </select>
+                    </div>
+
+                    <!-- Template Info -->
+                    <div class="text-sm text-muted" style="margin-bottom: 16px;">
+                        12 fees • Auto-sync to Preview • Published
+                    </div>
+
+                    <!-- Template Sync Mode Alert -->
+                    <div class="alert alert-info" style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-info-circle" style="margin-top: 2px;"></i>
+                        <div>
+                            <div style="display: block; margin-bottom: 4px;">Template Sync Mode</div>
+                            <span>This template has auto-sync enabled. Unit types will automatically receive future template updates.</span>
+                        </div>
+                    </div>
+
+                    <!-- Select Unit Types -->
+                    <div style="margin-bottom: 24px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label class="form-label" style="margin: 0;">Select Unit Types</label>
+                            <div style="display: flex; gap: 16px;">
+                                <a href="javascript:void(0)" onclick="selectAllTemplateUnitTypes()" style="font-size: 14px;">Select All</a>
+                                <span style="color: #d1d5db;">|</span>
+                                <a href="javascript:void(0)" onclick="deselectAllTemplateUnitTypes()" style="font-size: 14px;">Deselect All</a>
+                            </div>
+                        </div>
+                        <div style="max-height: 400px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px;">
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                    <input type="checkbox" id="template-unit-1br-a" class="template-unit-checkbox" checked style="width: auto; height: auto; margin-top: 4px;">
+                                    <div style="flex: 1;">
+                                        <label for="template-unit-1br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; display: block;">1BR-A</label>
+                                        <span class="text-sm text-muted">16 units • Currently using: Standard Move-In</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                    <input type="checkbox" id="template-unit-1br-b" class="template-unit-checkbox" checked style="width: auto; height: auto; margin-top: 4px;">
+                                    <div style="flex: 1;">
+                                        <label for="template-unit-1br-b" style="margin: 0; font-weight: 500; font-size: 14px !important; display: block;">1BR-B</label>
+                                        <span class="text-sm text-muted">12 units • Currently using: Standard Move-In</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                    <input type="checkbox" id="template-unit-2br-a" class="template-unit-checkbox" checked style="width: auto; height: auto; margin-top: 4px;">
+                                    <div style="flex: 1;">
+                                        <label for="template-unit-2br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; display: block;">2BR-A</label>
+                                        <span class="text-sm text-muted">24 units • Currently using: Standard Move-In</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                    <input type="checkbox" id="template-unit-2br-b" class="template-unit-checkbox" checked style="width: auto; height: auto; margin-top: 4px;">
+                                    <div style="flex: 1;">
+                                        <label for="template-unit-2br-b" style="margin: 0; font-weight: 500; font-size: 14px !important; display: block;">2BR-B</label>
+                                        <span class="text-sm text-muted">18 units • Currently using: No template</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                    <input type="checkbox" id="template-unit-3br-a" class="template-unit-checkbox" checked style="width: auto; height: auto; margin-top: 4px;">
+                                    <div style="flex: 1;">
+                                        <label for="template-unit-3br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; display: block;">3BR-A</label>
+                                        <span class="text-sm text-muted">8 units • Currently using: Luxury Units</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const footerContent = `
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <span class="text-sm text-muted" id="template-unit-types-count">5 unit types selected</span>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                        <button class="btn btn-primary">
+                            Load Template
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Open edit pageslide in second container
+            const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
+            const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
+            const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
+            const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
+            
+            if (editOverlay && editPageslide) {
+                // Set content
+                if (editBody) editBody.innerHTML = formContent;
+                if (editFooter) editFooter.innerHTML = footerContent;
+                
+                // Set size
+                editPageslide.setAttribute('data-pageslide-size', 'md');
+                
+                // Show pageslide
+                editOverlay.classList.add('active');
+                setTimeout(() => {
+                    editPageslide.classList.add('active');
+                }, 10);
+
+                // Replace default header with custom header
+                setTimeout(() => {
+                    const pageslideHeader = document.querySelector('#pageslide-edit-container .pageslide-header');
+                    if (pageslideHeader) {
+                        pageslideHeader.innerHTML = headerContent;
+                        pageslideHeader.style.padding = '0';
+                        pageslideHeader.style.borderBottom = 'none';
+                    }
+                    
+                    // Add event listeners for unit type checkboxes
+                    updateTemplateUnitTypesCount();
+                    document.querySelectorAll('.template-unit-checkbox').forEach(checkbox => {
+                        checkbox.addEventListener('change', updateTemplateUnitTypesCount);
+                    });
+                }, 50);
+            }
+        }
+
+        // Helper functions for template unit type selection
+        function selectAllTemplateUnitTypes() {
+            document.querySelectorAll('.template-unit-checkbox').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            updateTemplateUnitTypesCount();
+        }
+
+        function deselectAllTemplateUnitTypes() {
+            document.querySelectorAll('.template-unit-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            updateTemplateUnitTypesCount();
+        }
+
+        function updateTemplateUnitTypesCount() {
+            const checkedCount = document.querySelectorAll('.template-unit-checkbox:checked').length;
+            const countElement = document.getElementById('template-unit-types-count');
+            if (countElement) {
+                countElement.textContent = `${checkedCount} unit type${checkedCount !== 1 ? 's' : ''} selected`;
+            }
         }
     </script>
 </body>
