@@ -62,8 +62,8 @@
     </script>
     
     <link rel="stylesheet" href="base.css">
-	<link rel="stylesheet" href="styles.css?v=190">
-    <link rel="stylesheet" href="components/components.css">
+	<link rel="stylesheet" href="styles.css?v=209">
+    <link rel="stylesheet" href="components/components.css?v=2">
 </head>
 
 <body>
@@ -77,9 +77,254 @@
     <div id="tabs-container"></div>
 
     <!-- Main Content Area -->
-    <main class="container mx-auto p-6">
+    <main class="mx-auto p-6">
         <div id="tab-content">
-            <!-- Tab content will be displayed here -->
+            <!-- KPI Tiles Grid -->
+            <div class="kpi-grid">
+                <!-- Total Properties -->
+                <div class="kpi-tile-large-value">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Total properties</h3>
+                    </div>
+                    <div class="kpi-value-large">5</div>
+                </div>
+                
+                <!-- Fully Published -->
+                <div class="kpi-tile-large-value">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Fully published</h3>
+                    </div>
+                    <div class="kpi-value-large">2</div>
+                </div>
+                
+                <!-- Unpublished Changes -->
+                <div class="kpi-tile-large-value">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Unpublished changes</h3>
+                    </div>
+                    <div class="kpi-value-large">2</div>
+                </div>
+                
+                <!-- Not Configured -->
+                <div class="kpi-tile-large-value">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Not configured</h3>
+                    </div>
+                    <div class="kpi-value-large">2</div>
+                </div>
+            </div>
+            
+            <!-- Properties Table -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Property Name</th>
+                            <th>Unit Types / Units</th>
+                            <th>Templates</th>
+                            <th>Last Saved</th>
+                            <th>Published</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1: Oakwood Apartments -->
+                        <tr>
+                            <td>
+                                <div class="property-name">Oakwood Apartments</div>
+                            </td>
+                            <td>
+                                <div class="unit-info">
+                                    <span class="unit-count text-sm text-muted">24 types / 156 units</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="template-pills">
+                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
+                                    <span class="badge badge-pill badge-outline-primary">Pet-Friendly Units</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="saved-info">
+                                    <span class="saved-date">Oct 15, 2025</span>
+                                    <span class="saved-by text-sm text-muted">Sarah Johnson</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="published-info">
+                                    <span class="published-date">Oct 15, 2025</span>
+                                    <span class="published-by text-sm text-muted">Sarah Johnson</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-outline-success">
+                                    <i class="fas fa-check"></i>
+                                    Published
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <i class="fas fa-chevron-right row-action"></i>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 2: Riverside Commons -->
+                        <tr>
+                            <td>
+                                <div class="property-name">Riverside Commons</div>
+                            </td>
+                            <td>
+                                <div class="unit-info">
+                                    <span class="unit-count text-sm text-muted">18 types / 112 units</span>
+                                    <span class="unit-warning text-sm">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        2 without fees
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="template-pills">
+                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="saved-info">
+                                    <span class="saved-date">Oct 20, 2025</span>
+                                    <span class="saved-by text-sm text-muted">Mike Chen</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="published-info">
+                                    <span class="published-date">Oct 18, 2025</span>
+                                    <span class="published-by text-sm text-muted">Mike Chen</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-outline-warning">Unpublished</span>
+                            </td>
+                            <td class="text-right">
+                                <i class="fas fa-chevron-right row-action"></i>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 3: Downtown Lofts -->
+                        <tr>
+                            <td>
+                                <div class="property-name">Downtown Lofts</div>
+                            </td>
+                            <td>
+                                <div class="unit-info">
+                                    <span class="unit-count text-sm text-muted">32 types / 224 units</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="template-pills">
+                                    <span class="badge badge-pill badge-outline-primary">Luxury Units - Premium Fees</span>
+                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
+                                    <span class="template-more text-sm text-muted">+1 more</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="saved-info">
+                                    <span class="saved-date">Oct 10, 2025</span>
+                                    <span class="saved-by text-sm text-muted">Sarah Johnson</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="published-info">
+                                    <span class="published-date">Oct 10, 2025</span>
+                                    <span class="published-by text-sm text-muted">Sarah Johnson</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-outline-success">
+                                    <i class="fas fa-check"></i>
+                                    Published
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <i class="fas fa-chevron-right row-action"></i>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 4: Sunset Heights -->
+                        <tr>
+                            <td>
+                                <div class="property-name">Sunset Heights</div>
+                            </td>
+                            <td>
+                                <div class="unit-info">
+                                    <span class="unit-count text-sm text-muted">12 types / 48 units</span>
+                                    <span class="unit-warning text-sm">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        12 without fees
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="not-published text-muted">None</span>
+                            </td>
+                            <td>
+                                <div class="saved-info">
+                                    <span class="saved-date not-published text-muted">Never</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="published-info">
+                                    <span class="not-published text-muted">Not published</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-outline-danger">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Incomplete
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <i class="fas fa-chevron-right row-action"></i>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 5: Maple Grove Residences -->
+                        <tr>
+                            <td>
+                                <div class="property-name">Maple Grove Residences</div>
+                            </td>
+                            <td>
+                                <div class="unit-info">
+                                    <span class="unit-count text-sm text-muted">16 types / 88 units</span>
+                                    <span class="unit-warning text-sm">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        4 without fees
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="template-pills">
+                                    <span class="badge badge-pill badge-outline-primary">Standard Move-In Fees 2025</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="saved-info">
+                                    <span class="saved-date">Oct 22, 2025</span>
+                                    <span class="saved-by text-sm text-muted">Alex Rivera</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="published-info">
+                                    <span class="not-published text-muted">Not published</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-outline-warning">Unpublished</span>
+                            </td>
+                            <td class="text-right">
+                                <i class="fas fa-chevron-right row-action"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 
@@ -96,22 +341,24 @@
                     containerId: 'page-header-container',
                     title: 'Units & Pricing Dashboard',
                     actionsHtml: `
-                        <button class="btn btn-light flex items-center gap-2">
-                            <i class="fas fa-map"></i>
+                        <button class="btn btn-link flex items-center gap-2">
+                            <i class="fas fa-image"></i>
                             <span>View Floor Plans</span>
                         </button>
                         
-                        <div class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-300 rounded-md">
-                            <span class="text-sm text-gray-600">Property</span>
-                            <div class="flex items-center gap-2 px-2 py-1 bg-gray-100 rounded">
-                                <span class="text-sm font-medium">DNC IQ: Loblolly Pine Villas (lq01)</span>
+                        <div class="form-group floating-label mb-0">
+                            <label for="property" class="form-label">Property</label>
+                            <div class="flex items-center gap-2 bg-white border border-gray-300" style="height: 36px; padding: 0 12px; border-radius: 8px;">
+                                <div class="flex items-center gap-2 px-2 py-1 rounded" style="background-color: #e6f3ff;">
+                                    <span class="text-sm font-medium">DNC IQ: Loblolly Pine Villas (lq01)</span>
+                                    <button style="color: #0072ce;">
+                                        <i class="fas fa-times text-xs"></i>
+                                    </button>
+                                </div>
                                 <button class="text-gray-500 hover:text-gray-700">
-                                    <i class="fas fa-times text-xs"></i>
+                                    <i class="fas fa-ellipsis-v text-sm"></i>
                                 </button>
                             </div>
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <i class="fas fa-ellipsis-v text-sm"></i>
-                            </button>
                         </div>
                     `,
                     hasBreadcrumb: false  // No breadcrumb on this page
@@ -123,9 +370,10 @@
                         'Leasing Specials',
                         'Unit Type Pricing',
                         'Amenity Pricing',
-                        'Term-Based Premiums'
+                        'Term-Based Premiums',
+                        'Cost Estimator Fees'
                     ],
-                    activeIndex: 0,
+                    activeIndex: 5,
                     hasBreadcrumb: false,  // No breadcrumb on this page
                     onChange: (index, tabName) => {
                         console.log('Tab changed to:', tabName);
@@ -136,7 +384,69 @@
                     }
                 }
             });
+            
+            // Table sorting functionality
+            initTableSorting();
         });
+        
+        function initTableSorting() {
+            const table = document.querySelector('.data-table');
+            if (!table) return;
+            
+            const headers = table.querySelectorAll('thead th');
+            
+            headers.forEach((header, index) => {
+                // Skip the last column (action column)
+                if (index === headers.length - 1) return;
+                
+                header.addEventListener('click', () => {
+                    const tbody = table.querySelector('tbody');
+                    const rows = Array.from(tbody.querySelectorAll('tr'));
+                    
+                    // Determine sort direction
+                    const isAscending = header.classList.contains('sorted-asc');
+                    
+                    // Remove all sorted classes
+                    headers.forEach(h => h.classList.remove('sorted-asc', 'sorted-desc'));
+                    
+                    // Add appropriate class
+                    if (isAscending) {
+                        header.classList.add('sorted-desc');
+                    } else {
+                        header.classList.add('sorted-asc');
+                    }
+                    
+                    // Sort rows
+                    rows.sort((a, b) => {
+                        const aCell = a.cells[index].textContent.trim();
+                        const bCell = b.cells[index].textContent.trim();
+                        
+                        // Try to parse as numbers first
+                        const aNum = parseFloat(aCell.replace(/[^0-9.-]/g, ''));
+                        const bNum = parseFloat(bCell.replace(/[^0-9.-]/g, ''));
+                        
+                        if (!isNaN(aNum) && !isNaN(bNum)) {
+                            return isAscending ? bNum - aNum : aNum - bNum;
+                        }
+                        
+                        // Date comparison
+                        const aDate = new Date(aCell);
+                        const bDate = new Date(bCell);
+                        if (!isNaN(aDate) && !isNaN(bDate)) {
+                            return isAscending ? bDate - aDate : aDate - bDate;
+                        }
+                        
+                        // String comparison
+                        return isAscending 
+                            ? bCell.localeCompare(aCell)
+                            : aCell.localeCompare(bCell);
+                    });
+                    
+                    // Re-append sorted rows
+                    rows.forEach(row => tbody.appendChild(row));
+                });
+            });
+        }
     </script>
 </body>
 </html>
