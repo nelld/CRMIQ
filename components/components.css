@@ -138,6 +138,22 @@
     padding: 20px 24px;
     border-bottom: 1px solid #e5e7eb;
     flex-shrink: 0;
+    position: relative;
+}
+
+/* Custom header with absolute positioned close icon */
+.pageslide-header .fa-times {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6b7280;
+    font-size: 20px;
+}
+
+.pageslide-header .fa-times:hover {
+    color: #1f2937;
 }
 
 .pageslide-title {
@@ -197,5 +213,15 @@
     .pageslide[data-pageslide-size="xl"] {
         width: 100%;
     }
+}
+
+/* Second pageslide (edit form) with higher z-index to layer on top */
+#pageslide-edit-container .pageslide-overlay {
+    z-index: 10999;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#pageslide-edit-container .pageslide {
+    z-index: 11000;
 }
 
