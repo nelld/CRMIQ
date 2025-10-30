@@ -36,9 +36,9 @@
 }
 
 .tab.active {
-    color: #0072ce;
+    color: #1f2937;
     border-bottom: 2px solid #0072ce;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* Page Header Component - Custom Positioning Options */
