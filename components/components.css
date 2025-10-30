@@ -73,3 +73,129 @@
     z-index: 999;
 }
 
+/* Pageslide Component Styles */
+.pageslide-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pageslide-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.pageslide {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+    z-index: 10000;
+}
+
+.pageslide.active {
+    right: 0;
+}
+
+/* Pageslide Sizes */
+.pageslide[data-pageslide-size="sm"] {
+    width: 400px;
+}
+
+.pageslide[data-pageslide-size="md"] {
+    width: 600px;
+}
+
+.pageslide[data-pageslide-size="lg"] {
+    width: 800px;
+}
+
+.pageslide[data-pageslide-size="xl"] {
+    width: 1000px;
+}
+
+.pageslide[data-pageslide-size="full"] {
+    width: 100%;
+}
+
+/* Pageslide Header */
+.pageslide-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    flex-shrink: 0;
+}
+
+.pageslide-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.pageslide-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.pageslide-close:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.pageslide-close i {
+    font-size: 18px;
+}
+
+/* Pageslide Body */
+.pageslide-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+/* Pageslide Footer */
+.pageslide-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    flex-shrink: 0;
+    background-color: #f9fafb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pageslide[data-pageslide-size="sm"],
+    .pageslide[data-pageslide-size="md"],
+    .pageslide[data-pageslide-size="lg"],
+    .pageslide[data-pageslide-size="xl"] {
+        width: 100%;
+    }
+}
+

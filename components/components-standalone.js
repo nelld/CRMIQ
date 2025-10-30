@@ -95,7 +95,92 @@ const CRMComponents = {
     <div class="tabs" id="tabs-content">
         <!-- Tabs will be dynamically populated -->
     </div>
-</div>`
+</div>`,
+
+        'pageslide': `<!-- Pageslide Component -->
+<!-- Usage: Add data-pageslide-size attribute with values: sm, md, lg, xl, full -->
+<div class="pageslide-overlay" id="pageslide-overlay">
+    <div class="pageslide" id="pageslide" data-pageslide-size="md">
+        <!-- Header -->
+        <div class="pageslide-header">
+            <h2 class="pageslide-title" id="pageslide-title">Pageslide Title</h2>
+            <button class="pageslide-close" id="pageslide-close" onclick="closePageslide()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Body -->
+        <div class="pageslide-body" id="pageslide-body">
+            <!-- Content will be dynamically populated -->
+        </div>
+        
+        <!-- Footer -->
+        <div class="pageslide-footer" id="pageslide-footer">
+            <button class="btn btn-light" onclick="closePageslide()">Cancel</button>
+            <button class="btn btn-primary">Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function openPageslide(options = {}) {
+    const overlay = document.getElementById('pageslide-overlay');
+    const pageslide = document.getElementById('pageslide');
+    const title = document.getElementById('pageslide-title');
+    const body = document.getElementById('pageslide-body');
+    const footer = document.getElementById('pageslide-footer');
+    
+    // Set title
+    if (options.title) {
+        title.textContent = options.title;
+    }
+    
+    // Set body content
+    if (options.content) {
+        body.innerHTML = options.content;
+    }
+    
+    // Set footer content
+    if (options.footer) {
+        footer.innerHTML = options.footer;
+    }
+    
+    // Set size
+    if (options.size) {
+        pageslide.setAttribute('data-pageslide-size', options.size);
+    }
+    
+    // Show pageslide
+    overlay.classList.add('active');
+    setTimeout(() => {
+        pageslide.classList.add('active');
+    }, 10);
+}
+
+function closePageslide() {
+    const overlay = document.getElementById('pageslide-overlay');
+    const pageslide = document.getElementById('pageslide');
+    
+    pageslide.classList.remove('active');
+    setTimeout(() => {
+        overlay.classList.remove('active');
+    }, 300);
+}
+
+// Close on overlay click
+document.getElementById('pageslide-overlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closePageslide();
+    }
+});
+
+// Close on ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePageslide();
+    }
+});
+</script>`
     },
 
     /**
@@ -283,6 +368,23 @@ const CRMComponents = {
     },
 
     /**
+     * Initialize the pageslide component
+     * @param {string} containerId - The ID of the container to load the pageslide into
+     */
+    initPageslide(containerId = 'pageslide-container') {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.warn(`Container with id "${containerId}" not found.`);
+            return;
+        }
+
+        const html = this.loadComponent('pageslide');
+        if (html) {
+            container.innerHTML = html;
+        }
+    },
+
+    /**
      * Initialize all components on the page
      * @param {Object} config - Configuration for all components
      */
@@ -291,7 +393,8 @@ const CRMComponents = {
             appHeader = true,
             breadcrumb = null,
             pageHeader = null,
-            tabs = null
+            tabs = null,
+            pageslide = false
         } = config;
 
         // Load components in order
@@ -309,6 +412,10 @@ const CRMComponents = {
 
         if (tabs) {
             this.initTabs(tabs);
+        }
+
+        if (pageslide) {
+            this.initPageslide(pageslide.containerId || 'pageslide-container');
         }
     }
 };
