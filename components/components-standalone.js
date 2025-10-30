@@ -380,8 +380,99 @@ document.addEventListener('keydown', function(e) {
 
         const html = this.loadComponent('pageslide');
         if (html) {
-            container.innerHTML = html;
+            // Extract just the HTML part (without script tags)
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            
+            // Remove script tags and get just the HTML
+            const scripts = tempDiv.querySelectorAll('script');
+            scripts.forEach(script => script.remove());
+            
+            container.innerHTML = tempDiv.innerHTML;
+            
+            // Now define the pageslide functions globally
+            this.definePageslideFunctions();
         }
+    },
+
+    /**
+     * Define pageslide control functions globally
+     */
+    definePageslideFunctions() {
+        // Define openPageslide globally
+        window.openPageslide = function(options = {}) {
+            const overlay = document.getElementById('pageslide-overlay');
+            const pageslide = document.getElementById('pageslide');
+            const title = document.getElementById('pageslide-title');
+            const body = document.getElementById('pageslide-body');
+            const footer = document.getElementById('pageslide-footer');
+            
+            if (!overlay || !pageslide) return;
+            
+            // Set title
+            if (options.title) {
+                title.textContent = options.title;
+            }
+            
+            // Set body content
+            if (options.content) {
+                body.innerHTML = options.content;
+            }
+            
+            // Set footer content
+            if (options.footer !== undefined) {
+                footer.innerHTML = options.footer;
+            }
+            
+            // Set size
+            if (options.size) {
+                pageslide.setAttribute('data-pageslide-size', options.size);
+            }
+            
+            // Disable body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Show pageslide
+            overlay.classList.add('active');
+            setTimeout(() => {
+                pageslide.classList.add('active');
+            }, 10);
+        };
+
+        // Define closePageslide globally
+        window.closePageslide = function() {
+            const overlay = document.getElementById('pageslide-overlay');
+            const pageslide = document.getElementById('pageslide');
+            
+            if (!overlay || !pageslide) return;
+            
+            pageslide.classList.remove('active');
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                // Re-enable body scroll
+                document.body.style.overflow = '';
+            }, 300);
+        };
+
+        // Close on overlay click
+        const overlay = document.getElementById('pageslide-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    window.closePageslide();
+                }
+            });
+        }
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('pageslide-overlay');
+                if (overlay && overlay.classList.contains('active')) {
+                    window.closePageslide();
+                }
+            }
+        });
     },
 
     /**
