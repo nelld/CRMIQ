@@ -497,12 +497,6 @@ body {
     text-align: left;
     position: relative;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-}
-
-.kpi-tile-large-value:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
 }
 
 .kpi-tile-large-value .kpi-header {
@@ -511,7 +505,7 @@ body {
 
 .kpi-tile-large-value .kpi-title {
     font-size: .981104652rem;
-    font-weight: 700;
+    font-weight: 600;
     color: #1f2937;
     margin: 0 0 8px 0;
     text-align: left;
@@ -565,6 +559,32 @@ body {
     padding: 16px 0;
 }
 
+.table-advanced {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.table-advanced .table-header {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.count {
+    margin-left: 16px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.count-title {
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
 .table-search {
     position: relative;
     display: flex;
@@ -573,22 +593,25 @@ body {
 
 .table-search i {
     position: absolute;
-    left: 14px;
+    left: 12px;
     color: #9ca3af;
     font-size: 14px;
     pointer-events: none;
+    z-index: 1;
 }
 
-.table-component .table-search-input {
+.table-component .table-search-input,
+.table-search-input {
     width: 300px;
     height: 36px;
-    padding: 8px 12px 8px 36px !important;
+    padding: 8px 12px 8px 40px !important;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 14px;
     color: #1f2937;
     outline: none;
     transition: all 0.2s ease;
+    box-sizing: border-box;
 }
 
 .table-search-input::placeholder {
@@ -669,7 +692,7 @@ body {
 }
 
 .data-table tbody tr:hover {
-    background-color: #00bdff14;
+    background-color: #00bdff08;
 }
 
 .data-table tbody td {
@@ -5656,6 +5679,18 @@ textarea::-moz-placeholder {
     height: 36px !important;
 }
 
+/* Override padding-right for select elements to prevent arrow overlap */
+.pageslide .form-select,
+.pageslide select {
+    padding-right: 32px !important;
+}
+
+/* Override padding for search inputs to accommodate icon */
+.pageslide .table-search-input,
+.pageslide input[type="text"].table-search-input {
+    padding: 8px 12px 8px 40px !important;
+}
+
 /* Global focus states for all forms */
 .form-input:focus,
 .form-select:focus,
@@ -6011,4 +6046,159 @@ input[type="number"].form-input {
     .charge-card .action-buttons {
         flex-shrink: 0;
     }
+}
+
+/* ===================================
+   FEES TABLE (PAGESLIDE) STYLES
+   =================================== */
+
+.fees-table-container {
+    overflow-x: auto;
+}
+
+.fees-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    table-layout: auto;
+}
+
+.fees-table thead th {
+    padding: 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+    border-bottom: 2px solid #e5e7eb;
+    background: #f9fafb;
+    vertical-align: top;
+}
+
+
+/* Unit Type Header in Table */
+.unit-type-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.unit-type-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.unit-type-info {
+    /* Use text-sm and text-muted classes */
+}
+
+.no-template {
+    /* Use text-sm and text-muted classes */
+}
+
+/* Table Body */
+.fees-table tbody tr {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.fees-table tbody tr:hover {
+    background-color: #00bdff08;
+}
+
+.fees-table tbody tr.fees-section-header:hover {
+    background-color: #f3f4f6 !important;
+}
+
+/* Fees Section Header Rows */
+.fees-table tr.fees-section-header {
+    background: #f3f4f6;
+}
+
+.fees-table tr.fees-section-header td {
+    padding: 8px 16px !important;
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+    background: #f3f4f6 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left !important;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* Fee Name Column */
+.fees-table tbody td:first-child {
+    padding: 16px;
+}
+
+.fee-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.fee-name span {
+    font-size: 14px;
+    color: #1f2937;
+}
+
+.fee-meta {
+    /* Use text-sm and text-muted classes */
+    padding-left: 16px;
+}
+
+/* Fee Amount Columns */
+.fee-amount {
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+}
+
+/* Make sure tbody td respects standard sizing */
+.fees-table tbody td {
+    padding: 16px;
+    font-size: 14px;
+    color: #1f2937;
+}
+
+/* Highlighted cells (variation by unit type) */
+.fee-highlight {
+    background-color: #fff5d9;
+}
+.fee-highlight:hover {
+    background-color: #fff5d9;
+}
+
+/* Close button for full screen pageslide */
+.pageslide[data-pageslide-size="full"] .pageslide-body {
+    padding: 0;
+}
+
+/* Custom header for fees pageslide (now in actual pageslide-header) */
+.fees-pageslide-header {
+    position: relative;
+    background: white;
+}
+
+/* Data group styling for pageslide header */
+.data-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.data-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.data-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
 }
