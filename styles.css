@@ -555,10 +555,54 @@ body {
  * Standard: Use .text-sm and .text-muted utility classes from base.css
  * for smaller, lighter colored text throughout the application
  */
+.table-component {
+    margin-top: 24px;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.table-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.table-search i {
+    position: absolute;
+    left: 14px;
+    color: #9ca3af;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.table-component .table-search-input {
+    width: 300px;
+    height: 36px;
+    padding: 8px 12px 8px 36px !important;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1f2937;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.table-search-input::placeholder {
+    color: #9ca3af;
+}
+
+.table-search-input:focus {
+    border-color: #0072ce;
+    box-shadow: 0 0 0 3px rgba(0, 114, 206, 0.1);
+}
+
 .table-container {
     background: white;
     overflow: hidden;
-    margin-top: 24px;
 }
 
 .data-table {

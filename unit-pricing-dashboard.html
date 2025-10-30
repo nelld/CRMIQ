@@ -62,7 +62,7 @@
     </script>
     
     <link rel="stylesheet" href="base.css">
-	<link rel="stylesheet" href="styles.css?v=209">
+	<link rel="stylesheet" href="styles.css?v=211">
     <link rel="stylesheet" href="components/components.css?v=2">
 </head>
 
@@ -115,8 +115,15 @@
             </div>
             
             <!-- Properties Table -->
-            <div class="table-container">
-                <table class="data-table">
+            <div class="table-component">
+                <div class="table-header">
+                    <div class="table-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="table-search-input" placeholder="Search properties...">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
                     <thead>
                         <tr>
                             <th>Property Name</th>
@@ -324,6 +331,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </main>
@@ -387,7 +395,32 @@
             
             // Table sorting functionality
             initTableSorting();
+            
+            // Table search functionality
+            initTableSearch();
         });
+        
+        function initTableSearch() {
+            const searchInput = document.querySelector('.table-search-input');
+            if (!searchInput) return;
+            
+            const table = document.querySelector('.data-table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        }
         
         function initTableSorting() {
             const table = document.querySelector('.data-table');
