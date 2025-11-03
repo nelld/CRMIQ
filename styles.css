@@ -6215,6 +6215,33 @@ input[type="number"].form-input {
     background-color: #fff5d9;
 }
 
+/* Editable fee cell */
+.fee-cell-editable {
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.fee-cell-editable:hover {
+    background-color: #fff0b3 !important;
+}
+
+.fee-cell-value {
+    display: inline-block;
+}
+
+.fee-cell-edit-icon {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: #6b7280;
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+.fee-cell-editable:hover .fee-cell-edit-icon {
+    opacity: 1;
+}
+
 /* Close button for full screen pageslide */
 .pageslide[data-pageslide-size="full"] .pageslide-body {
     padding: 0;

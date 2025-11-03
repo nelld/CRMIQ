@@ -654,7 +654,10 @@
                                 </td>
                                 <td class="fee-amount">$500</td>
                                 <td class="fee-amount">$500</td>
-                                <td class="fee-amount fee-highlight">$750</td>
+                                <td class="fee-amount fee-highlight fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Security Deposit', '2BR-A', '750')">
+                                    <span class="fee-cell-value">$750</span>
+                                    <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                </td>
                                 <td class="fee-amount">$750</td>
                                 <td class="fee-amount">$1000</td>
                             </tr>
@@ -692,9 +695,15 @@
                                 </td>
                                 <td class="fee-amount">$85</td>
                                 <td class="fee-amount">$85</td>
-                                <td class="fee-amount fee-highlight">$85</td>
+                                <td class="fee-amount fee-highlight fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '2BR-A', '85')">
+                                    <span class="fee-cell-value">$85</span>
+                                    <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                </td>
                                 <td class="fee-amount">$85</td>
-                                <td class="fee-amount fee-highlight">$100</td>
+                                <td class="fee-amount fee-highlight fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '3BR-A', '100')">
+                                    <span class="fee-cell-value">$100</span>
+                                    <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                </td>
                             </tr>
 
                             <!-- MOVE-OUT CHARGES -->
@@ -815,8 +824,10 @@
                             <label for="amount-type" class="form-label">Amount Type</label>
                             <select id="amount-type" class="form-select">
                                 <option selected>Fixed</option>
-                                <option>Variable</option>
                                 <option>Percentage</option>
+                                <option>Range</option>
+                                <option>Text</option>
+                                <option>Average</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -831,9 +842,9 @@
                             <label for="category" class="form-label">Category</label>
                             <select id="category" class="form-select">
                                 <option selected>Move-in</option>
-                                <option>Application</option>
-                                <option>Move-out</option>
-                                <option>Recurring</option>
+                                <option>Add ons</option>
+                                <option>Situational</option>
+                                <option>Monthly</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -841,6 +852,7 @@
                             <select id="timing" class="form-select">
                                 <option selected>Move-in</option>
                                 <option>Application</option>
+                                <option>Recurring</option>
                                 <option>Move-out</option>
                             </select>
                         </div>
@@ -848,9 +860,10 @@
                             <label for="frequency" class="form-label">Frequency</label>
                             <select id="frequency" class="form-select">
                                 <option selected>Per Lease</option>
-                                <option>Monthly</option>
-                                <option>Annually</option>
                                 <option>One-Time</option>
+                                <option>Per Month</option>
+                                <option>Per Quarter</option>
+                                <option>Per Year</option>
                             </select>
                         </div>
                     </div>
@@ -884,17 +897,20 @@
                             <label for="charge-class" class="form-label">Charge Class</label>
                             <select id="charge-class" class="form-select">
                                 <option selected>Admin</option>
-                                <option>Deposit</option>
-                                <option>Rent</option>
-                                <option>Other</option>
+                                <option>Amenity</option>
+                                <option>Insurance</option>
+                                <option>Pet</option>
+                                <option>Storage</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="method" class="form-label">Method</label>
                             <select id="method" class="form-select">
                                 <option selected>Per Unit</option>
-                                <option>Per Person</option>
+                                <option>Per Applicant</option>
+                                <option>Per Resident</option>
                                 <option>Per Pet</option>
+                                <option>Per Vehicle</option>
                             </select>
                         </div>
                     </div>
@@ -920,6 +936,215 @@
             const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
             const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
             const editTitle = document.querySelector('#pageslide-edit-container .pageslide-title');
+            const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
+            const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
+            
+            if (editOverlay && editPageslide) {
+                // Set content
+                if (editBody) editBody.innerHTML = formContent;
+                if (editFooter) editFooter.innerHTML = footerContent;
+                
+                // Set size
+                editPageslide.setAttribute('data-pageslide-size', 'md');
+                
+                // Show pageslide
+                editOverlay.classList.add('active');
+                setTimeout(() => {
+                    editPageslide.classList.add('active');
+                }, 10);
+
+                // Replace default header with custom header
+                setTimeout(() => {
+                    const pageslideHeader = document.querySelector('#pageslide-edit-container .pageslide-header');
+                    if (pageslideHeader) {
+                        pageslideHeader.innerHTML = headerContent;
+                        pageslideHeader.style.padding = '0';
+                        pageslideHeader.style.borderBottom = 'none';
+                    }
+                }, 50);
+            }
+        }
+
+        // Function to open Edit Fee for specific Unit Type pageslide
+        function openEditFeeForUnitTypePageslide(feeName, unitType, amount) {
+            // Set default values based on fee type
+            let chargeCode = '';
+            let description = '';
+            let category = 'Move-in';
+            let timing = 'Move-in';
+            let chargeClass = 'Admin';
+            
+            let templateName = 'Standard Move-In';
+            
+            if (feeName === 'Security Deposit') {
+                chargeCode = 'SEC_DEP';
+                description = 'Refundable security deposit';
+                chargeClass = 'Admin';
+                templateName = 'Standard Move-In';
+            } else if (feeName === 'Parking Fee') {
+                chargeCode = 'PARKING';
+                description = 'Monthly parking fee';
+                category = 'Add ons';
+                timing = 'Move-in';
+                chargeClass = 'Amenity';
+                templateName = unitType === '3BR-A' ? 'Luxury Units' : 'Standard Move-In';
+            }
+            
+            const headerContent = `
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Edit Fee for Unit Type</h2>
+                    <p class="text-sm text-muted" style="margin: 0;">Changes apply to ${unitType} only</p>
+                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                </div>
+            `;
+
+            const formContent = `
+                <div style="">
+                    <!-- Unit Type Override Info -->
+                    <div class="alert alert-info" style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-info-circle" style="margin-top: 2px; font-size: 16px;"></i>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px;">Unit Type Override</div>
+                            <span>This unit type is linked to "${templateName}" template. Any changes here will override the template for this unit type only.</span>
+                        </div>
+                    </div>
+
+                    <!-- Fee Name and Charge Code -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="fee-name-unit" class="form-label">Fee Name</label>
+                            <input type="text" id="fee-name-unit" class="form-input" value="${feeName}">
+                        </div>
+                        <div class="form-group">
+                            <label for="charge-code-unit" class="form-label">Charge Code</label>
+                            <input type="text" id="charge-code-unit" class="form-input" value="${chargeCode}">
+                        </div>
+                    </div>
+
+                    <!-- Fee Description -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="fee-description-unit" class="form-label">Fee Description</label>
+                        <textarea id="fee-description-unit" class="form-input" rows="3" style="resize: vertical;">${description}</textarea>
+                    </div>
+
+                    <!-- Amount Type and Amount -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="amount-type-unit" class="form-label">Amount Type</label>
+                            <select id="amount-type-unit" class="form-select">
+                                <option selected>Fixed</option>
+                                <option>Percentage</option>
+                                <option>Range</option>
+                                <option>Text</option>
+                                <option>Average</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount-unit" class="form-label">Amount</label>
+                            <input type="text" id="amount-unit" class="form-input" value="${amount}">
+                        </div>
+                    </div>
+
+                    <!-- Category, Timing, Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div class="form-group">
+                            <label for="category-unit" class="form-label">Category</label>
+                            <select id="category-unit" class="form-select">
+                                <option ${category === 'Move-in' ? 'selected' : ''}>Move-in</option>
+                                <option ${category === 'Add ons' ? 'selected' : ''}>Add ons</option>
+                                <option ${category === 'Situational' ? 'selected' : ''}>Situational</option>
+                                <option ${category === 'Monthly' ? 'selected' : ''}>Monthly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="timing-unit" class="form-label">Timing</label>
+                            <select id="timing-unit" class="form-select">
+                                <option ${timing === 'Move-in' ? 'selected' : ''}>Move-in</option>
+                                <option ${timing === 'Application' ? 'selected' : ''}>Application</option>
+                                <option ${timing === 'Recurring' ? 'selected' : ''}>Recurring</option>
+                                <option ${timing === 'Move-out' ? 'selected' : ''}>Move-out</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency-unit" class="form-label">Frequency</label>
+                            <select id="frequency-unit" class="form-select">
+                                <option selected>Per Lease</option>
+                                <option>One-Time</option>
+                                <option>Per Month</option>
+                                <option>Per Quarter</option>
+                                <option>Per Year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Fee Properties -->
+                    <div style="margin-bottom: 24px;">
+                        <label class="form-label" style="margin-bottom: 12px; display: block;">Fee Properties</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="hide-cost-unit" style="width: auto; height: auto;">
+                                <label for="hide-cost-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="taxable-unit" checked style="width: auto; height: auto;">
+                                <label for="taxable-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="required-unit" checked style="width: auto; height: auto;">
+                                <label for="required-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="refundable-unit" checked style="width: auto; height: auto;">
+                                <label for="refundable-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charge Class and Method -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
+                        <div class="form-group">
+                            <label for="charge-class-unit" class="form-label">Charge Class</label>
+                            <select id="charge-class-unit" class="form-select">
+                                <option ${chargeClass === 'Admin' ? 'selected' : ''}>Admin</option>
+                                <option ${chargeClass === 'Amenity' ? 'selected' : ''}>Amenity</option>
+                                <option ${chargeClass === 'Insurance' ? 'selected' : ''}>Insurance</option>
+                                <option ${chargeClass === 'Pet' ? 'selected' : ''}>Pet</option>
+                                <option ${chargeClass === 'Storage' ? 'selected' : ''}>Storage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="method-unit" class="form-label">Method</label>
+                            <select id="method-unit" class="form-select">
+                                <option selected>Per Unit</option>
+                                <option>Per Applicant</option>
+                                <option>Per Resident</option>
+                                <option>Per Pet</option>
+                                <option>Per Vehicle</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+
+            const footerContent = `
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <button class="btn btn-link text-danger" style="padding-left: 0;">
+                        Remove Fee
+                    </button>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Open edit pageslide in second container
+            const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
+            const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
             const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
             const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
             
@@ -985,8 +1210,10 @@
                             <label for="new-amount-type" class="form-label">Amount Type</label>
                             <select id="new-amount-type" class="form-select">
                                 <option selected>Fixed</option>
-                                <option>Variable</option>
                                 <option>Percentage</option>
+                                <option>Range</option>
+                                <option>Text</option>
+                                <option>Average</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1001,9 +1228,9 @@
                             <label for="new-category" class="form-label">Category</label>
                             <select id="new-category" class="form-select">
                                 <option selected>Move-in</option>
-                                <option>Application</option>
-                                <option>Move-out</option>
-                                <option>Recurring</option>
+                                <option>Add ons</option>
+                                <option>Situational</option>
+                                <option>Monthly</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1011,6 +1238,7 @@
                             <select id="new-timing" class="form-select">
                                 <option selected>Move-in</option>
                                 <option>Application</option>
+                                <option>Recurring</option>
                                 <option>Move-out</option>
                             </select>
                         </div>
@@ -1018,9 +1246,10 @@
                             <label for="new-frequency" class="form-label">Frequency</label>
                             <select id="new-frequency" class="form-select">
                                 <option selected>One-Time</option>
-                                <option>Monthly</option>
-                                <option>Annually</option>
                                 <option>Per Lease</option>
+                                <option>Per Month</option>
+                                <option>Per Quarter</option>
+                                <option>Per Year</option>
                             </select>
                         </div>
                     </div>
