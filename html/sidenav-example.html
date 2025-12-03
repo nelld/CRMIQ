@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideNav Component Example</title>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../components/components.css">
+
+    <style>
+        /* Example page styles */
+        .demo-content {
+            padding: 32px;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .demo-section p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 16px;
+            z-index: 1000;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- App Header Component -->
+    <div id="app-header-container"></div>
+
+    <!-- Side Navigation Component -->
+    <div id="sidenav-container"></div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-btn" onclick="CRMComponents.toggleMobileSideNav()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content Area -->
+    <main class="has-sidenav demo-content">
+        <h1 style="font-size: 32px; font-weight: 700; color: #1f2937; margin-bottom: 8px;">SideNav Component Demo</h1>
+        <p style="color: #6b7280; margin-bottom: 32px;">This page demonstrates the SideNav component with various features.</p>
+
+        <div class="demo-section">
+            <h2><i class="fas fa-info-circle" style="color: #0072ce; margin-right: 8px;"></i>Overview</h2>
+            <p>The SideNav component provides a collapsible left navigation menu with the following features:</p>
+            <ul style="color: #6b7280; line-height: 1.8; margin-left: 24px;">
+                <li>Collapsible desktop navigation with toggle button</li>
+                <li>Responsive mobile behavior with slide-in menu</li>
+                <li>Support for navigation groups and dividers</li>
+                <li>Badge indicators for counts or labels</li>
+                <li>Submenu support for nested navigation</li>
+                <li>Active state indication</li>
+                <li>Smooth animations and transitions</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2><i class="fas fa-desktop" style="color: #10b981; margin-right: 8px;"></i>Desktop Behavior</h2>
+            <p>On desktop screens (> 768px):</p>
+            <ul style="color: #6b7280; line-height: 1.8; margin-left: 24px;">
+                <li>The navigation is visible by default on the left side</li>
+                <li>Click the toggle button (circular arrow) to collapse/expand</li>
+                <li>When collapsed, only icons are visible</li>
+                <li>The content area automatically adjusts its margin</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2><i class="fas fa-mobile-alt" style="color: #f59e0b; margin-right: 8px;"></i>Mobile Behavior</h2>
+            <p>On mobile screens (≤ 768px):</p>
+            <ul style="color: #6b7280; line-height: 1.8; margin-left: 24px;">
+                <li>The navigation is hidden off-screen by default</li>
+                <li>Click the hamburger menu button to open the navigation</li>
+                <li>An overlay appears behind the menu</li>
+                <li>Click outside the menu or on a menu item to close</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2><i class="fas fa-palette" style="color: #8b5cf6; margin-right: 8px;"></i>Features Demonstrated</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 16px;">
+                <div style="padding: 16px; background: #f9fafb; border-radius: 6px; border-left: 3px solid #0072ce;">
+                    <strong style="color: #1f2937;">Active States</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; color: #6b7280;">The "Dashboard" item is currently active with visual highlighting</p>
+                </div>
+                <div style="padding: 16px; background: #f9fafb; border-radius: 6px; border-left: 3px solid #10b981;">
+                    <strong style="color: #1f2937;">Badges</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; color: #6b7280;">Some items show badges with counts or labels</p>
+                </div>
+                <div style="padding: 16px; background: #f9fafb; border-radius: 6px; border-left: 3px solid #f59e0b;">
+                    <strong style="color: #1f2937;">Groups</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; color: #6b7280;">Items are organized into logical sections</p>
+                </div>
+                <div style="padding: 16px; background: #f9fafb; border-radius: 6px; border-left: 3px solid #8b5cf6;">
+                    <strong style="color: #1f2937;">Submenus</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; color: #6b7280;">The "Reports" item has expandable submenu items</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2><i class="fas fa-code" style="color: #ef4444; margin-right: 8px;"></i>Implementation</h2>
+            <p>To use the SideNav component in your own pages:</p>
+            <ol style="color: #6b7280; line-height: 2; margin-left: 24px;">
+                <li>Add the container: <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 3px; font-size: 13px;">&lt;div id="sidenav-container">&lt;/div></code></li>
+                <li>Add the class to your main content: <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 3px; font-size: 13px;">&lt;main class="has-sidenav"></code></li>
+                <li>Initialize with configuration (see SIDENAV_USAGE.md for details)</li>
+                <li>Customize the navigation items array to match your needs</li>
+            </ol>
+            <p style="margin-top: 16px;">
+                <strong>📚 Full documentation available in:</strong> 
+                <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px; font-size: 13px;">SIDENAV_USAGE.md</code>
+            </p>
+        </div>
+
+        <div class="demo-section">
+            <h2><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>Try It Out</h2>
+            <p>Interact with the navigation to test different features:</p>
+            <ul style="color: #6b7280; line-height: 1.8; margin-left: 24px;">
+                <li>Click different menu items to see active state changes</li>
+                <li>Try the collapse/expand toggle (desktop only)</li>
+                <li>Resize your browser to see responsive behavior</li>
+                <li>Click "Reports" to expand/collapse the submenu</li>
+                <li>Check the browser console for onChange callbacks</li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="../components/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize components
+            await CRMComponents.initAll({
+                appHeader: true,
+                sideNav: {
+                    items: [
+                        {
+                            icon: 'fas fa-home',
+                            label: 'Dashboard',
+                            href: '#dashboard',
+                            id: 'dashboard',
+                            active: true
+                        },
+                        {
+                            icon: 'fas fa-chart-line',
+                            label: 'Analytics',
+                            href: '#analytics',
+                            id: 'analytics',
+                            badge: 'NEW'
+                        },
+                        {
+                            icon: 'fas fa-users',
+                            label: 'Contacts',
+                            href: '#contacts',
+                            id: 'contacts',
+                            badge: '12'
+                        },
+                        {
+                            icon: 'fas fa-building',
+                            label: 'Properties',
+                            href: '#properties',
+                            id: 'properties',
+                            badge: '5'
+                        },
+                        {
+                            type: 'divider'
+                        },
+                        {
+                            icon: 'fas fa-file-alt',
+                            label: 'Reports',
+                            id: 'reports',
+                            submenu: [
+                                {
+                                    icon: 'fas fa-circle',
+                                    label: 'Monthly Reports',
+                                    href: '#monthly',
+                                    id: 'monthly-reports'
+                                },
+                                {
+                                    icon: 'fas fa-circle',
+                                    label: 'Quarterly Reports',
+                                    href: '#quarterly',
+                                    id: 'quarterly-reports'
+                                },
+                                {
+                                    icon: 'fas fa-circle',
+                                    label: 'Annual Reports',
+                                    href: '#annual',
+                                    id: 'annual-reports'
+                                }
+                            ]
+                        },
+                        {
+                            icon: 'fas fa-envelope',
+                            label: 'Messages',
+                            href: '#messages',
+                            id: 'messages',
+                            badge: '3'
+                        },
+                        {
+                            icon: 'fas fa-bell',
+                            label: 'Notifications',
+                            href: '#notifications',
+                            id: 'notifications',
+                            badge: '8'
+                        },
+                        {
+                            type: 'divider'
+                        },
+                        {
+                            type: 'group',
+                            title: 'Management',
+                            items: [
+                                {
+                                    icon: 'fas fa-dollar-sign',
+                                    label: 'Pricing',
+                                    href: '#pricing',
+                                    id: 'pricing'
+                                },
+                                {
+                                    icon: 'fas fa-calendar-alt',
+                                    label: 'Scheduling',
+                                    href: '#scheduling',
+                                    id: 'scheduling'
+                                },
+                                {
+                                    icon: 'fas fa-tasks',
+                                    label: 'Tasks',
+                                    href: '#tasks',
+                                    id: 'tasks',
+                                    badge: '7'
+                                }
+                            ]
+                        },
+                        {
+                            type: 'group',
+                            title: 'Settings',
+                            items: [
+                                {
+                                    icon: 'fas fa-cog',
+                                    label: 'Preferences',
+                                    href: '#preferences',
+                                    id: 'preferences'
+                                },
+                                {
+                                    icon: 'fas fa-user',
+                                    label: 'Profile',
+                                    href: '#profile',
+                                    id: 'profile'
+                                },
+                                {
+                                    icon: 'fas fa-shield-alt',
+                                    label: 'Security',
+                                    href: '#security',
+                                    id: 'security'
+                                }
+                            ]
+                        }
+                    ],
+                    onChange: (index, id, element) => {
+                        console.log('Navigation changed:');
+                        console.log('  Index:', index);
+                        console.log('  ID:', id);
+                        console.log('  Element:', element);
+                    }
+                }
+            });
+
+            console.log('✅ SideNav component initialized successfully!');
+            console.log('📚 See SIDENAV_USAGE.md for full documentation');
+        });
+    </script>
+</body>
+</html>
+

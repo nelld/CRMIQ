@@ -63,6 +63,7 @@
     
     <link rel="stylesheet" href="../css/base.css">
 	<link rel="stylesheet" href="../css/styles.css?v=190">
+    <link rel="stylesheet" href="../components/components.css">
     
     <style>
         /* Content container width customization */
@@ -84,24 +85,30 @@
             gap: 4px !important;
             margin-bottom: 16px !important;
             width: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
         }
         
-        .contact-edit-form .form-row-group ml-1 {
+        .contact-edit-form .form-row-group {
             display: grid !important;
-            grid-template-columns: auto 1fr !important;
+            grid-template-columns: 1fr 1fr !important;
             gap: 16px !important;
             margin-bottom: 16px !important;
             width: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
         }
         
         @media (max-width: 768px) {
-            .contact-edit-form .form-row-group ml-1 {
+            .contact-edit-form .form-row-group {
                 grid-template-columns: 1fr !important;
             }
         }
         
-        .contact-edit-form .form-row-group ml-1 .form-row {
+        .contact-edit-form .form-row-group .form-row {
             margin-bottom: 0 !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
         }
         
         .contact-edit-form .form-label {
@@ -121,6 +128,16 @@
             order: 2 !important;
             width: 100% !important;
             box-sizing: border-box !important;
+            margin-left: 0 !important;
+        }
+        
+        /* Remove any negative margins from utility classes */
+        .contact-edit-form .ml-0 {
+            margin-left: 0 !important;
+        }
+        
+        .contact-edit-form .ml-1 {
+            margin-left: 0 !important;
         }
 
         .contact-edit-form .form-input,
@@ -192,7 +209,7 @@
         }
         
         /* Form full width and sections spacing */
-        .pageslide.contact-edit .pageslide-content {
+        .pageslide.contact-edit .pageslide-body {
             padding: 24px !important;
             width: 100% !important;
             box-sizing: border-box !important;
@@ -204,7 +221,7 @@
         }
         
         .contact-edit-form .form-section {
-            margin-bottom: 32px !important;
+            margin-bottom: 20px !important;
             padding-left: 0 !important;
             margin-left: 0 !important;
             border-bottom: none !important;
@@ -212,7 +229,7 @@
         }
         
         .contact-edit-form .form-section-title {
-            margin-bottom: 20px !important;
+            margin-bottom: 16px !important;
             font-size: 16px !important;
             font-weight: 600 !important;
             color: #111827 !important;
@@ -221,25 +238,25 @@
         }
         
         /* Special handling for identification section with 3 fields */
-        .contact-edit-form .form-section h3 + .form-row-group ml-1:first-of-type {
+        .contact-edit-form .form-section h3 + .form-row-group:first-of-type {
             grid-template-columns: 1fr 1fr 1fr !important;
         }
         
         @media (max-width: 1024px) {
-            .contact-edit-form .form-section h3 + .form-row-group ml-1:first-of-type {
+            .contact-edit-form .form-section h3 + .form-row-group:first-of-type {
                 grid-template-columns: 1fr 1fr !important;
             }
         }
         
         @media (max-width: 768px) {
-            .contact-edit-form .form-section h3 + .form-row-group ml-1:first-of-type {
+            .contact-edit-form .form-section h3 + .form-row-group:first-of-type {
                 grid-template-columns: 1fr !important;
             }
         }
         
         /* Lease Edit Form Styling - Matching Contact Edit Form */
         .lease-edit-form .form-section {
-            margin-bottom: 32px !important;
+            margin-bottom: 20px !important;
             padding-left: 0 !important;
             margin-left: 0 !important;
             border-bottom: none !important;
@@ -247,7 +264,7 @@
         }
         
         .lease-edit-form .form-section-title {
-            margin-bottom: 20px !important;
+            margin-bottom: 16px !important;
             font-size: 16px !important;
             font-weight: 600 !important;
             color: #111827 !important;
@@ -261,39 +278,54 @@
             gap: 4px !important;
             margin-bottom: 16px !important;
             width: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
         }
         
-        .lease-edit-form .form-row-group ml-1 {
+        .lease-edit-form .form-row-group {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
             gap: 16px !important;
             margin-bottom: 16px !important;
             width: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
         }
         
         /* Special handling for dates section with 3 fields */
-        .lease-edit-form .form-section h3 + .form-row-group.ml-1:first-of-type {
+        .lease-edit-form .form-section h3 + .form-row-group:first-of-type {
             grid-template-columns: 1fr 1fr !important;
         }
         
-        .lease-edit-form .form-section h3 + .form-row-group.ml-1:first-of-type + .form-row-group.ml-1 {
+        .lease-edit-form .form-section h3 + .form-row-group:first-of-type + .form-row-group {
             grid-template-columns: 1fr 1fr 1fr !important;
         }
         
         @media (max-width: 1024px) {
-            .lease-edit-form .form-section h3 + .form-row-group.ml-1:first-of-type + .form-row-group.ml-1 {
+            .lease-edit-form .form-section h3 + .form-row-group:first-of-type + .form-row-group {
                 grid-template-columns: 1fr 1fr !important;
             }
         }
         
         @media (max-width: 768px) {
-            .lease-edit-form .form-row-group.ml-1 {
+            .lease-edit-form .form-row-group {
                 grid-template-columns: 1fr !important;
             }
         }
         
-        .lease-edit-form .form-row-group.ml-1 .form-row {
+        .lease-edit-form .form-row-group .form-row {
             margin-bottom: 0 !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+        
+        /* Remove any negative margins from utility classes */
+        .lease-edit-form .ml-0 {
+            margin-left: 0 !important;
+        }
+        
+        .lease-edit-form .ml-1 {
+            margin-left: 0 !important;
         }
         
         .lease-edit-form .form-label {
@@ -309,6 +341,7 @@
         .lease-edit-form .form-input-group {
             width: 100% !important;
             box-sizing: border-box !important;
+            margin-left: 0 !important;
         }
 
         .lease-edit-form .form-input,
@@ -368,7 +401,7 @@
         }
         
         /* Form full width and sections spacing */
-        .pageslide.lease-edit .pageslide-content {
+        .pageslide.lease-edit .pageslide-body {
             padding: 24px !important;
             width: 100% !important;
             box-sizing: border-box !important;
@@ -377,22 +410,6 @@
         .lease-edit-form {
             width: 100% !important;
             max-width: none !important;
-        }
-        
-        .lease-edit-form .form-actions {
-            display: flex !important;
-            justify-content: flex-end !important;
-            gap: 12px !important;
-            padding-top: 24px !important;
-            border-top: 1px solid #e5e7eb !important;
-            margin-top: 32px !important;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .lease-edit-form .form-actions {
-                flex-direction: column !important;
-            }
         }
         
         /* Document Icons - Consistent Grey Styling */
@@ -787,6 +804,10 @@
 					<div class="menu-item" id="documents-menu" onclick="toggleView('documents')">
 						<i class="fas fa-folder text-muted mr-2"></i>
 						Documents
+                </div>
+					<div class="menu-item">
+						<i class="fas fa-chart-bar text-muted mr-2"></i>
+						Reports
                 </div>
                 </div>
             </div>
@@ -5336,7 +5357,7 @@
 
     <!-- Contact Edit Pageslide -->
     <div class="pageslide-overlay" id="contact-edit-overlay">
-        <div class="pageslide contact-edit">
+        <div class="pageslide contact-edit" data-pageslide-size="lg">
             <div class="pageslide-header">
                 <h2 class="pageslide-title">Edit resident information</h2>
                 <button class="pageslide-close" onclick="closePageslide('contact-edit-overlay')">
@@ -5344,23 +5365,19 @@
                 </button>
             </div>
             
-            <div class="pageslide-content">
-                <form class="contact-edit-form">
+            <div class="pageslide-body">
+                <form class="contact-edit-form" id="contact-edit-form">
                     <!-- Contact Section -->
                     <div class="form-section">
                         <h3 class="form-section-title">Contact information</h3>
                         
                         <div class="form-row ml-0">
                             <label class="form-label">Preferred name</label>
-                            <div class="form-input-group">
-                                <input type="text" class="form-input" value="Mel Michaels" placeholder="Enter preferred name">
-                            </div>
+							<input type="text" class="form-input" value="Mel Michaels" placeholder="Enter preferred name">
 						</div>
                         <div class="form-row ml-0">
                             <label class="form-label">Email</label>
-                            <div class="form-input-group">
-                                <input type="email" class="form-input" value="kamala.hakuna@email.com" placeholder="Enter email address">
-                            </div>
+							<input type="email" class="form-input" value="kamala.hakuna@email.com" placeholder="Enter email address">
                             <div class="form-checkbox-group">
                                 <input type="checkbox" id="unsubscribe-email" class="form-checkbox">
                                 <label for="unsubscribe-email" class="form-checkbox-label">Unsubscribe from all email</label>
@@ -5488,20 +5505,20 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Form Actions -->
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-light" onclick="closePageslide('contact-edit-overlay')">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
                 </form>
+            </div>
+            
+            <!-- Pageslide Footer -->
+            <div class="pageslide-footer">
+                <button type="button" class="btn btn-light" onclick="closePageslide('contact-edit-overlay')">Cancel</button>
+                <button type="submit" class="btn btn-primary" form="contact-edit-form">Save changes</button>
             </div>
         </div>
     </div>
 
     <!-- Lease Edit Pageslide -->
     <div class="pageslide-overlay" id="lease-edit-overlay">
-        <div class="pageslide lease-edit">
+        <div class="pageslide lease-edit" data-pageslide-size="lg">
             <div class="pageslide-header">
                 <h2 class="pageslide-title">Edit payment & fees</h2>
                 <button class="pageslide-close" onclick="closePageslide('lease-edit-overlay')">
@@ -5509,8 +5526,8 @@
                 </button>
             </div>
             
-            <div class="pageslide-content">
-                        <form class="lease-edit-form">
+            <div class="pageslide-body">
+                        <form class="lease-edit-form" id="lease-edit-form">
                     
                     <!-- Payment Details Section -->
                     <div class="form-section">
@@ -5727,24 +5744,20 @@
                             </div>
                         </div>
                     </div>
-                    
-                            <!-- Form Actions -->
-                            <div class="form-actions">
-                                <button type="button" class="btn btn-light" onclick="closePageslide('lease-edit-overlay')">
-                                    Cancel
-                                </button>
-                                <button type="submit" class="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
                         </form>
+            </div>
+            
+            <!-- Pageslide Footer -->
+            <div class="pageslide-footer">
+                <button type="button" class="btn btn-light" onclick="closePageslide('lease-edit-overlay')">Cancel</button>
+                <button type="submit" class="btn btn-primary" form="lease-edit-form">Save changes</button>
             </div>
         </div>
     </div>
 
     <!-- Late Fees Edit Pageslide -->
     <div class="pageslide-overlay" id="late-fees-edit-overlay">
-        <div class="pageslide lease-edit">
+        <div class="pageslide lease-edit" data-pageslide-size="lg">
             <div class="pageslide-header">
                 <h2 class="pageslide-title">Edit late fees</h2>
                 <button class="pageslide-close" onclick="closePageslide('late-fees-edit-overlay')">
@@ -5752,8 +5765,8 @@
                 </button>
             </div>
             
-            <div class="pageslide-content">
-                <form class="lease-edit-form">
+            <div class="pageslide-body">
+                <form class="lease-edit-form" id="late-fees-edit-form">
                     
                     <!-- Late Fees Section -->
                     <div class="form-section">
@@ -5936,17 +5949,13 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Form Actions -->
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-light" onclick="closePageslide('late-fees-edit-overlay')">
-                            Cancel
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            Save changes
-                        </button>
-                    </div>
                 </form>
+            </div>
+            
+            <!-- Pageslide Footer -->
+            <div class="pageslide-footer">
+                <button type="button" class="btn btn-light" onclick="closePageslide('late-fees-edit-overlay')">Cancel</button>
+                <button type="submit" class="btn btn-primary" form="late-fees-edit-form">Save changes</button>
             </div>
         </div>
     </div>
