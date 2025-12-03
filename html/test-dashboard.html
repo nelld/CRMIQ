@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dashboard</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- CRM IQ Styles -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/styles.css?v=190">
+    <link rel="stylesheet" href="../components/components.css">
+    <link rel="stylesheet" href="../components/data-table.css">
+</head>
+<body>
+    <!-- App Header Component -->
+    <div id="app-header-container"></div>
+    
+    <!-- Page Header Component -->
+    <div id="page-header-container"></div>
+    
+    <!-- Main Content Area -->
+    <main class="mx-auto p-6" style="margin-top: 150px;">
+        <!-- Data Table Component -->
+        <div id="data-table-container"></div>
+    </main>
+    
+    <!-- Components JavaScript (Standalone version - works without a server) -->
+    <script src="../components/components-standalone.js"></script>
+    
+    <!-- Initialize Components -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize App Header and Page Header
+            CRMComponents.initAll({
+                appHeader: true,
+                pageHeader: {
+                    containerId: 'page-header-container',
+                    title: 'Assignees Dashboard',
+                    subtitle: 'Manage and track all assignees',
+                    actionsHtml: `
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Assignee</span>
+                        </button>
+                        <button class="btn btn-light">
+                            <i class="fas fa-download"></i>
+                            <span>Export</span>
+                        </button>
+                    `,
+                    hasBreadcrumb: false
+                }
+            });
+
+            // Sample data matching the image
+            const sampleData = [
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '6085',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'Approved',
+                    property: 'Fairmont Plaza',
+                    tenant: 'Target',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Oct 18, 2024',
+                    priority: 'Urgent',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '1576',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'In Progress',
+                    property: 'Magnolia Center',
+                    tenant: 'Besy Buy',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Aug 20, 2024',
+                    priority: 'High',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '4324',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'In Progress',
+                    property: 'Fairview Center',
+                    tenant: 'Staples',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'May 11, 2024',
+                    priority: 'Medium',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '8347',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'Scheduled',
+                    property: 'Fairmont Plaza',
+                    tenant: 'Wendy\'s',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Jul 6, 2024',
+                    priority: 'Low',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '5427',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'In Progress',
+                    property: 'Magnolia Center',
+                    tenant: 'Burger King',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Jul 11, 2024',
+                    priority: 'Low',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '1640',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'In Progress',
+                    property: 'Fairview Center',
+                    tenant: 'Smith Holdings Inc.',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Sep 16, 2025',
+                    priority: 'High',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '2781',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'Scheduled',
+                    property: 'Fairmont Plaza',
+                    tenant: 'Vance Refrigeration',
+                    createdDate: 'Jun 7, 2018',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Aug 4, 2025',
+                    priority: 'High',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '3178',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'In Progress',
+                    property: 'Magnolia Center',
+                    tenant: 'Dunder Mifflin Scranton',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Sep 24, 2024',
+                    priority: 'Medium',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '8459',
+                    jobDescription: 'Outlet is damaged',
+                    status: 'Scheduled',
+                    property: 'Fairview Center',
+                    tenant: 'Target',
+                    createdDate: 'Feb 12, 2016',
+                    createdTime: '12:24 PM',
+                    dueDate: 'May 13, 2024',
+                    priority: 'Low',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                },
+                {
+                    assignee: 'James Bond',
+                    assigneeSubtitle: 'Agent 007',
+                    jobId: '2489',
+                    jobDescription: 'Total',
+                    status: 'Approved',
+                    property: 'Total Fixed Sorting',
+                    tenant: 'Federated Co-Op',
+                    createdDate: 'Nov 24, 2020',
+                    createdTime: '12:24 PM',
+                    dueDate: 'Sep 28, 2025',
+                    priority: 'Medium',
+                    category: 'Electrical',
+                    categorySubtext: 'Wiring'
+                }
+            ];
+
+            // Define table columns
+            const columns = [
+                {
+                    type: 'checkbox'
+                },
+                {
+                    key: 'assignee',
+                    label: 'Assignee',
+                    sortable: true,
+                    render: (value, row) => {
+                        return `
+                            <div class="cell-multiline">
+                                <a href="#">${value}</a>
+                                <div class="text-muted text-sm">${row.assigneeSubtitle}</div>
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    key: 'jobId',
+                    label: 'Job',
+                    sortable: true,
+                    render: (value, row) => {
+                        return `
+                            <div class="cell-multiline">
+                                <div>${value}</div>
+                                <div class="text-muted text-sm">${row.jobDescription}</div>
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    key: 'status',
+                    label: 'Status',
+                    sortable: true,
+                    render: (value) => {
+                        let badgeClass = 'badge-secondary-lighten60';
+                        if (value === 'Approved') badgeClass = 'badge-success-lighten60';
+                        else if (value === 'In Progress') badgeClass = 'badge-info-lighten60';
+                        else if (value === 'Scheduled') badgeClass = 'badge-warning-lighten60';
+                        
+                        return `<span class="badge badge-pill ${badgeClass}">${value}</span>`;
+                    }
+                },
+                {
+                    key: 'property',
+                    label: 'Property & Tenant',
+                    sortable: true,
+                    render: (value, row) => {
+                        return `
+                            <div class="cell-multiline">
+                                <div>${value}</div>
+                                <div class="text-muted text-sm">${row.tenant}</div>
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    key: 'createdDate',
+                    label: 'Created',
+                    sortable: true,
+                    render: (value, row) => {
+                        return `
+                            <div class="cell-multiline">
+                                <div class="date-display">${value}</div>
+                                <div class="text-muted text-sm">${row.createdTime}</div>
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    key: 'dueDate',
+                    label: 'Due',
+                    sortable: true
+                },
+                {
+                    key: 'priority',
+                    label: 'Priority',
+                    sortable: true,
+                    render: (value) => {
+                        let badgeClass = 'badge-secondary-lighten60';
+                        if (value === 'Urgent') badgeClass = 'badge-danger-lighten60';
+                        else if (value === 'High') badgeClass = 'badge-danger-lighten60';
+                        else if (value === 'Medium') badgeClass = 'badge-warning-lighten60';
+                        else if (value === 'Low') badgeClass = 'badge-info-lighten60';
+                        
+                        return `<span class="badge badge-pill ${badgeClass}">${value}</span>`;
+                    }
+                },
+                {
+                    key: 'category',
+                    label: 'Category',
+                    sortable: true,
+                    render: (value, row) => {
+                        return `
+                            <div class="cell-multiline">
+                                <div class="category-main">${value}</div>
+                                <div class="text-muted text-sm">${row.categorySubtext}</div>
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    type: 'actions',
+                    label: 'Actions'
+                }
+            ];
+
+            // Initialize data table
+            CRMComponents.initDataTable({
+                containerId: 'data-table-container',
+                columns: columns,
+                data: sampleData,
+                badgeLabel: 'Assignees',
+                headerActions: [
+                    {
+                        id: 'export',
+                        label: 'Export',
+                        icon: 'fas fa-download',
+                        onClick: () => {
+                            console.log('Export action clicked');
+                            alert('Export action clicked');
+                        }
+                    }
+                ],
+                bulkActions: [
+                    {
+                        id: 'assign',
+                        label: 'Assign',
+                        icon: 'fas fa-user-plus',
+                        type: 'primary',
+                        onClick: (selectedData, selectedIndices) => {
+                            console.log('Assign bulk action', selectedData);
+                            alert(`Assign ${selectedData.length} selected items`);
+                        }
+                    },
+                    {
+                        id: 'edit-timeline',
+                        label: 'Edit Timeline',
+                        icon: 'fas fa-calendar-alt',
+                        type: 'light',
+                        onClick: (selectedData) => {
+                            console.log('Edit Timeline', selectedData);
+                            alert(`Edit timeline for ${selectedData.length} items`);
+                        }
+                    },
+                    {
+                        id: 'prioritize',
+                        label: 'Prioritize',
+                        icon: 'fas fa-flag',
+                        type: 'light',
+                        onClick: (selectedData) => {
+                            console.log('Prioritize', selectedData);
+                            alert(`Prioritize ${selectedData.length} items`);
+                        }
+                    },
+                    {
+                        id: 'remove',
+                        label: 'Remove',
+                        icon: 'fas fa-times',
+                        type: 'light-danger',
+                        onClick: (selectedData) => {
+                            console.log('Remove', selectedData);
+                            if (confirm(`Remove ${selectedData.length} items?`)) {
+                                alert('Items would be removed');
+                            }
+                        }
+                    },
+                    {
+                        id: 'cancel',
+                        label: 'Cancel',
+                        type: 'light',
+                        onClick: (selectedData, selectedIndices) => {
+                            // Uncheck all checkboxes
+                            document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = false);
+                            document.querySelector('#select-all-checkbox').checked = false;
+                            CRMComponents.updateBulkActionsBar(document.querySelector('#data-table-container'));
+                        }
+                    }
+                ],
+                onRowClick: (row, index) => {
+                    console.log('Row clicked:', row);
+                },
+                onActionClick: (row, index, button) => {
+                    console.log('Action clicked:', row);
+                    alert(`Actions menu for ${row.assignee} - Job ${row.jobId}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
