@@ -198,6 +198,185 @@ const CRMComponents = {
     },
 
     /**
+     * Initialize the side navigation component
+     * @param {Object} config - Configuration object
+     */
+    async initSideNav(config = {}) {
+        const {
+            containerId = 'sidenav-container',
+            items = [],
+            collapsed = false,
+            activeIndex = 0,
+            onChange = null
+        } = config;
+
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const html = await this.loadComponent('sidenav');
+        if (html) {
+            container.innerHTML = html;
+
+            // Get the sidenav element
+            const sidenav = container.querySelector('.sidenav');
+            if (sidenav && collapsed) {
+                sidenav.classList.add('collapsed');
+            }
+
+            // Add toggle button if configured
+            if (config.toggleButton !== false) {
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'sidenav-toggle';
+                toggleBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                toggleBtn.addEventListener('click', () => {
+                    sidenav.classList.toggle('collapsed');
+                    // Toggle main content margin
+                    const mainContent = document.querySelector('.has-sidenav');
+                    if (mainContent) {
+                        mainContent.classList.toggle('sidenav-collapsed');
+                    }
+                });
+                sidenav.appendChild(toggleBtn);
+            }
+
+            // Render navigation items
+            if (items.length > 0) {
+                this.renderSideNavItems(items, activeIndex, onChange);
+            }
+
+            // Add mobile overlay
+            this.addSideNavMobileOverlay(container);
+        }
+    },
+
+    /**
+     * Render side navigation items
+     */
+    renderSideNavItems(items, activeIndex, onChange) {
+        const content = document.getElementById('sidenav-content');
+        if (!content) return;
+
+        const html = items.map((item, index) => {
+            if (item.type === 'divider') {
+                return '<div class="sidenav-divider"></div>';
+            }
+
+            if (item.type === 'group') {
+                const groupHtml = `
+                    <div class="sidenav-group">
+                        ${item.title ? `<div class="sidenav-group-title">${item.title}</div>` : ''}
+                        ${item.items ? item.items.map((subItem, subIndex) => {
+                            const isActive = subItem.active || (activeIndex === `${index}-${subIndex}`);
+                            const badge = subItem.badge ? `<span class="sidenav-badge">${subItem.badge}</span>` : '';
+                            const expandIcon = subItem.submenu ? '<i class="fas fa-chevron-right sidenav-item-expand"></i>' : '';
+                            
+                            let submenuHtml = '';
+                            if (subItem.submenu) {
+                                submenuHtml = `
+                                    <div class="sidenav-submenu">
+                                        ${subItem.submenu.map(submenuItem => `
+                                            <a href="${submenuItem.href || '#'}" class="sidenav-item ${submenuItem.active ? 'active' : ''}" data-nav-id="${submenuItem.id || ''}">
+                                                <i class="${submenuItem.icon || 'fas fa-circle'}"></i>
+                                                <span class="sidenav-item-text">${submenuItem.label}</span>
+                                            </a>
+                                        `).join('')}
+                                    </div>
+                                `;
+                            }
+                            
+                            return `
+                                <a href="${subItem.href || '#'}" class="sidenav-item ${isActive ? 'active' : ''}" data-nav-id="${subItem.id || ''}" data-nav-index="${index}-${subIndex}">
+                                    <i class="${subItem.icon}"></i>
+                                    <span class="sidenav-item-text">${subItem.label}</span>
+                                    ${badge}
+                                    ${expandIcon}
+                                </a>
+                                ${submenuHtml}
+                            `;
+                        }).join('') : ''}
+                    </div>
+                `;
+                return groupHtml;
+            }
+
+            // Regular item
+            const isActive = item.active || (activeIndex === index);
+            const badge = item.badge ? `<span class="sidenav-badge">${item.badge}</span>` : '';
+            return `
+                <a href="${item.href || '#'}" class="sidenav-item ${isActive ? 'active' : ''}" data-nav-id="${item.id || ''}" data-nav-index="${index}">
+                    <i class="${item.icon}"></i>
+                    <span class="sidenav-item-text">${item.label}</span>
+                    ${badge}
+                </a>
+            `;
+        }).join('');
+
+        content.innerHTML = html;
+
+        // Add click handlers
+        content.querySelectorAll('.sidenav-item').forEach((item) => {
+            item.addEventListener('click', (e) => {
+                // Handle submenu expansion
+                if (item.querySelector('.sidenav-item-expand')) {
+                    e.preventDefault();
+                    item.classList.toggle('expanded');
+                    const submenu = item.nextElementSibling;
+                    if (submenu && submenu.classList.contains('sidenav-submenu')) {
+                        submenu.classList.toggle('expanded');
+                    }
+                    return;
+                }
+
+                // Remove active class from all items
+                content.querySelectorAll('.sidenav-item').forEach(i => i.classList.remove('active'));
+                // Add active class to clicked item
+                item.classList.add('active');
+                
+                // Call onChange callback if provided
+                if (onChange && typeof onChange === 'function') {
+                    const navIndex = item.dataset.navIndex;
+                    const navId = item.dataset.navId;
+                    onChange(navIndex, navId, item);
+                }
+            });
+        });
+    },
+
+    /**
+     * Add mobile overlay for sidenav
+     */
+    addSideNavMobileOverlay(container) {
+        const overlay = document.createElement('div');
+        overlay.className = 'sidenav-overlay';
+        overlay.addEventListener('click', () => {
+            const sidenav = container.querySelector('.sidenav');
+            if (sidenav) {
+                sidenav.classList.remove('mobile-open');
+                overlay.classList.remove('active');
+            }
+        });
+        document.body.appendChild(overlay);
+    },
+
+    /**
+     * Toggle mobile sidenav
+     */
+    toggleMobileSideNav(containerId = 'sidenav-container') {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const sidenav = container.querySelector('.sidenav');
+        const overlay = document.querySelector('.sidenav-overlay');
+        
+        if (sidenav) {
+            sidenav.classList.toggle('mobile-open');
+        }
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+    },
+
+    /**
      * Initialize all components on the page
      * @param {Object} config - Configuration for all components
      */
@@ -206,7 +385,8 @@ const CRMComponents = {
             appHeader = true,
             breadcrumb = null,
             pageHeader = null,
-            tabs = null
+            tabs = null,
+            sideNav = null
         } = config;
 
         // Load components in order
@@ -216,6 +396,10 @@ const CRMComponents = {
 
         if (breadcrumb) {
             await this.initBreadcrumb(breadcrumb.containerId, breadcrumb.data);
+        }
+
+        if (sideNav) {
+            await this.initSideNav(sideNav);
         }
 
         if (pageHeader) {

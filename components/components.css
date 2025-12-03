@@ -5,6 +5,7 @@
 
 /* Import Component Styles */
 @import 'accordion.css';
+@import 'sidenav.css';
 
 /* Tabs Component Styles */
 .tabs-container {
@@ -102,18 +103,21 @@
 .pageslide {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     height: 100%;
     background: white;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    transition: right 0.3s ease;
+    overflow: hidden;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
     z-index: 10000;
 }
 
-.pageslide.active {
-    right: 0;
+.pageslide.active,
+.pageslide-overlay.active .pageslide {
+    transform: translateX(0);
 }
 
 /* Pageslide Sizes */
@@ -197,7 +201,9 @@
 .pageslide-body {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 24px;
+    min-height: 0;
 }
 
 /* Pageslide Footer */
@@ -209,7 +215,7 @@
     padding: 16px 24px;
     border-top: 1px solid #e5e7eb;
     flex-shrink: 0;
-    background-color: #f9fafb;
+    background-color: white;
 }
 
 /* Responsive */
