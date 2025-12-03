@@ -426,6 +426,7 @@ body {
     margin-left: 220px; /* Account for fixed sidebar width */
     background-color: #fbfbfb;
     min-width: 0;
+    padding-top: 85px; /* Account for fixed headers */
     padding-bottom: 4rem; /* Bottom padding for scroll access */
     /* NO top spacing - let headers overlay content naturally */
 }
@@ -811,9 +812,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: -webkit-sticky; /* Safari support */
-    position: sticky;
+    position: fixed;
     top: 105px; /* Header (65px) + Breadcrumb (~40px) */
+    left: 0;
+    right: 0;
     z-index: 998;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     will-change: transform; /* Optimize for sticky positioning */
@@ -2381,7 +2383,9 @@ body {
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .pageslide.lease-history-wide {
@@ -2399,9 +2403,7 @@ body {
     padding: 16px 24px;
     border-bottom: 1px solid #e9ecef;
     background-color: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    flex-shrink: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -3180,7 +3182,7 @@ button.rounded-lg,
 /* Third Column Visual Separation */
 .third-column-separator {
     padding-left: 1.5rem;
-    background-color: #f0f0f0;
+    background-color: #f3f4f6;
     padding: 1.5rem;
     border-radius: 8px;
 	margin-left: 0;
@@ -3190,7 +3192,7 @@ button.rounded-lg,
     .third-column-separator {
         border-left: none;
         padding: 1rem;
-        background-color: #f9fafb;
+        background-color: #f3f4f6;
         border-radius: 8px;
     }
 }
@@ -3932,6 +3934,10 @@ button.rounded-lg,
 
 .menu-section {
     border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-section:first-child {
+    border-bottom: none;
 }
 
 .menu-item {
@@ -5323,9 +5329,10 @@ html {
     }
     
     .page-header {
-        position: -webkit-sticky; /* Safari support */
-        position: sticky;
+        position: fixed;
         top: 105px; /* Header (65px) + Breadcrumb (~40px) */
+        left: 0;
+        right: 0;
         z-index: 998;
         -webkit-transform: translateZ(0); /* Safari support */
         transform: translateZ(0);
@@ -5343,8 +5350,8 @@ html {
     
     .content-area {
         margin-left: 0; /* Reset margin on mobile */
+        padding-top: 85px; /* Account for fixed headers */
         padding-bottom: 4rem; /* Bottom padding for scroll access */
-        /* NO top spacing on mobile either - headers overlay content */
     }
     
     .main-container {
@@ -5577,15 +5584,13 @@ html {
 /* Removed inline edit styles - now using pageslide pattern */
 
 /* Pageslide Design Pattern - Add Lease Charge */
-.pageslide.add-lease-charge .pageslide-content {
+.pageslide.add-lease-charge .pageslide-body {
     padding: 24px !important;
-    padding-bottom: 100px !important; /* Space for sticky footer */
 }
 
 /* Pageslide Design Pattern - Edit Lease Charge */
-.pageslide.edit-lease-charge .pageslide-content {
+.pageslide.edit-lease-charge .pageslide-body {
     padding: 24px !important;
-    padding-bottom: 100px !important; /* Space for sticky footer */
 }
 
 /* ===========================================================================
@@ -5817,18 +5822,7 @@ textarea:focus {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
 }
 
-/* Pageslide Sticky Footer */
-.pageslide .pageslide-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    border-top: 1px solid #e5e7eb;
-    padding: 16px 24px;
-    z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-}
+/* Pageslide Footer - Using component CSS (components.css) */
 
 /* SYSTEM-WIDE Form Element Standards - Applied to ALL Forms Throughout Application */
 /* RULE 1: All form inputs, selects, and textareas should have consistent height (48px) */
