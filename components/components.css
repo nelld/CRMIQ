@@ -42,27 +42,31 @@
 
 /* Page Header Component - Custom Positioning Options */
 .page-header.no-breadcrumb {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 998 !important;
+    position: fixed !important;
+    top: 65px !important; /* Below header only */
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1001 !important;
 }
 
 .page-header.with-breadcrumb {
-    position: sticky !important;
-    top: 105px !important; /* Header (65px) + Breadcrumb (~40px) */
-    z-index: 998 !important;
+    position: fixed !important;
+    top: 111px !important; /* Header (65px) + Breadcrumb (46px) */
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1001 !important;
 }
 
 /* Tabs sticky positioning options */
 .tabs-container.sticky-no-breadcrumb {
     position: sticky;
-    top: 54px; /* Page Header height only */
+    top: 176px; /* Header (65px) + Page Header at 111px + Page Header height (~65px) */
     z-index: 997;
 }
 
 .tabs-container.sticky-with-breadcrumb {
     position: sticky;
-    top: 159px; /* Header + Breadcrumb + Page Header */
+    top: 176px; /* Same positioning - page header already accounts for breadcrumb */
     z-index: 997;
 }
 

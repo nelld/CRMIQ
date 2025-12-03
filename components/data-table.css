@@ -1,0 +1,326 @@
+/* Data Table Component Styles */
+
+.data-table-wrapper {
+    overflow: hidden;
+}
+
+/* Bulk Actions Inline */
+.bulk-actions-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 16px;
+}
+
+.bulk-actions-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Bulk Selected Overlay */
+.data-table-container {
+    position: relative;
+}
+
+.bulk-selected-overlay {
+    position: absolute;
+    top: 0;
+    left: 56px;
+    z-index: 10;
+    padding: 10px 16px;
+}
+
+.bulk-selected-count {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+/* Hide second column header text when bulk selection is active */
+.data-table thead th:nth-child(2).bulk-selection-active {
+    font-size: 0 !important;
+}
+
+.data-table thead th:nth-child(2).bulk-selection-active::before,
+.data-table thead th:nth-child(2).bulk-selection-active::after {
+    display: none !important;
+}
+
+/* Force hide all content in second column header when bulk selection active */
+.bulk-selection-active {
+    overflow: hidden !important;
+}
+
+.bulk-selection-active > * {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+}
+
+/* Bulk action buttons now use standard btn classes from base.css */
+.bulk-actions-buttons .btn {
+    white-space: nowrap;
+}
+
+.bulk-actions-buttons .btn i {
+    font-size: 13px;
+    margin-right: 4px;
+}
+
+/* Table Header */
+.data-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.data-table-header-left {
+    display: flex;
+    align-items: center;
+}
+
+.data-table-header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Search Input */
+.search-container-table {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon-table {
+    position: absolute;
+    left: 12px;
+    color: #9ca3af;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.data-table-header .search-input-table {
+    padding: 8px 12px 8px 36px !important;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 220px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-input-table:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-input-table::placeholder {
+    color: #9ca3af;
+}
+
+/* Table Badge */
+.table-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-badge {
+    background: #3b82f6;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+	margin-left:16px;
+}
+
+.table-badge-label {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Header Actions */
+.header-action-btn {
+    padding: 8px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header-action-btn:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.header-action-btn i {
+    font-size: 12px;
+}
+
+/* Table Container */
+.data-table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+/* Table Header */
+.data-table thead {
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table thead th {
+    padding: 12px 16px 6px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    white-space: nowrap;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.data-table thead th.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.data-table thead th.sortable:hover {
+    background: #f3f4f6;
+}
+
+.data-table thead th.checkbox-col {
+    width: 40px;
+    padding-left: 20px;
+    cursor: default !important;
+}
+
+.data-table thead th.checkbox-col::after,
+.data-table thead th.checkbox-col::before {
+    display: none !important;
+}
+
+.data-table thead th.actions-col {
+    width: 60px;
+    text-align: center;
+}
+
+/* Sort Icon */
+.sort-icon {
+    margin-left: 6px;
+    font-size: 10px;
+    color: #9ca3af;
+}
+
+/* Table Body */
+.data-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.15s;
+}
+
+.data-table tbody tr:hover {
+    background: #00bdff08;
+}
+
+.data-table tbody tr:has(.row-checkbox:checked) {
+    background: #00bdff08;
+}
+
+.data-table tbody tr:has(.row-checkbox:checked):hover {
+    background: #00bdff08;
+}
+
+.data-table tbody td {
+    padding: 16px;
+    color: #374151;
+    vertical-align: top;
+}
+
+.data-table tbody td.checkbox-col {
+    padding-left: 20px;
+}
+
+.data-table tbody td.actions-col {
+    text-align: center;
+}
+
+/* Checkbox Styling */
+.table-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #3b82f6;
+}
+
+/* Cell Content Styles */
+.cell-multiline {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Note: Status and Priority badges now use standard badge classes from base.css:
+ * .badge .badge-pill .badge-{color}
+ * .badge .badge-pill .badge-outline-{color}
+ * Available colors: primary, secondary, success, info, warning, danger, orange, dark
+ * With variants: -lighten60, -lighten30, -darken30, -darken60
+ */
+
+/* Category Cell */
+.category-main {
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Actions Menu */
+.actions-menu-btn {
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    color: #6b7280;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.actions-menu-btn:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+/* Date/Time Display */
+.date-display {
+    color: #374151;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .data-table-container {
+        overflow-x: scroll;
+    }
+    
+    .data-table {
+        min-width: 1200px;
+    }
+}
+

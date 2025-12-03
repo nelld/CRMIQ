@@ -1,0 +1,47 @@
+<!-- Data Table Component -->
+<div class="data-table-wrapper">
+    <!-- Table Header -->
+    <div class="data-table-header">
+        <div class="data-table-header-left">
+            <div class="search-container-table">
+                <i class="fas fa-search search-icon-table"></i>
+                <input type="text" class="search-input-table" placeholder="Search">
+            </div>
+            
+            <!-- Bulk Actions (hidden by default, shown when items selected) -->
+            <div class="bulk-actions-inline" id="bulk-actions-bar" style="display: none;">
+                <div class="bulk-actions-buttons" id="bulk-actions-buttons">
+                    <!-- Bulk action buttons will be populated here -->
+                </div>
+            </div>
+            
+            <div class="table-badge-container" id="table-badge">
+                <span class="table-badge">0</span>
+                <span class="table-badge-label">Items</span>
+            </div>
+        </div>
+        <div class="data-table-header-right" id="header-actions-container">
+            <!-- Header actions will be populated here if enabled -->
+        </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="data-table-container">
+        <!-- Bulk Selected Overlay -->
+        <div class="bulk-selected-overlay" id="bulk-selected-overlay" style="display: none;">
+            <span class="bulk-selected-count" id="bulk-selected-count">0 items selected</span>
+        </div>
+        
+        <table class="data-table" id="data-table">
+            <thead>
+                <tr id="table-header-row">
+                    <!-- Headers will be dynamically populated -->
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Rows will be dynamically populated -->
+            </tbody>
+        </table>
+    </div>
+</div>
+

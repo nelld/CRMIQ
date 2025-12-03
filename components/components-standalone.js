@@ -11,7 +11,7 @@ const CRMComponents = {
 <header class="header">
     <div class="header-content">
         <div class="left-section">
-            <img src="images/crm-iq-logo.png" alt="CRM IQ" class="logo">
+            <img src="../images/crm-iq-logo.png" alt="CRM IQ" class="logo">
             <nav class="nav-menu">
                 <div class="nav-item">
                     <span>Dashboards</span>
@@ -180,7 +180,54 @@ document.addEventListener('keydown', function(e) {
         closePageslide();
     }
 });
-</script>`
+</script>`,
+
+        'data-table': `<!-- Data Table Component -->
+<div class="data-table-wrapper">
+    <!-- Table Header -->
+    <div class="data-table-header">
+        <div class="data-table-header-left">
+            <div class="search-container-table">
+                <i class="fas fa-search search-icon-table"></i>
+                <input type="text" class="search-input-table" placeholder="Search">
+            </div>
+            
+            <!-- Bulk Actions (hidden by default, shown when items selected) -->
+            <div class="bulk-actions-inline" id="bulk-actions-bar" style="display: none;">
+                <div class="bulk-actions-buttons" id="bulk-actions-buttons">
+                    <!-- Bulk action buttons will be populated here -->
+                </div>
+            </div>
+            
+            <div class="table-badge-container" id="table-badge">
+                <span class="table-badge">0</span>
+                <span class="table-badge-label">Items</span>
+            </div>
+        </div>
+        <div class="data-table-header-right" id="header-actions-container">
+            <!-- Header actions will be populated here if enabled -->
+        </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="data-table-container">
+        <!-- Bulk Selected Overlay -->
+        <div class="bulk-selected-overlay" id="bulk-selected-overlay" style="display: none;">
+            <span class="bulk-selected-count" id="bulk-selected-count">0 items selected</span>
+        </div>
+        
+        <table class="data-table" id="data-table">
+            <thead>
+                <tr id="table-header-row">
+                    <!-- Headers will be dynamically populated -->
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Rows will be dynamically populated -->
+            </tbody>
+        </table>
+    </div>
+</div>`
     },
 
     /**
@@ -473,6 +520,261 @@ document.addEventListener('keydown', function(e) {
                 }
             }
         });
+    },
+
+    /**
+     * Initialize the data table component
+     * @param {Object} config - Configuration object
+     */
+    initDataTable(config = {}) {
+        const {
+            containerId = 'data-table-container',
+            columns = [],
+            data = [],
+            badgeLabel = 'Items',
+            headerActions = [],
+            bulkActions = [],
+            onRowClick = null,
+            onActionClick = null
+        } = config;
+
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const html = this.loadComponent('data-table');
+        if (html) {
+            container.innerHTML = html;
+
+            // Update badge count and label
+            const badge = container.querySelector('.table-badge');
+            const badgeText = container.querySelector('.table-badge-label');
+            if (badge) badge.textContent = data.length;
+            if (badgeText) badgeText.textContent = badgeLabel;
+
+            // Add header actions if provided
+            if (headerActions.length > 0) {
+                const headerActionsContainer = container.querySelector('#header-actions-container');
+                const headerActionsHtml = headerActions.map(action => 
+                    `<button class="btn btn-light" data-action="${action.id}">
+                        ${action.icon ? `<i class="${action.icon}"></i>` : ''}
+                        <span>${action.label}</span>
+                    </button>`
+                ).join('');
+                headerActionsContainer.innerHTML = headerActionsHtml;
+
+                // Add click handlers for header actions
+                headerActionsContainer.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const actionId = btn.dataset.action;
+                        const action = headerActions.find(a => a.id === actionId);
+                        if (action && action.onClick) {
+                            action.onClick();
+                        }
+                    });
+                });
+            }
+
+            // Setup bulk actions if provided
+            if (bulkActions.length > 0) {
+                const bulkActionsButtons = container.querySelector('#bulk-actions-buttons');
+                const bulkActionsHtml = bulkActions.map(action => {
+                    let className = 'btn btn-light';
+                    if (action.type === 'primary') {
+                        className = 'btn btn-primary';
+                    } else if (action.type === 'light-danger') {
+                        className = 'btn btn-light text-danger';
+                    }
+                    return `<button class="${className}" data-action="${action.id}">
+                        ${action.icon ? `<i class="${action.icon}"></i>` : ''}
+                        <span>${action.label}</span>
+                    </button>`;
+                }).join('');
+                bulkActionsButtons.innerHTML = bulkActionsHtml;
+
+                // Add click handlers for bulk actions
+                bulkActionsButtons.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const actionId = btn.dataset.action;
+                        const action = bulkActions.find(a => a.id === actionId);
+                        if (action && action.onClick) {
+                            const selectedRows = this.getSelectedRows(container);
+                            const selectedData = selectedRows.map(index => data[index]);
+                            action.onClick(selectedData, selectedRows);
+                        }
+                    });
+                });
+            }
+
+            // Render table headers
+            this.renderTableHeaders(container, columns, bulkActions.length > 0);
+
+            // Render table rows
+            this.renderTableRows(container, columns, data, onRowClick, onActionClick, bulkActions.length > 0);
+
+            // Add search functionality
+            this.initTableSearch(container, columns, data, onRowClick, onActionClick, bulkActions.length > 0);
+        }
+    },
+
+    /**
+     * Render table headers
+     */
+    renderTableHeaders(container, columns, hasBulkActions = false) {
+        const headerRow = container.querySelector('#table-header-row');
+        if (!headerRow) return;
+
+        const headersHtml = columns.map(col => {
+            if (col.type === 'checkbox') {
+                return `<th class="checkbox-col"><input type="checkbox" class="table-checkbox" id="select-all-checkbox"></th>`;
+            } else if (col.type === 'actions') {
+                return `<th class="actions-col">${col.label || 'Actions'}</th>`;
+            } else {
+                return `<th class="${col.sortable !== false ? 'sortable' : ''}" data-column="${col.key}">${col.label}</th>`;
+            }
+        }).join('');
+
+        headerRow.innerHTML = headersHtml;
+
+        // Add select all functionality
+        const selectAllCheckbox = container.querySelector('#select-all-checkbox');
+        if (selectAllCheckbox) {
+            selectAllCheckbox.addEventListener('change', (e) => {
+                const checkboxes = container.querySelectorAll('.row-checkbox');
+                checkboxes.forEach(cb => cb.checked = e.target.checked);
+                if (hasBulkActions) {
+                    this.updateBulkActionsBar(container);
+                }
+            });
+        }
+    },
+
+    /**
+     * Render table rows
+     */
+    renderTableRows(container, columns, data, onRowClick, onActionClick, hasBulkActions = false) {
+        const tbody = container.querySelector('#table-body');
+        if (!tbody) return;
+
+        const rowsHtml = data.map((row, rowIndex) => {
+            const cells = columns.map(col => {
+                if (col.type === 'checkbox') {
+                    return `<td class="checkbox-col"><input type="checkbox" class="table-checkbox row-checkbox" data-row-index="${rowIndex}"></td>`;
+                } else if (col.type === 'actions') {
+                    return `<td class="actions-col"><button class="actions-menu-btn" data-row-index="${rowIndex}"><i class="fas fa-ellipsis-v"></i></button></td>`;
+                } else {
+                    return `<td>${col.render ? col.render(row[col.key], row) : row[col.key] || ''}</td>`;
+                }
+            }).join('');
+            
+            return `<tr data-row-index="${rowIndex}">${cells}</tr>`;
+        }).join('');
+
+        tbody.innerHTML = rowsHtml;
+
+        // Add checkbox change handlers for bulk actions
+        if (hasBulkActions) {
+            tbody.querySelectorAll('.row-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    this.updateBulkActionsBar(container);
+                    
+                    // Update select all checkbox state
+                    const selectAllCheckbox = container.querySelector('#select-all-checkbox');
+                    const allCheckboxes = container.querySelectorAll('.row-checkbox');
+                    const checkedCheckboxes = container.querySelectorAll('.row-checkbox:checked');
+                    if (selectAllCheckbox) {
+                        selectAllCheckbox.checked = allCheckboxes.length === checkedCheckboxes.length && allCheckboxes.length > 0;
+                    }
+                });
+            });
+        }
+
+        // Add row click handlers
+        if (onRowClick) {
+            tbody.querySelectorAll('tr').forEach(tr => {
+                tr.addEventListener('click', (e) => {
+                    if (!e.target.closest('.table-checkbox') && !e.target.closest('.actions-menu-btn')) {
+                        const rowIndex = parseInt(tr.dataset.rowIndex);
+                        onRowClick(data[rowIndex], rowIndex);
+                    }
+                });
+            });
+        }
+
+        // Add action button handlers
+        if (onActionClick) {
+            tbody.querySelectorAll('.actions-menu-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const rowIndex = parseInt(btn.dataset.rowIndex);
+                    onActionClick(data[rowIndex], rowIndex, btn);
+                });
+            });
+        }
+    },
+
+    /**
+     * Initialize table search
+     */
+    initTableSearch(container, columns, data, onRowClick, onActionClick, hasBulkActions = false) {
+        const searchInput = container.querySelector('.search-input-table');
+        if (!searchInput) return;
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredData = data.filter(row => {
+                return columns.some(col => {
+                    if (col.type === 'checkbox' || col.type === 'actions') return false;
+                    const value = row[col.key];
+                    return value && value.toString().toLowerCase().includes(searchTerm);
+                });
+            });
+
+            // Update badge count
+            const badge = container.querySelector('.table-badge');
+            if (badge) badge.textContent = filteredData.length;
+
+            // Re-render rows
+            this.renderTableRows(container, columns, filteredData, onRowClick, onActionClick, hasBulkActions);
+            
+            // Hide bulk actions bar when searching
+            if (hasBulkActions) {
+                this.updateBulkActionsBar(container);
+            }
+        });
+    },
+
+    /**
+     * Update bulk actions bar visibility and count
+     */
+    updateBulkActionsBar(container) {
+        const bulkActionsBar = container.querySelector('#bulk-actions-bar');
+        const bulkSelectedOverlay = container.querySelector('#bulk-selected-overlay');
+        const bulkSelectedCount = container.querySelector('#bulk-selected-count');
+        const tableBadge = container.querySelector('.table-badge-container');
+        const secondColumnHeader = container.querySelector('.data-table thead th:nth-child(2)');
+        const selectedCheckboxes = container.querySelectorAll('.row-checkbox:checked');
+        const count = selectedCheckboxes.length;
+
+        if (count > 0) {
+            bulkActionsBar.style.display = 'flex';
+            if (bulkSelectedOverlay) bulkSelectedOverlay.style.display = 'block';
+            bulkSelectedCount.textContent = `${count} item${count !== 1 ? 's' : ''} selected`;
+            if (tableBadge) tableBadge.style.display = 'none';
+            if (secondColumnHeader) secondColumnHeader.classList.add('bulk-selection-active');
+        } else {
+            bulkActionsBar.style.display = 'none';
+            if (bulkSelectedOverlay) bulkSelectedOverlay.style.display = 'none';
+            if (tableBadge) tableBadge.style.display = 'flex';
+            if (secondColumnHeader) secondColumnHeader.classList.remove('bulk-selection-active');
+        }
+    },
+
+    /**
+     * Get selected rows
+     */
+    getSelectedRows(container) {
+        const checkboxes = container.querySelectorAll('.row-checkbox:checked');
+        return Array.from(checkboxes).map(cb => parseInt(cb.dataset.rowIndex));
     },
 
     /**
