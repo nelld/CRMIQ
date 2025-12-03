@@ -3,6 +3,9 @@
    Consistent styling for reusable components
    =================================== */
 
+/* Import Component Styles */
+@import 'accordion.css';
+
 /* Tabs Component Styles */
 .tabs-container {
     border-bottom: 1px solid #e5e7eb;

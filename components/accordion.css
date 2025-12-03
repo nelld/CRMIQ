@@ -1,0 +1,92 @@
+/* ========================================
+   ACCORDION COMPONENT
+   ======================================== */
+
+/* Accordion Container */
+.accordion {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Accordion Item */
+.accordion-item {
+    border: none;
+}
+
+/* Accordion Header */
+.accordion-header {
+    padding: 12px 16px;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    display: block;
+}
+
+/* Remove border from last item header when collapsed */
+.accordion-item:last-child .accordion-header {
+    border-bottom: none;
+}
+
+/* Add border back when last item is expanded */
+.accordion-item:last-child .accordion-header.expanded {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Hover State */
+.accordion-header:hover {
+    background-color: #f3f4f6;
+}
+
+/* Header Content Alignment */
+.accordion-header i,
+.accordion-header span {
+    display: inline;
+    vertical-align: middle;
+}
+
+/* Chevron Icon */
+.accordion-header i {
+    font-size: 14px;
+    color: #0072ce;
+    transition: transform 0.3s;
+    margin-right: 8px;
+}
+
+/* Accordion Body (Content) */
+.accordion-body {
+    background-color: #ffffff;
+    padding: 16px;
+    display: none;
+}
+
+/* Show state for accordion body */
+.accordion-body.show {
+    display: block;
+}
+
+/* ========================================
+   ACCORDION VARIANTS
+   ======================================== */
+
+/* Compact Accordion (less padding) */
+.accordion.accordion-compact .accordion-header {
+    padding: 8px 12px;
+}
+
+.accordion.accordion-compact .accordion-body {
+    padding: 12px;
+}
+
+/* Borderless Accordion */
+.accordion.accordion-borderless {
+    border: none;
+}
+
+.accordion.accordion-borderless .accordion-header {
+    border-radius: 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
