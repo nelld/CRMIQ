@@ -99,7 +99,7 @@ grep -r 'text-gray-[567]00' . --include="*.html"
 grep -c 'rgba(0,0,0,0.6)' *.css
 
 # Validate all files
-node validate-styles.js . 
+node js/validate-styles.js . 
 ```
 
 ## 🚀 Deployment Checklist
