@@ -591,67 +591,12 @@
                     </div>
                 </div>
 
-                <!-- Property-Level Fees Sections -->
+                <!-- Property Fees Section -->
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #1f2937;">Property Fees</h3>
+                
                 <div class="accordion" style="margin-bottom: 24px;">
                     
-                    <!-- Section 1: Property Fees -->
-                    <div class="accordion-item">
-                        <div class="accordion-header" onclick="togglePropertyFeeSection('property-fees')">
-                            <i class="fas fa-chevron-right" id="icon-property-fees"></i><span style="font-weight: 600; font-size: 14px;">Property Fees <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(4)</span></span>
-                        </div>
-                        <div class="accordion-body" id="content-property-fees">
-                            <div class="table-container">
-                                <table class="data-table table-compact" style="max-width: 600px;">
-                                    <thead>
-                                        <tr>
-                                            <th>Fee Name</th>
-                                            <th style="text-align: right;">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Late Fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Late Fee', '25')">
-                                                    $25
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Month to Month</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Month to Month', '150')">
-                                                    $150
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Transfer Fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Transfer Fee', '100')">
-                                                    $100
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lease Renewal Fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Lease Renewal Fee', '75')">
-                                                    $75
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Section 2: Property Control Fees -->
+                    <!-- Section 1: Property Control Fees -->
                     <div class="accordion-item">
                         <div class="accordion-header" onclick="togglePropertyFeeSection('property-control-fees')">
                             <i class="fas fa-chevron-right" id="icon-property-control-fees"></i><span style="font-weight: 600; font-size: 14px;">Property Control Fees <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(4)</span></span>
@@ -708,14 +653,16 @@
                         </div>
                     </div>
 
-                    <!-- Section 3: Custom Property Fees -->
+                    <!-- Section 2: Custom Property Fees -->
                     <div class="accordion-item">
                         <div class="accordion-header" onclick="togglePropertyFeeSection('custom-property-fees')">
                             <i class="fas fa-chevron-right" id="icon-custom-property-fees"></i><span style="font-weight: 600; font-size: 14px;">Custom Property Fees <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(2)</span></span>
                         </div>
                         <div class="accordion-body" id="content-custom-property-fees">
-                            <div class="table-container">
-                                <table class="data-table table-compact" style="max-width: 600px;">
+                            <div style="display: flex; gap: 16px; align-items: flex-start;">
+                                <!-- Table Container -->
+                                <div class="table-container" style="flex: 1; margin-top: 0;">
+                                    <table class="data-table table-compact" style="max-width: 600px;">
                                     <thead>
                                         <tr>
                                             <th>Fee Name</th>
@@ -742,7 +689,14 @@
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                    </table>
+                                </div>
+                                
+                                <!-- Add Fee Button -->
+                                <button class="btn btn-light" onclick="openAddPropertyFeePageslide()">
+                                    <i class="fas fa-circle-plus"></i>
+                                    Add Fee
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -953,7 +907,7 @@
                 <div style="display: flex; align-items: center; gap: 24px; margin-top: 16px;">
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
-                        <span class="text-sm text-muted">Consistent with template</span>
+                        <span class="text-sm text-muted">Consistent with unit type</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
@@ -1589,6 +1543,179 @@
                     document.querySelectorAll('.unit-type-checkbox').forEach(checkbox => {
                         checkbox.addEventListener('change', updateUnitTypesCount);
                     });
+                }, 50);
+            }
+        }
+
+        // Function to open Add Property Fee pageslide
+        function openAddPropertyFeePageslide() {
+            const headerContent = `
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Add Custom Property Fee</h2>
+                    <p class="text-sm text-muted" style="margin: 0;">Create a new property-level fee</p>
+                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                </div>
+            `;
+
+            const formContent = `
+                <div style="">
+                    <!-- Fee Name and Charge Code -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-property-fee-name" class="form-label">Fee Name</label>
+                            <input type="text" id="new-property-fee-name" class="form-input" placeholder="e.g., Pet Deposit">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-property-charge-code" class="form-label">Charge Code</label>
+                            <input type="text" id="new-property-charge-code" class="form-input" placeholder="e.g., PET_DEP">
+                        </div>
+                    </div>
+
+                    <!-- Fee Description -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="new-property-fee-description" class="form-label">Fee Description</label>
+                        <textarea id="new-property-fee-description" class="form-input" rows="3" style="resize: vertical;" placeholder="Describe the fee"></textarea>
+                    </div>
+
+                    <!-- Amount Type and Amount -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-property-amount-type" class="form-label">Amount Type</label>
+                            <select id="new-property-amount-type" class="form-select">
+                                <option selected>Fixed</option>
+                                <option>Percentage</option>
+                                <option>Range</option>
+                                <option>Text</option>
+                                <option>Average</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-property-amount" class="form-label">Amount</label>
+                            <input type="text" id="new-property-amount" class="form-input" value="0.00">
+                        </div>
+                    </div>
+
+                    <!-- Category, Timing, Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div class="form-group">
+                            <label for="new-property-category" class="form-label">Category</label>
+                            <select id="new-property-category" class="form-select">
+                                <option selected>Move-in</option>
+                                <option>Add ons</option>
+                                <option>Situational</option>
+                                <option>Monthly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-property-timing" class="form-label">Timing</label>
+                            <select id="new-property-timing" class="form-select">
+                                <option selected>Move-in</option>
+                                <option>Application</option>
+                                <option>Recurring</option>
+                                <option>Move-out</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-property-frequency" class="form-label">Frequency</label>
+                            <select id="new-property-frequency" class="form-select">
+                                <option selected>One-Time</option>
+                                <option>Per Lease</option>
+                                <option>Per Month</option>
+                                <option>Per Quarter</option>
+                                <option>Per Year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Fee Properties -->
+                    <div style="margin-bottom: 24px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-property-hide-cost" style="width: auto; height: auto;">
+                                <label for="new-property-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-property-taxable" style="width: auto; height: auto;">
+                                <label for="new-property-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-property-required" checked style="width: auto; height: auto;">
+                                <label for="new-property-required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-property-refundable" style="width: auto; height: auto;">
+                                <label for="new-property-refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-property-display-only" style="width: auto; height: auto;">
+                                <label for="new-property-display-only" style="margin: 0; font-weight: 400; font-size: 14px !important;">Display only</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charge Class and Method -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
+                        <div class="form-group">
+                            <label for="new-property-charge-class" class="form-label">Charge Class</label>
+                            <select id="new-property-charge-class" class="form-select">
+                                <option selected>Admin</option>
+                                <option>Amenity</option>
+                                <option>Insurance</option>
+                                <option>Pet</option>
+                                <option>Storage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-property-method" class="form-label">Method</label>
+                            <select id="new-property-method" class="form-select">
+                                <option selected>Per Unit</option>
+                                <option>Per Applicant</option>
+                                <option>Per Resident</option>
+                                <option>Per Pet</option>
+                                <option>Per Vehicle</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const footerContent = `
+                <div style="display: flex; justify-content: flex-end; align-items: center; width: 100%; gap: 12px;">
+                    <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                    <button class="btn btn-primary">
+                        Add Fee
+                    </button>
+                </div>
+            `;
+
+            // Open edit pageslide in second container
+            const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
+            const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
+            const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
+            const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
+            
+            if (editOverlay && editPageslide) {
+                // Set content
+                if (editBody) editBody.innerHTML = formContent;
+                if (editFooter) editFooter.innerHTML = footerContent;
+                
+                // Set size
+                editPageslide.setAttribute('data-pageslide-size', 'md');
+                
+                // Show pageslide
+                editOverlay.classList.add('active');
+                setTimeout(() => {
+                    editPageslide.classList.add('active');
+                }, 10);
+
+                // Replace default header with custom header
+                setTimeout(() => {
+                    const pageslideHeader = document.querySelector('#pageslide-edit-container .pageslide-header');
+                    if (pageslideHeader) {
+                        pageslideHeader.innerHTML = headerContent;
+                        pageslideHeader.style.padding = '0';
+                        pageslideHeader.style.borderBottom = 'none';
+                    }
                 }, 50);
             }
         }
