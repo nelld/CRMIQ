@@ -56,3 +56,4 @@ await CRMComponents.initSideNav({
 ### Example
 🎯 See `html/sidenav-example.html` for working demo
 
+

@@ -204,6 +204,14 @@
     overflow-x: hidden;
     padding: 24px;
     min-height: 0;
+    background-color: #ffffff;
+}
+
+/* Pageslide Body background only for large pageslides */
+.pageslide[data-pageslide-size="lg"] .pageslide-body,
+.pageslide[data-pageslide-size="xl"] .pageslide-body,
+.pageslide[data-pageslide-size="full"] .pageslide-body {
+    background-color: #fbfbfb;
 }
 
 /* Pageslide Footer */
