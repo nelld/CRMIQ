@@ -9,6 +9,7 @@ The component system includes:
 - **Breadcrumb** - Navigation breadcrumb trail
 - **Page Header** - Page title and actions section
 - **Tabs** - Horizontal tab navigation
+- **SideNav** - Collapsible left navigation sidebar
 
 ## Setup
 
@@ -40,13 +41,16 @@ Add empty container divs where you want components to appear:
     <!-- Breadcrumb (optional) -->
     <div id="breadcrumb-container"></div>
     
+    <!-- Side Navigation (optional) -->
+    <div id="sidenav-container"></div>
+    
     <!-- Page Header -->
     <div id="page-header-container"></div>
     
     <!-- Tabs (optional) -->
     <div id="tabs-container"></div>
     
-    <!-- Your page content -->
+    <!-- Your page content - add 'has-sidenav' class if using SideNav -->
     <main class="container mx-auto p-6">
         <!-- Content here -->
     </main>
@@ -66,6 +70,13 @@ Add a script to initialize the components after the page loads:
             breadcrumb: {
                 containerId: 'breadcrumb-container',
                 data: 'Home|Search|Page Name'
+            },
+            sideNav: {
+                containerId: 'sidenav-container',
+                items: [
+                    { icon: 'fas fa-home', label: 'Dashboard', href: '#dashboard', id: 'dashboard', active: true },
+                    { icon: 'fas fa-users', label: 'Contacts', href: '#contacts', id: 'contacts' }
+                ]
             },
             pageHeader: {
                 containerId: 'page-header-container',
@@ -193,6 +204,64 @@ await CRMComponents.initTabs({
 **Sticky Positioning:**
 - If `hasBreadcrumb: true` → sticks at top: 159px
 - If `hasBreadcrumb: false` → sticks at top: 54px
+
+### SideNav
+
+**Usage:**
+```javascript
+await CRMComponents.initSideNav({
+    containerId: 'sidenav-container',
+    collapsed: false,
+    toggleButton: true,
+    items: [
+        {
+            icon: 'fas fa-home',
+            label: 'Dashboard',
+            href: '#dashboard',
+            id: 'dashboard',
+            active: true
+        },
+        {
+            icon: 'fas fa-users',
+            label: 'Contacts',
+            href: '#contacts',
+            id: 'contacts',
+            badge: '5'
+        },
+        {
+            type: 'divider'
+        },
+        {
+            type: 'group',
+            title: 'Settings',
+            items: [
+                {
+                    icon: 'fas fa-cog',
+                    label: 'Preferences',
+                    href: '#preferences',
+                    id: 'preferences'
+                }
+            ]
+        }
+    ],
+    onChange: (index, id, element) => {
+        console.log('Navigation changed:', id);
+    }
+});
+```
+
+**Parameters:**
+- `containerId` - ID of the container div (default: 'sidenav-container')
+- `items` - Array of navigation items (required)
+- `collapsed` - Boolean, initial collapsed state (default: false)
+- `toggleButton` - Show toggle button (default: true)
+- `activeIndex` - Index or ID of initially active item (default: 0)
+- `onChange` - Callback function when nav item is clicked (optional)
+
+**Important Notes:**
+- Add `has-sidenav` class to your main content area
+- The SideNav automatically adjusts for mobile/desktop
+- See `SIDENAV_USAGE.md` for detailed documentation and examples
 
 ## Examples
 
