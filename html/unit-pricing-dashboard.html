@@ -89,28 +89,28 @@
                     <div class="kpi-value-large">5</div>
                 </div>
                 
-                <!-- Fully Published -->
+                <!-- Properties with Incomplete Setup -->
                 <div class="kpi-tile-large-value">
                     <div class="kpi-header">
-                        <h3 class="kpi-title">Fully published</h3>
+                        <h3 class="kpi-title">Properties with incomplete setup</h3>
                     </div>
-                    <div class="kpi-value-large">2</div>
+                    <div class="kpi-value-large kpi-value-negative">2</div>
                 </div>
                 
-                <!-- Unpublished Changes -->
+                <!-- Total Unit Types -->
                 <div class="kpi-tile-large-value">
                     <div class="kpi-header">
-                        <h3 class="kpi-title">Unpublished changes</h3>
+                        <h3 class="kpi-title">Total unit types</h3>
                     </div>
-                    <div class="kpi-value-large">2</div>
+                    <div class="kpi-value-large">102</div>
                 </div>
                 
-                <!-- Not Configured -->
+                <!-- Unit Types with Incomplete Setup -->
                 <div class="kpi-tile-large-value">
                     <div class="kpi-header">
-                        <h3 class="kpi-title">Not configured</h3>
+                        <h3 class="kpi-title">Unit types with incomplete setup</h3>
                     </div>
-                    <div class="kpi-value-large">2</div>
+                    <div class="kpi-value-large kpi-value-negative">18</div>
                 </div>
             </div>
             
@@ -128,213 +128,115 @@
                 </div>
                 <div class="table-container">
                     <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Property Name</th>
-                            <th>Unit Types / Units</th>
-                            <th>Templates</th>
-                            <th>Last Saved</th>
-                            <th>Published</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Row 1: Oakwood Apartments -->
-                        <tr>
-                            <td>
-                                <div class="property-name">Oakwood Apartments</div>
-                            </td>
-                            <td>
-                                <div class="unit-info">
-                                    <span class="unit-count">24 types / 156 units</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
-                                    <span class="badge badge-pill badge-outline-primary-lighten60">Pet-Friendly Units</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="saved-info">
-                                    <span class="saved-date">Oct 15, 2025</span>
-                                    <span class="saved-by text-sm text-muted">Sarah Johnson</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="published-info">
-                                    <span class="published-date">Oct 15, 2025</span>
-                                    <span class="published-by text-sm text-muted">Sarah Johnson</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="badge badge-pill badge-outline-success-lighten60">
-                                    <i class="fas fa-check"></i>
-                                    Published
-                                </span>
-                            </td>
-                            <td>
-                                <button class="btn btn-light" onclick="openFeesPageslide('Oakwood Apartments')">View Fees</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Row 2: Riverside Commons -->
-                        <tr>
-                            <td>
-                                <div class="property-name">Riverside Commons</div>
-                            </td>
-                            <td>
-                                <div class="unit-info">
-                                    <span class="unit-count">18 types / 112 units</span>
-                                    <span class="unit-warning text-sm">
+                        <thead>
+                            <tr>
+                                <th>Property Name</th>
+                                <th>Unit Types</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1: Oakwood Apartments -->
+                            <tr>
+                                <td>
+                                    <div class="property-name">Oakwood Apartments</div>
+                                    <div class="property-status property-status-complete">Setup Complete</div>
+                                </td>
+                                <td>
+                                    <div class="unit-info">
+                                        <div class="unit-count">24 Unit Types</div>
+                                        <div class="property-status property-status-complete">Setup Complete</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-light" onclick="openFeesPageslide('Oakwood Apartments')">View Fees</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Row 2: Riverside Commons -->
+                            <tr>
+                                <td>
+                                    <div class="property-name">Riverside Commons</div>
+                                    <div class="property-status property-status-complete">Setup Complete</div>
+                                </td>
+                                <td>
+                                    <div class="unit-info">
+                                        <div class="unit-count">18 Unit Types</div>
+                                        <div class="property-status property-status-incomplete">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            2 Incomplete setup
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-light" onclick="openFeesPageslide('Riverside Commons')">View Fees</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Row 3: Downtown Lofts -->
+                            <tr>
+                                <td>
+                                    <div class="property-name">Downtown Lofts</div>
+                                    <div class="property-status property-status-complete">Setup Complete</div>
+                                </td>
+                                <td>
+                                    <div class="unit-info">
+                                        <div class="unit-count">32 Unit Types</div>
+                                        <div class="property-status property-status-complete">Setup Complete</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-light" onclick="openFeesPageslide('Downtown Lofts')">View Fees</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Row 4: Sunset Heights -->
+                            <tr>
+                                <td>
+                                    <div class="property-name">Sunset Heights</div>
+                                    <div class="property-status property-status-incomplete">
                                         <i class="fas fa-exclamation-circle"></i>
-                                        2 without fees
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="saved-info">
-                                    <span class="saved-date">Oct 20, 2025</span>
-                                    <span class="saved-by text-sm text-muted">Mike Chen</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="published-info">
-                                    <span class="published-date">Oct 18, 2025</span>
-                                    <span class="published-by text-sm text-muted">Mike Chen</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="badge badge-pill badge-outline-warning-lighten60">Unpublished</span>
-                            </td>
-                            <td>
-                                <button class="btn btn-light" onclick="openFeesPageslide('Oakwood Apartments')">View Fees</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Row 3: Downtown Lofts -->
-                        <tr>
-                            <td>
-                                <div class="property-name">Downtown Lofts</div>
-                            </td>
-                            <td>
-                                <div class="unit-info">
-                                    <span class="unit-count">32 types / 224 units</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary-lighten60">Luxury Units - Premium Fees</span>
-                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
-                                    <span class="template-more text-sm text-muted">+1 more</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="saved-info">
-                                    <span class="saved-date">Oct 10, 2025</span>
-                                    <span class="saved-by text-sm text-muted">Sarah Johnson</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="published-info">
-                                    <span class="published-date">Oct 10, 2025</span>
-                                    <span class="published-by text-sm text-muted">Sarah Johnson</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="badge badge-pill badge-outline-success-lighten60">
-                                    <i class="fas fa-check"></i>
-                                    Published
-                                </span>
-                            </td>
-                            <td>
-                                <button class="btn btn-light" onclick="openFeesPageslide('Oakwood Apartments')">View Fees</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Row 4: Sunset Heights -->
-                        <tr>
-                            <td>
-                                <div class="property-name">Sunset Heights</div>
-                            </td>
-                            <td>
-                                <div class="unit-info">
-                                    <span class="unit-count">12 types / 48 units</span>
-                                    <span class="unit-warning text-sm">
+                                        Incomplete Setup
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="unit-info">
+                                        <div class="unit-count">12 Unit Types</div>
+                                        <div class="property-status property-status-incomplete">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            12 Incomplete setup
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-light" onclick="openFeesPageslide('Sunset Heights')">View Fees</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Row 5: Maple Grove Residences -->
+                            <tr>
+                                <td>
+                                    <div class="property-name">Maple Grove Residences</div>
+                                    <div class="property-status property-status-incomplete">
                                         <i class="fas fa-exclamation-circle"></i>
-                                        12 without fees
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="not-published text-muted">None</span>
-                            </td>
-                            <td>
-                                <div class="saved-info">
-                                    <span class="saved-date not-published text-muted">Never</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="published-info">
-                                    <span class="not-published text-muted">Not published</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="badge badge-pill badge-outline-danger-lighten60">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                    Incomplete
-                                </span>
-                            </td>
-                            <td>
-                                <button class="btn btn-light" onclick="openFeesPageslide('Oakwood Apartments')">View Fees</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Row 5: Maple Grove Residences -->
-                        <tr>
-                            <td>
-                                <div class="property-name">Maple Grove Residences</div>
-                            </td>
-                            <td>
-                                <div class="unit-info">
-                                    <span class="unit-count">16 types / 88 units</span>
-                                    <span class="unit-warning text-sm">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        4 without fees
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="template-pills">
-                                    <span class="badge badge-pill badge-outline-primary-lighten60">Standard Move-In Fees 2025</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="saved-info">
-                                    <span class="saved-date">Oct 22, 2025</span>
-                                    <span class="saved-by text-sm text-muted">Alex Rivera</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="published-info">
-                                    <span class="not-published text-muted">Not published</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="badge badge-pill badge-outline-warning-lighten60">Unpublished</span>
-                            </td>
-                            <td>
-                                <button class="btn btn-light" onclick="openFeesPageslide('Oakwood Apartments')">View Fees</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                        Incomplete Setup
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="unit-info">
+                                        <div class="unit-count">16 Unit Types</div>
+                                        <div class="property-status property-status-incomplete">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            4 Incomplete setup
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-light" onclick="openFeesPageslide('Maple Grove Residences')">View Fees</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -402,6 +304,9 @@
             
             // Table search functionality
             initTableSearch();
+
+            // Unit Type Fees: show incomplete setups only (column filter)
+            initIncompleteSetupsOnlyFilter();
             
             // Initialize pageslide components
             CRMComponents.initPageslide('pageslide-container');
@@ -428,6 +333,75 @@
                     }
                 });
             });
+        }
+
+        function applyIncompleteSetupsOnlyFilter(checkbox) {
+            if (!checkbox) return;
+
+            const scope = checkbox.closest('.accordion-body') || document;
+            const table = scope.querySelector('table.fees-table');
+            if (!table) return;
+
+            const headerRow = table.tHead?.rows?.[0];
+            const body = table.tBodies?.[0];
+            if (!headerRow || !body) return;
+
+            const colCount = headerRow.cells.length;
+            const visibleCols = new Set([0]); // Always show Fee Name column
+
+            if (checkbox.checked) {
+                const dataRows = Array.from(body.rows).filter(r => !r.classList.contains('fees-section-header'));
+                for (let col = 1; col < colCount; col++) {
+                    const hasIncomplete = dataRows.some(row => {
+                        const cell = row.cells[col];
+                        if (!cell) return false;
+                        return cell.classList.contains('fee-incomplete-cell') || !!cell.querySelector('.fee-incomplete-sub');
+                    });
+                    if (hasIncomplete) visibleCols.add(col);
+                }
+            } else {
+                for (let col = 0; col < colCount; col++) visibleCols.add(col);
+            }
+
+            // Apply to header
+            for (let col = 0; col < colCount; col++) {
+                const th = headerRow.cells[col];
+                if (th) th.style.display = visibleCols.has(col) ? '' : 'none';
+            }
+
+            // Apply to body rows
+            const visibleCount = visibleCols.size;
+            Array.from(body.rows).forEach(row => {
+                if (row.classList.contains('fees-section-header')) {
+                    const cell = row.cells[0];
+                    if (cell) {
+                        if (!cell.dataset.originalColspan) {
+                            cell.dataset.originalColspan = String(cell.colSpan || colCount);
+                        }
+                        cell.colSpan = visibleCount;
+                    }
+                    return;
+                }
+
+                for (let col = 0; col < colCount; col++) {
+                    const td = row.cells[col];
+                    if (td) td.style.display = visibleCols.has(col) ? '' : 'none';
+                }
+            });
+        }
+
+        function initIncompleteSetupsOnlyFilter() {
+            // Event delegation (checkbox is injected inside pageslide content)
+            document.addEventListener('change', (e) => {
+                const target = e.target;
+                if (target && target.id === 'show-incomplete-only') {
+                    applyIncompleteSetupsOnlyFilter(target);
+                }
+            });
+
+            // If present at init time, apply once
+            const checkbox = document.getElementById('show-incomplete-only');
+            if (checkbox) applyIncompleteSetupsOnlyFilter(checkbox);
         }
         
         function initTableSorting() {
@@ -510,19 +484,17 @@
             transition: opacity 0.2s;
         }
         
-        .data-table tbody tr:hover .property-fee-amount i {
+        .property-fee-amount:hover i {
             opacity: 1;
         }
         
-        /* Unit type fees table - edit icon on hover for highlighted cells */
-        .fee-cell-edit-icon {
+        /* Unit type fees table: edit icon should only show on hovered cell */
+        .fees-table .fee-cell-edit-icon {
             opacity: 0;
             transition: opacity 0.2s;
-            margin-left: 8px;
-            font-size: 10px;
         }
         
-        .fees-table tbody tr:hover .fee-cell-edit-icon {
+        .fees-table .fee-cell-editable:hover .fee-cell-edit-icon {
             opacity: 1;
         }
         
@@ -534,9 +506,167 @@
         .data-table.table-compact tbody td {
             padding: 10px 12px;
         }
+        
+        /* KPI + table styling for Cost Estimator dashboard */
+        .kpi-tile-large-value .kpi-value-large.kpi-value-negative {
+            color: #d92c20;
+        }
+        
+        .property-status {
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        
+        .property-status-complete {
+            color: #059669;
+        }
+        
+        .property-status-incomplete {
+            color: #d92c20;
+        }
+        
+        .unit-info .unit-count {
+            font-weight: 500;
+        }
+        
+        .unit-info .property-status-incomplete i {
+            margin-right: 4px;
+        }
+        
+        .property-status-incomplete i {
+            color: #d92c20;
+        }
+        
+        .fees-table .fee-incomplete {
+            color: #b91c1c;
+            font-weight: 500;
+        }
     </style>
 
     <script>
+        // Simple modal for "Amount Varies" breakdown
+        function openAmountVarianceModal(feeName) {
+            // Basic example data for Parking Fee as in the image; extend per fee if needed
+            const modalHtml = `
+                <div class="modal-overlay">
+                    <div class="modal-card">
+                        <div class="modal-header">
+                            <h3 class="modal-title">${feeName} - Amount Variance by Unit Type</h3>
+                            <button class="modal-close" onclick="closeAmountVarianceModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="fees-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 200px;">Unit Type</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1BR-A</td>
+                                        <td>$85</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1BR-B</td>
+                                        <td>No Fee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2BR-A</td>
+                                        <td>$85</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2BR-B</td>
+                                        <td>No Fee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3BR-A</td>
+                                        <td>$100</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const container = document.createElement('div');
+            container.id = 'amount-variance-modal';
+            container.innerHTML = modalHtml;
+            document.body.appendChild(container);
+        }
+
+        function closeAmountVarianceModal() {
+            const existing = document.getElementById('amount-variance-modal');
+            if (existing) {
+                existing.remove();
+            }
+        }
+
+        // Modal for "Settings Vary" breakdown (Frequency/Timing by unit type)
+        function openSettingsVarianceModal(feeName) {
+            const modalHtml = `
+                <div class="modal-overlay">
+                    <div class="modal-card">
+                        <div class="modal-header">
+                            <h3 class="modal-title">${feeName} - Settings Variance by Unit Type</h3>
+                            <button class="modal-close" onclick="closeSettingsVarianceModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="fees-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 200px;">Unit Type</th>
+                                        <th>Frequency</th>
+                                        <th>Timing</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1BR-A</td>
+                                        <td>One-Time</td>
+                                        <td>Application</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1BR-B</td>
+                                        <td>One-Time</td>
+                                        <td>Application</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2BR-A</td>
+                                        <td>Recurring</td>
+                                        <td>Move-in</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2BR-B</td>
+                                        <td>One-Time</td>
+                                        <td>Move-in</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3BR-A</td>
+                                        <td>One-Time</td>
+                                        <td>Move-in</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const container = document.createElement('div');
+            container.id = 'settings-variance-modal';
+            container.innerHTML = modalHtml;
+            document.body.appendChild(container);
+        }
+
+        function closeSettingsVarianceModal() {
+            const existing = document.getElementById('settings-variance-modal');
+            if (existing) {
+                existing.remove();
+            }
+        }
+
         // Function to open fees pageslide (must be global for onclick handlers)
         function openFeesPageslide(propertyName) {
             const headerContent = `
@@ -552,366 +682,560 @@
                             <div class="data-label">Unit Types</div>
                             <div class="data-value">24</div>
                         </div>
-                        <div class="data-group">
-                            <div class="data-label">Last Published</div>
-                            <div class="data-value">Oct 15, 2025</div>
-                        </div>
-                        <div class="data-group">
-                            <div class="data-label">Deposit Handling</div>
-                            <div class="data-value"><a href="#">Move-in Charge</a></div>
-                        </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 32px;">
-                        <button class="btn btn-light mr-5" onclick="openLoadTemplatePageslide()">
-                            <i class="fas fa-download"></i>
-                            Load Template
-                        </button>
+                        <span class="tooltip-black tooltip-below">
+                            <button class="btn btn-primary mr-5" onclick="openLoadTemplatePageslide()">
+                                <i class="fas fa-cloud-arrow-up"></i>
+                                Sync all to Cafe
+                            </button>
+                            <span class="tooltip-text">
+                                This button will push all fee changes to your rentcafe website, please give this 5 minutes to display
+                            </span>
+                        </span>
                         <i class="fas fa-times text-muted fa-2x" onclick="closePageslide()" style="cursor: pointer;"></i>
                     </div>
                 </div>
             `;
 
             const bodyContent = `
-                <div style="padding: 24px;">
-                <!-- Alert Banner -->
-                <div class="alert alert-warning" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span style="font-weight: 500;">Unpublished Changes:</span>
-                        <span>Changes here are not visible to applicants until published.</span>
-                    </div>
-                    <div style="display: flex; gap: 12px;">
-                        <button class="btn btn-light">
-                            <i class="far fa-eye"></i>
-                            Preview
-                        </button>
-                        <button class="btn btn-primary">
-                            Publish Changes
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Property Fees Section -->
-                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #1f2937;">Property Fees</h3>
-                
-                <div class="accordion" style="margin-bottom: 24px;">
-                    
-                    <!-- Section 1: Property Control Fees -->
-                    <div class="accordion-item">
-                        <div class="accordion-header" onclick="togglePropertyFeeSection('property-control-fees')">
-                            <i class="fas fa-chevron-right" id="icon-property-control-fees"></i><span style="font-weight: 600; font-size: 14px;">Property Control Fees <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(4)</span></span>
-                        </div>
-                        <div class="accordion-body" id="content-property-control-fees">
-                            <div class="table-container">
-                                <table class="data-table table-compact" style="max-width: 600px;">
-                                    <thead>
-                                        <tr>
-                                            <th>Fee Name</th>
-                                            <th style="text-align: right;">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Late Fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Late Fee', '30')">
-                                                    $30
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Month to Month</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Month to Month', '175')">
-                                                    $175
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Transfer Fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Transfer Fee', '125')">
-                                                    $125
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lease Renewal Fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Lease Renewal Fee', '85')">
-                                                    $85
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                <div style="padding: 24px; max-width: 1400px; margin: 0 auto;">
+                <!-- Property Card with Accordions -->
+                <div class="card card-shadow-static" style="margin-bottom: 24px;">
+                    <div class="card-content" style="padding: 16px 20px;">
+                        <div class="card-section" style="margin-bottom: 0;">
+                            <div class="card-section-header" style="border-bottom: none; padding-bottom: 4px; margin-bottom: 8px;">
+                                <h3 class="card-title" style="font-size: 15px; font-weight: 600; margin: 0;">Property</h3>
                             </div>
-                        </div>
-                    </div>
+                            <div class="card-section-content">
+                                <div class="accordion" style="margin-bottom: 0;">
 
-                    <!-- Section 2: Custom Property Fees -->
-                    <div class="accordion-item">
-                        <div class="accordion-header" onclick="togglePropertyFeeSection('custom-property-fees')">
-                            <i class="fas fa-chevron-right" id="icon-custom-property-fees"></i><span style="font-weight: 600; font-size: 14px;">Custom Property Fees <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(2)</span></span>
-                        </div>
-                        <div class="accordion-body" id="content-custom-property-fees">
-                            <div style="display: flex; gap: 16px; align-items: flex-start;">
-                                <!-- Table Container -->
-                                <div class="table-container" style="flex: 1; margin-top: 0;">
-                                    <table class="data-table table-compact" style="max-width: 600px;">
-                                    <thead>
-                                        <tr>
-                                            <th>Fee Name</th>
-                                            <th style="text-align: right;">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Utility billing setup fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Utility billing setup fee', '15')">
-                                                    $15
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                    <!-- Section 1: Property Control Fees -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header" onclick="togglePropertyFeeSection('property-control-fees')">
+                                            <i class="fas fa-chevron-right" id="icon-property-control-fees"></i>
+                                            <span style="font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                                                <span>
+                                                    Property Control Fees
+                                                    <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(4)</span>
                                                 </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Club house rental fee</td>
-                                            <td style="text-align: right;">
-                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Club house rental fee', '50')">
-                                                    $50
-                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                <span class="tooltip-wrapper" data-tooltip="These fees pull from your property control settings">
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
                                                 </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
+                                            </span>
+                                        </div>
+                                        <div class="accordion-body" id="content-property-control-fees">
+                                            <div class="table-container">
+                                                <table class="data-table table-compact" style="max-width: 600px;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Fee Name</th>
+                                                            <th style="text-align: right;">Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Late Fee</td>
+                                                            <td style="text-align: right;">
+                                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Late Fee', '30')">
+                                                                    $30
+                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Month to Month</td>
+                                                            <td style="text-align: right;">
+                                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Month to Month', '175')">
+                                                                    $175
+                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Transfer Fee</td>
+                                                            <td style="text-align: right;">
+                                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Transfer Fee', '125')">
+                                                                    $125
+                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lease Renewal Fee</td>
+                                                            <td style="text-align: right;">
+                                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Lease Renewal Fee', '85')">
+                                                                    $85
+                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Section 2: Display Only Fees -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header" onclick="togglePropertyFeeSection('custom-property-fees')">
+                                            <i class="fas fa-chevron-right" id="icon-custom-property-fees"></i>
+                                            <span style="font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                                                <span>
+                                                    Display Only Fees
+                                                    <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(2)</span>
+                                                </span>
+                                                <span class="tooltip-wrapper" data-tooltip="These are custom fees that are not setup to bill in the system by default">
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="accordion-body" id="content-custom-property-fees">
+                                            <div class="table-container">
+                                                <table class="data-table table-compact" style="max-width: 600px;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Fee Name</th>
+                                                            <th style="text-align: right;">Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Utility billing setup fee</td>
+                                                            <td style="text-align: right;">
+                                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Utility billing setup fee', '15')">
+                                                                    $15
+                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Club house rental fee</td>
+                                                            <td style="text-align: right;">
+                                                                <span class="property-fee-amount" onclick="openEditPropertyFee('Club house rental fee', '50')">
+                                                                    $50
+                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                
-                                <!-- Add Fee Button -->
-                                <button class="btn btn-light" onclick="openAddPropertyFeePageslide()">
-                                    <i class="fas fa-circle-plus"></i>
-                                    Add Fee
-                                </button>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Divider -->
-                <div style="border-top: 2px solid #e5e7eb; margin-bottom: 24px;"></div>
+                <!-- Unit Type Card with Accordions -->
+                <div class="card card-shadow-static">
+                    <div class="card-content" style="padding: 16px 20px;">
+                        <div class="card-section" style="margin-bottom: 0;">
+                            <div class="card-section-header" style="border-bottom: none; padding-bottom: 4px; margin-bottom: 8px;">
+                                <h3 class="card-title" style="font-size: 15px; font-weight: 600; margin: 0;">Unit Type</h3>
+                            </div>
+                            <div class="card-section-content">
+                                <div class="accordion" style="margin-bottom: 0;">
 
-                <!-- Unit Type Fees Section Header -->
-                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #1f2937;">Unit Type Fees</h3>
+                                    <!-- Accordion 1: Unit Type Fees -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header expanded" onclick="togglePropertyFeeSection('unit-type-fees')">
+                                            <i class="fas fa-chevron-right" id="icon-unit-type-fees" style="transform: rotate(90deg);"></i>
+                                            <span style="font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                                                <span>
+                                                    Unit Type Fees
+                                                    <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(5)</span>
+                                                </span>
+                                                <span class="tooltip-wrapper" data-tooltip="These fees pull from unit type setup screen">
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="accordion-body show" id="content-unit-type-fees">
 
-                <!-- Fees Section -->
-                <div class="table-advanced" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                    <div class="table-header" style="display: flex; align-items: center;">
-                        <div class="table-search mr-4">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="table-search-input" placeholder="Search fees..." style="width: 250px;">
+                                            <!-- Fees Section -->
+                                            <div class="table-advanced" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                                <div class="table-header" style="display: flex; align-items: center;">
+                                                    <div class="table-search mr-4">
+                                                        <i class="fas fa-search"></i>
+                                                        <input type="text" class="table-search-input" placeholder="Search fees..." style="width: 250px;">
+                                                    </div>
+                                                    <div class="count badge rounded-pill badge-primary ml-0">18</div>
+                                                    <div class="count-title">Fees</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 16px;">
+                                                    <div style="display: flex; align-items: center; gap: 6px; font-size: 13px;">
+                                                        <input type="checkbox" id="show-incomplete-only" style="width: auto; height: auto; margin: 0;">
+                                                        <label for="show-incomplete-only" class="text-sm text-muted" style="margin: 0; cursor: pointer;">Show incomplete setups only</label>
+                                                    </div>
+                                                    <button class="btn btn-primary" onclick="openAddFeePageslide()">
+                                                        <i class="fas fa-circle-plus"></i>
+                                                        Add Fee
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Fees Table -->
+                                            <div class="fees-table-container">
+                                                <table class="fees-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 300px;">Fee Name</th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">1BR-A</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(16 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">1BR-B</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(12 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">2BR-A</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(24 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">2BR-B</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(18 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">3BR-A</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(8 units)</div>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- APPLICATION CHARGES -->
+                                                        <tr class="fees-section-header">
+                                                            <td colspan="6">APPLICATION CHARGES</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="fee-name-wrapper">
+                                                                    <div class="fee-name-content">
+                                                                        <div class="fee-name">
+                                                                            <span style="font-weight: 500;">Application Fee</span>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-consistent">Settings Consistent</div>
+                                                                        <div class="fee-meta text-sm text-consistent">Amount Consistent</div>
+                                                                    </div>
+                                                                    <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Application Fee')" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Application Fee', '1BR-A', '75')">
+                                                                <span class="fee-cell-value">$75</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Application Fee', '1BR-B', '75')">
+                                                                <span class="fee-cell-value">$75</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Application Fee', '2BR-A', '75')">
+                                                                <span class="fee-cell-value">$75</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Application Fee', '2BR-B', '75')">
+                                                                <span class="fee-cell-value">$75</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Application Fee', '3BR-A', '75')">
+                                                                <span class="fee-cell-value">$75</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                        </tr>
+
+                                                        <!-- MOVE-IN CHARGES -->
+                                                        <tr class="fees-section-header">
+                                                            <td colspan="6">MOVE-IN CHARGES</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="fee-name-wrapper">
+                                                                    <div class="fee-name-content">
+                                                                        <div class="fee-name">
+                                                                            <span style="font-weight: 500;">Security Deposit</span>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-danger">
+                                                                            <button type="button" class="link-button" onclick="openSettingsVarianceModal('Security Deposit')">Settings Vary</button>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-danger">
+                                                                            <button type="button" class="link-button" onclick="openAmountVarianceModal('Security Deposit')">Amount Varies</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Security Deposit')" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Security Deposit', '1BR-A', '500')">
+                                                                <span class="fee-cell-value">$500</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Security Deposit', '1BR-B', '500')">
+                                                                <span class="fee-cell-value">$500</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Security Deposit', '2BR-A', '750')">
+                                                                <span class="fee-cell-value">$750</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Security Deposit', '2BR-B', '750')">
+                                                                <span class="fee-cell-value">$750</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Security Deposit', '3BR-A', '1000')">
+                                                                <span class="fee-cell-value">$1000</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="fee-name-wrapper">
+                                                                    <div class="fee-name-content">
+                                                                        <div class="fee-name">
+                                                                            <span style="font-weight: 500;">Administrative Fee</span>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-consistent">Settings Consistent</div>
+                                                                        <div class="fee-meta text-sm text-consistent">Amount Consistent</div>
+                                                                    </div>
+                                                                    <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Administrative Fee')" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Administrative Fee', '1BR-A', '150')">
+                                                                <span class="fee-cell-value">$150</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Administrative Fee', '1BR-B', '150')">
+                                                                <span class="fee-cell-value">$150</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Administrative Fee', '2BR-A', '150')">
+                                                                <span class="fee-cell-value">$150</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Administrative Fee', '2BR-B', '150')">
+                                                                <span class="fee-cell-value">$150</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Administrative Fee', '3BR-A', '150')">
+                                                                <span class="fee-cell-value">$150</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="fee-name-wrapper">
+                                                                    <div class="fee-name-content">
+                                                                        <div class="fee-name">
+                                                                            <span style="font-weight: 500;">Parking Fee</span>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-consistent">Settings Consistent</div>
+                                                                        <div class="fee-meta text-sm text-consistent">Amount Consistent</div>
+                                                                    </div>
+                                                                    <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Parking Fee')" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '1BR-A', '85')">
+                                                                <span class="fee-cell-value">$85</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '1BR-B', '0')">
+                                                                <span class="fee-cell-value">No Fee</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '2BR-A', '85')">
+                                                                <span class="fee-cell-value">$85</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '2BR-B', '0')">
+                                                                <span class="fee-cell-value">No Fee</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '3BR-A', '100')">
+                                                                <span class="fee-cell-value">$100</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                        </tr>
+
+                                                        <!-- MOVE-OUT CHARGES -->
+                                                        <tr class="fees-section-header">
+                                                            <td colspan="6">MOVE-OUT CHARGES</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="fee-name-wrapper">
+                                                                    <div class="fee-name-content">
+                                                                        <div class="fee-name">
+                                                                            <span style="font-weight: 500;">Cleaning Fee</span>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-danger">
+                                                                            <button type="button" class="link-button" onclick="openSettingsVarianceModal('Cleaning Fee')">Settings Vary</button>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-danger">
+                                                                            <button type="button" class="link-button" onclick="openAmountVarianceModal('Cleaning Fee')">Amount Varies</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Cleaning Fee')" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Cleaning Fee', '1BR-A', '200')">
+                                                                <span class="fee-cell-value">$200</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Cleaning Fee', '1BR-B', '200')">
+                                                                <span class="fee-cell-value">$200</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Cleaning Fee', '2BR-A', '250')">
+                                                                <span class="fee-cell-value">$250</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Cleaning Fee', '2BR-B', '250')">
+                                                                <span class="fee-cell-value">$250</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable fee-incomplete-cell" onclick="openEditFeeForUnitTypePageslide('Cleaning Fee', '3BR-A', '300')">
+                                                                <div class="fee-incomplete-main">$300</div>
+                                                                <div class="fee-incomplete-sub">Incomplete setup</div>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Accordion 2: Display Only Fees (Unit Type) -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header" onclick="togglePropertyFeeSection('unit-type-display-fees')">
+                                            <i class="fas fa-chevron-right" id="icon-unit-type-display-fees"></i>
+                                            <span style="font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                                                <span>
+                                                    Display Only Fees
+                                                    <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(1)</span>
+                                                </span>
+                                                <span class="tooltip-wrapper" data-tooltip="These are custom fees not setup to bill in the system by default">
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="accordion-body" id="content-unit-type-display-fees">
+
+                                            <!-- Display Only Fees Toolbar -->
+                                            <div class="table-advanced" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                                                <div class="table-header" style="display: flex; align-items: center;">
+                                                    <div class="table-search mr-4">
+                                                        <i class="fas fa-search"></i>
+                                                        <input type="text" class="table-search-input" placeholder="Search fees..." style="width: 220px;">
+                                                    </div>
+                                                    <div class="count badge rounded-pill badge-primary ml-0">1</div>
+                                                    <div class="count-title">Fees</div>
+                                                </div>
+                                                <button class="btn btn-primary" onclick="openAddFeePageslide()">
+                                                    <i class="fas fa-circle-plus"></i>
+                                                    Add Fee
+                                                </button>
+                                            </div>
+
+                                            <!-- Display Only Fees Table -->
+                                            <div class="fees-table-container">
+                                                <table class="fees-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 300px;">Fee Name</th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">1BR-A</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(16 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">1BR-B</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(12 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">2BR-A</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(24 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">2BR-B</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(18 units)</div>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="unit-type-header">
+                                                                    <div class="unit-type-name">3BR-A</div>
+                                                                    <div class="unit-type-info text-sm text-muted">(8 units)</div>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="fee-name-wrapper">
+                                                                    <div class="fee-name-content">
+                                                                        <div class="fee-name">
+                                                                            <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
+                                                                            <span style="font-weight: 500;">Pet Rent</span>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-danger">
+                                                                            <button type="button" class="link-button" onclick="openSettingsVarianceModal('Pet Rent')">Settings Vary</button>
+                                                                        </div>
+                                                                        <div class="fee-meta text-sm text-danger">
+                                                                            <button type="button" class="link-button" onclick="openAmountVarianceModal('Pet Rent')">Amount Varies</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Pet Rent')" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Pet Rent', '1BR-A', '25')">
+                                                                <span class="fee-cell-value">$25</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Pet Rent', '1BR-B', '25')">
+                                                                <span class="fee-cell-value">$25</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Pet Rent', '2BR-A', '30')">
+                                                                <span class="fee-cell-value">$30</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Pet Rent', '2BR-B', '30')">
+                                                                <span class="fee-cell-value">$30</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                            <td class="fee-amount fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Pet Rent', '3BR-A', '35')">
+                                                                <span class="fee-cell-value">$35</span>
+                                                                <i class="fas fa-pen fee-cell-edit-icon"></i>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-						<div class="count badge rounded-pill badge-primary ml-0">18</div>
-						<div class="count-title">Fees</div>
-                    </div>
-                    <button class="btn btn-light" onclick="openAddFeePageslide()">
-                        <i class="fas fa-circle-plus"></i>
-                        Add Fee
-                    </button>
-                </div>
-
-                <!-- Fees Table -->
-                <div class="fees-table-container">
-                    <table class="fees-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 300px;">Fee Name</th>
-                                <th>
-                                    <div class="unit-type-header">
-                                        <div class="unit-type-name">1BR-A</div>
-                                        <div class="unit-type-info text-sm text-muted">(16 units)</div>
-                                        <div>
-                                            <a href="#" class="text-sm">Standard Move-In</a>
-                                            <span class="text-sm text-muted"> (No overrides)</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="unit-type-header">
-                                        <div class="unit-type-name">1BR-B</div>
-                                        <div class="unit-type-info text-sm text-muted">(12 units)</div>
-                                        <div>
-                                            <a href="#" class="text-sm">Standard Move-In</a>
-                                            <span class="text-sm text-muted"> (No overrides)</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="unit-type-header">
-                                        <div class="unit-type-name">2BR-A</div>
-                                        <div class="unit-type-info text-sm text-muted">(24 units)</div>
-                                        <div>
-                                            <a href="#" class="text-sm">Standard Move-In</a>
-                                            <span class="text-sm text-muted"> (2 overrides)</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="unit-type-header">
-                                        <div class="unit-type-name">2BR-B</div>
-                                        <div class="unit-type-info text-sm text-muted">(18 units)</div>
-                                        <div class="no-template text-sm text-muted">No template</div>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="unit-type-header">
-                                        <div class="unit-type-name">3BR-A</div>
-                                        <div class="unit-type-info text-sm text-muted">(8 units)</div>
-                                        <div>
-                                            <a href="#" class="text-sm">Luxury Units</a>
-                                            <span class="text-sm text-muted"> (1 override)</span>
-                                        </div>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- APPLICATION CHARGES -->
-                            <tr class="fees-section-header">
-                                <td colspan="6">APPLICATION CHARGES</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fee-name-wrapper">
-                                        <div class="fee-name-content">
-                                            <div class="fee-name">
-                                                <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
-                                                <span style="font-weight: 500;">Application Fee</span>
-                                            </div>
-                                            <div class="fee-meta text-sm text-muted">One-Time • Application • Required</div>
-                                        </div>
-                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Application Fee')" style="cursor: pointer;"></i>
-                                    </div>
-                                </td>
-                                <td class="fee-amount">$75</td>
-                                <td class="fee-amount">$75</td>
-                                <td class="fee-amount">$75</td>
-                                <td class="fee-amount">$75</td>
-                                <td class="fee-amount">$75</td>
-                            </tr>
-
-                            <!-- MOVE-IN CHARGES -->
-                            <tr class="fees-section-header">
-                                <td colspan="6">MOVE-IN CHARGES</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fee-name-wrapper">
-                                        <div class="fee-name-content">
-                                            <div class="fee-name">
-                                                <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
-                                                <span style="font-weight: 500;">Security Deposit</span>
-                                            </div>
-                                            <div class="fee-meta text-sm text-muted">Varies by unit type</div>
-                                        </div>
-                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Security Deposit')" style="cursor: pointer;"></i>
-                                    </div>
-                                </td>
-                                <td class="fee-amount">$500</td>
-                                <td class="fee-amount">$500</td>
-                                <td class="fee-amount fee-highlight fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Security Deposit', '2BR-A', '750')">
-                                    <span class="fee-cell-value">$750</span>
-                                    <i class="fas fa-pen fee-cell-edit-icon"></i>
-                                </td>
-                                <td class="fee-amount">$750</td>
-                                <td class="fee-amount">$1000</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fee-name-wrapper">
-                                        <div class="fee-name-content">
-                                            <div class="fee-name">
-                                                <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
-                                                <span style="font-weight: 500;">Administrative Fee</span>
-                                            </div>
-                                            <div class="fee-meta text-sm text-muted">One-Time • Move-in • Taxable</div>
-                                        </div>
-                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Administrative Fee')" style="cursor: pointer;"></i>
-                                    </div>
-                                </td>
-                                <td class="fee-amount">$150</td>
-                                <td class="fee-amount">$150</td>
-                                <td class="fee-amount">$150</td>
-                                <td class="fee-amount">$150</td>
-                                <td class="fee-amount">$150</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fee-name-wrapper">
-                                        <div class="fee-name-content">
-                                            <div class="fee-name">
-                                                <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
-                                                <span style="font-weight: 500;">Parking Fee</span>
-                                            </div>
-                                            <div class="fee-meta text-sm text-muted">Varies by unit type</div>
-                                        </div>
-                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Parking Fee')" style="cursor: pointer;"></i>
-                                    </div>
-                                </td>
-                                <td class="fee-amount">$85</td>
-                                <td class="fee-amount">$85</td>
-                                <td class="fee-amount fee-highlight fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '2BR-A', '85')">
-                                    <span class="fee-cell-value">$85</span>
-                                    <i class="fas fa-pen fee-cell-edit-icon"></i>
-                                </td>
-                                <td class="fee-amount">$85</td>
-                                <td class="fee-amount fee-highlight fee-cell-editable" onclick="openEditFeeForUnitTypePageslide('Parking Fee', '3BR-A', '100')">
-                                    <span class="fee-cell-value">$100</span>
-                                    <i class="fas fa-pen fee-cell-edit-icon"></i>
-                                </td>
-                            </tr>
-
-                            <!-- MOVE-OUT CHARGES -->
-                            <tr class="fees-section-header">
-                                <td colspan="6">MOVE-OUT CHARGES</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fee-name-wrapper">
-                                        <div class="fee-name-content">
-                                            <div class="fee-name">
-                                                <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
-                                                <span style="font-weight: 500;">Cleaning Fee</span>
-                                            </div>
-                                            <div class="fee-meta text-sm text-muted">One-Time • Move-out</div>
-                                        </div>
-                                        <i class="fas fa-pen fee-edit-icon" onclick="openEditFeePageslide('Cleaning Fee')" style="cursor: pointer;"></i>
-                                    </div>
-                                </td>
-                                <td class="fee-amount">$200</td>
-                                <td class="fee-amount">$200</td>
-                                <td class="fee-amount">$250</td>
-                                <td class="fee-amount">$250</td>
-                                <td class="fee-amount">$300</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Legend -->
-                <div style="display: flex; align-items: center; gap: 24px; margin-top: 16px;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i>
-                        <span class="text-sm text-muted">Consistent with unit type</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-circle" style="color: #fbbf24; font-size: 8px;"></i>
-                        <span class="text-sm text-muted">Varies by unit type</span>
                     </div>
                 </div>
                 </div>
@@ -938,6 +1262,11 @@
                 if (pageslideFooter) {
                     pageslideFooter.style.display = 'none';
                 }
+
+                const checkbox = document.getElementById('show-incomplete-only');
+                if (checkbox) {
+                    applyIncompleteSetupsOnlyFilter(checkbox);
+                }
             }, 50);
         }
 
@@ -954,13 +1283,38 @@
             }, 300);
         }
 
-        // Function to open Edit Fee pageslide
+        // Function to open Edit Fee pageslide (applies to selected unit types)
         function openEditFeePageslide(feeName) {
+            // Defaults (UI-only demo values)
+            const defaultsByFee = {
+                'Application Fee': {
+                    chargeCode: 'APP_FEE',
+                    amountType: 'Fixed',
+                    amount: '75.00',
+                    required: true,
+                    refundable: false,
+                    taxable: false,
+                    hideFromCostEstimate: false,
+                    descriptionPlaceholder: 'Describe the fee for applicants',
+                    monthsToStart: '0',
+                    duration: '0',
+                    limit: '0',
+                    chargeClass: 'Admin',
+                    category: 'Required',
+                    timing: 'Application',
+                    frequency: 'One-Time',
+                    method: 'Per Unit',
+                    paymentTo: 'Property',
+                    leaseDocSetting: 'None',
+                }
+            };
+
+            const defaults = defaultsByFee[feeName] || defaultsByFee['Application Fee'];
+
             const headerContent = `
-                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
-                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Edit Fee (All Unit Types)</h2>
-                    <p class="text-sm text-muted" style="margin: 0;">Changes will apply across all unit types at this property</p>
-                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0;">Edit Fee</h2>
+                    <i class="fas fa-times" onclick="closeEditPageslide()" style="cursor: pointer;"></i>
                 </div>
             `;
 
@@ -974,130 +1328,192 @@
                         </div>
                         <div class="form-group">
                             <label for="charge-code" class="form-label">Charge Code</label>
-                            <input type="text" id="charge-code" class="form-input" value="SEC_DEP">
+                            <input type="text" id="charge-code" class="form-input" value="${defaults.chargeCode}">
+                        </div>
+                    </div>
+
+                    <!-- Amount Type and Amount -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px;">
+                        <div class="form-group">
+                            <label for="amount-type" class="form-label">Amount Type</label>
+                            <select id="amount-type" class="form-select">
+                                <option ${defaults.amountType === 'Fixed' ? 'selected' : ''}>Fixed</option>
+                                <option ${defaults.amountType === 'Percentage' ? 'selected' : ''}>Percentage</option>
+                                <option ${defaults.amountType === 'Range' ? 'selected' : ''}>Range</option>
+                                <option ${defaults.amountType === 'Text' ? 'selected' : ''}>Text</option>
+                                <option ${defaults.amountType === 'Average' ? 'selected' : ''}>Average</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="form-label">Amount</label>
+                            <input type="text" id="amount" class="form-input" value="${defaults.amount}">
+                        </div>
+                    </div>
+
+                    <!-- Required/Refundable/Taxable/Hide from Cost Estimate -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 24px;">
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="required" ${defaults.required ? 'checked' : ''} style="width: auto; height: auto;">
+                                <label for="required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="refundable" ${defaults.refundable ? 'checked' : ''} style="width: auto; height: auto;">
+                                <label for="refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="taxable" ${defaults.taxable ? 'checked' : ''} style="width: auto; height: auto;">
+                                <label for="taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="hide-cost" ${defaults.hideFromCostEstimate ? 'checked' : ''} style="width: auto; height: auto;">
+                                <label for="hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Fee Description -->
                     <div class="form-group" style="margin-bottom: 16px;">
                         <label for="fee-description" class="form-label">Fee Description</label>
-                        <textarea id="fee-description" class="form-input" rows="3" style="resize: vertical;">Refundable security deposit</textarea>
+                        <textarea id="fee-description" class="form-input" rows="3" style="resize: vertical;" placeholder="${defaults.descriptionPlaceholder}"></textarea>
                     </div>
 
-                    <!-- Amount Type and Amount -->
+                    <!-- Months to Start / Duration / Limit -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="months-to-start" class="form-label">Months to Start</label>
+                            <input type="text" id="months-to-start" class="form-input" value="${defaults.monthsToStart}">
+                        </div>
+                        <div class="form-group">
+                            <label for="duration" class="form-label">Duration</label>
+                            <input type="text" id="duration" class="form-input" value="${defaults.duration}">
+                        </div>
+                        <div class="form-group">
+                            <label for="limit" class="form-label">Limit</label>
+                            <input type="text" id="limit" class="form-input" value="${defaults.limit}">
+                        </div>
+                    </div>
+
+                    <!-- Charge Class / Category -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
-                            <label for="amount-type" class="form-label">Amount Type</label>
-                            <select id="amount-type" class="form-select">
-                                <option selected>Fixed</option>
-                                <option>Percentage</option>
-                                <option>Range</option>
-                                <option>Text</option>
-                                <option>Average</option>
+                            <label for="charge-class" class="form-label">Charge Class</label>
+                            <select id="charge-class" class="form-select">
+                                <option ${defaults.chargeClass === 'Admin' ? 'selected' : ''}>Admin</option>
+                                <option ${defaults.chargeClass === 'Accounting' ? 'selected' : ''}>Accounting</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="amount" class="form-label">Amount</label>
-                            <input type="text" id="amount" class="form-input" value="750">
-                        </div>
-                    </div>
-
-                    <!-- Category, Timing, Frequency -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
                         <div class="form-group">
                             <label for="category" class="form-label">Category</label>
                             <select id="category" class="form-select">
-                                <option selected>Move-in</option>
-                                <option>Add ons</option>
-                                <option>Situational</option>
-                                <option>Monthly</option>
+                                <option ${defaults.category === 'Required' ? 'selected' : ''}>Required</option>
+                                <option ${defaults.category === 'Add-on' ? 'selected' : ''}>Add-on</option>
+                                <option ${defaults.category === 'Situational' ? 'selected' : ''}>Situational</option>
                             </select>
                         </div>
+                    </div>
+
+                    <!-- Timing / Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
                             <label for="timing" class="form-label">Timing</label>
                             <select id="timing" class="form-select">
-                                <option selected>Move-in</option>
-                                <option>Application</option>
-                                <option>Recurring</option>
-                                <option>Move-out</option>
+                                <option ${defaults.timing === 'Application' ? 'selected' : ''}>Application</option>
+                                <option ${defaults.timing === 'Move-in' ? 'selected' : ''}>Move-in</option>
+                                <option ${defaults.timing === 'Move-out' ? 'selected' : ''}>Move-out</option>
+                                <option ${defaults.timing === 'Monthly' ? 'selected' : ''}>Monthly</option>
+                                <option ${defaults.timing === 'Move-in and Monthly' ? 'selected' : ''}>Move-in and Monthly</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="frequency" class="form-label">Frequency</label>
                             <select id="frequency" class="form-select">
-                                <option selected>Per Lease</option>
-                                <option>One-Time</option>
-                                <option>Per Month</option>
-                                <option>Per Quarter</option>
-                                <option>Per Year</option>
+                                <option ${defaults.frequency === 'One-Time' ? 'selected' : ''}>One-Time</option>
+                                <option ${defaults.frequency === 'Recurring' ? 'selected' : ''}>Recurring</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Fee Properties -->
-                    <div style="margin-bottom: 24px;">
-                        <label class="form-label" style="margin-bottom: 12px; display: block;">Fee Properties</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="hide-cost" style="width: auto; height: auto;">
-                                <label for="hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="taxable" checked style="width: auto; height: auto;">
-                                <label for="taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="required" checked style="width: auto; height: auto;">
-                                <label for="required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="refundable" checked style="width: auto; height: auto;">
-                                <label for="refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="display-only" style="width: auto; height: auto;">
-                                <label for="display-only" style="margin: 0; font-weight: 400; font-size: 14px !important;">Display only</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Charge Class and Method -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
-                        <div class="form-group">
-                            <label for="charge-class" class="form-label">Charge Class</label>
-                            <select id="charge-class" class="form-select">
-                                <option selected>Admin</option>
-                                <option>Amenity</option>
-                                <option>Insurance</option>
-                                <option>Pet</option>
-                                <option>Storage</option>
-                            </select>
-                        </div>
+                    <!-- Method / Payment To -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
                             <label for="method" class="form-label">Method</label>
                             <select id="method" class="form-select">
-                                <option selected>Per Unit</option>
-                                <option>Per Applicant</option>
-                                <option>Per Resident</option>
-                                <option>Per Pet</option>
-                                <option>Per Vehicle</option>
+                                <option ${defaults.method === 'Per Unit' ? 'selected' : ''}>Per Unit</option>
+                                <option ${defaults.method === 'Per Pet' ? 'selected' : ''}>Per Pet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-to" class="form-label">Payment To</label>
+                            <select id="payment-to" class="form-select">
+                                <option ${defaults.paymentTo === 'Property' ? 'selected' : ''}>Property</option>
+                                <option ${defaults.paymentTo === 'Third Party' ? 'selected' : ''}>Third Party</option>
                             </select>
                         </div>
                     </div>
 
+                    <!-- Lease Doc Setting -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="lease-doc-setting" class="form-label">Lease Doc Setting</label>
+                        <select id="lease-doc-setting" class="form-select">
+                            <option ${defaults.leaseDocSetting === 'None' ? 'selected' : ''}>None</option>
+                            <option ${defaults.leaseDocSetting === 'Both' ? 'selected' : ''}>Both</option>
+                            <option ${defaults.leaseDocSetting === 'Lease' ? 'selected' : ''}>Lease</option>
+                            <option ${defaults.leaseDocSetting === 'Renewal' ? 'selected' : ''}>Renewal</option>
+                        </select>
+                    </div>
+
+                    <!-- Apply to Unit Types -->
+                    <div style="margin-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label class="form-label" style="margin: 0;">Apply to Unit Types</label>
+                            <div style="display: flex; gap: 16px;">
+                                <a href="javascript:void(0)" onclick="selectAllUnitTypes()" style="font-size: 14px;">Select All</a>
+                                <span style="color: #d1d5db;">|</span>
+                                <a href="javascript:void(0)" onclick="deselectAllUnitTypes()" style="font-size: 14px;">Deselect All</a>
+                            </div>
+                        </div>
+                        <div style="max-height: 220px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; background: white;">
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-1br-a" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-1br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">1BR-A</label>
+                                    <span class="text-sm text-muted">16 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-1br-b" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-1br-b" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">1BR-B</label>
+                                    <span class="text-sm text-muted">12 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-2br-a" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-2br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">2BR-A</label>
+                                    <span class="text-sm text-muted">24 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-2br-b" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-2br-b" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">2BR-B</label>
+                                    <span class="text-sm text-muted">18 units</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="unit-3br-a" class="unit-type-checkbox" checked style="width: auto; height: auto;">
+                                    <label for="unit-3br-a" style="margin: 0; font-weight: 500; font-size: 14px !important; flex: 1;">3BR-A</label>
+                                    <span class="text-sm text-muted">8 units</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
 
             const footerContent = `
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <button class="btn btn-link text-danger" style="padding-left: 0;">
-                        Remove Fee
-                    </button>
+                    <span class="text-sm text-muted" id="unit-types-count" data-prefix="Applying to">Applying to 5 unit types</span>
                     <div style="display: flex; gap: 12px;">
                         <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
-                        <button class="btn btn-primary">
-                            Save Changes
-                        </button>
+                        <button class="btn btn-primary">Save Changes</button>
                     </div>
                 </div>
             `;
@@ -1131,6 +1547,12 @@
                         pageslideHeader.style.padding = '0';
                         pageslideHeader.style.borderBottom = 'none';
                     }
+
+                    // Checkbox count wiring (reuses helper functions)
+                    updateUnitTypesCount();
+                    document.querySelectorAll('.unit-type-checkbox').forEach(checkbox => {
+                        checkbox.addEventListener('change', updateUnitTypesCount);
+                    });
                 }, 50);
             }
         }
@@ -1140,179 +1562,267 @@
             // Set default values based on fee type
             let chargeCode = '';
             let description = '';
-            let category = 'Move-in';
+            // Category options in this form: Required, Add-on, Situational
+            let category = 'Required';
+            // Timing options: Application, Move-in, Move-out, Monthly, Move-in and Monthly
             let timing = 'Move-in';
+            // Frequency options: One-Time, Recurring
+            let frequency = 'One-Time';
+            // Charge class options: Admin, Accounting
             let chargeClass = 'Admin';
+            // Method options: Per Unit, Per Pet
+            let method = 'Per Unit';
+            // Payment To options: Property, Third Party
+            let paymentTo = 'Property';
+            // Lease Doc Setting options: None, Both, Lease, Renewal
+            let leaseDocSetting = 'None';
+            // Start/duration/limit
+            let monthsToStart = 0;
+            let duration = 0;
+            let limit = 0;
+            // Checkbox defaults
+            let requiredChecked = 'checked';
+            let taxableChecked = '';
+            let refundableChecked = '';
             
             let templateName = 'Standard Move-In';
             
             if (feeName === 'Security Deposit') {
                 chargeCode = 'SEC_DEP';
                 description = 'Refundable security deposit';
+                category = 'Required';
+                timing = 'Move-in';
+                frequency = 'One-Time';
                 chargeClass = 'Admin';
+                refundableChecked = 'checked';
                 templateName = 'Standard Move-In';
             } else if (feeName === 'Parking Fee') {
                 chargeCode = 'PARKING';
                 description = 'Monthly parking fee';
-                category = 'Add ons';
+                category = 'Add-on';
                 timing = 'Move-in';
-                chargeClass = 'Amenity';
+                frequency = 'Recurring';
+                chargeClass = 'Admin';
+                taxableChecked = 'checked';
+                method = 'Per Unit';
                 templateName = unitType === '3BR-A' ? 'Luxury Units' : 'Standard Move-In';
+            } else if (feeName === 'Application Fee') {
+                chargeCode = 'APP_FEE';
+                description = 'Non-refundable application fee';
+                category = 'Required';
+                timing = 'Application';
+                frequency = 'One-Time';
+                chargeClass = 'Admin';
+                taxableChecked = 'checked';
+                templateName = 'Standard Move-In';
+            } else if (feeName === 'Administrative Fee') {
+                chargeCode = 'ADMIN_FEE';
+                description = 'Non-refundable administrative fee';
+                category = 'Required';
+                timing = 'Move-in';
+                frequency = 'One-Time';
+                chargeClass = 'Admin';
+                taxableChecked = 'checked';
+                templateName = 'Standard Move-In';
+            } else if (feeName === 'Cleaning Fee') {
+                chargeCode = 'CLEAN_FEE';
+                description = 'Move-out cleaning fee';
+                category = 'Situational';
+                timing = 'Move-out';
+                frequency = 'One-Time';
+                chargeClass = 'Admin';
+                refundableChecked = '';
+                templateName = 'Standard Move-In';
+            } else if (feeName === 'Pet Rent') {
+                chargeCode = 'PET_RENT';
+                description = 'Monthly pet rent';
+                category = 'Add-on';
+                timing = 'Monthly';
+                frequency = 'Recurring';
+                chargeClass = 'Admin';
+                taxableChecked = 'checked';
+                method = 'Per Pet';
+                templateName = 'Pet-Friendly Units';
             }
             
             const headerContent = `
                 <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
-                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Edit Fee for Unit Type</h2>
-                    <p class="text-sm text-muted" style="margin: 0;">Changes apply to ${unitType} only</p>
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Edit ${feeName} - ${unitType}</h2>
+                    <p class="text-sm text-muted" style="margin: 0;">Changes apply to this unit type only</p>
                     <i class="fas fa-times" onclick="closeEditPageslide()"></i>
                 </div>
             `;
 
             const formContent = `
-                <div style="">
-                    <!-- Unit Type Override Info -->
-                    <div class="alert alert-info" style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
-                        <i class="fas fa-info-circle" style="margin-top: 2px; font-size: 16px;"></i>
-                        <div>
-                            <div style="font-weight: 600; margin-bottom: 4px;">Unit Type Override</div>
-                            <span>This unit type is linked to "${templateName}" template. Any changes here will override the template for this unit type only.</span>
+                <div>
+                    <div class="warning-banner" id="warningBanner" style="display: none;">
+                        <div class="warning-banner-icon">⚠</div>
+                        <div class="warning-banner-text">This function will create a unit type charge as well as the fee structure. These charges will be charged to the tenant at the time selected in the "Charge At" option.</div>
+                    </div>
+                    <div class="info-banner" id="infoBanner" style="display: none;">
+                        <div class="info-banner-icon">i</div>
+                        <div class="info-banner-text" id="infoBannerText">The grayed out settings pull directly from Property Control Settings and cannot be modified here.</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Fee Name</label>
+                            <input type="text" class="form-input" id="feeNameInput" value="${feeName}" placeholder="Enter fee name" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Charge Code</label>
+                            <input type="text" class="form-input" id="chargeCodeInput" value="${chargeCode}" placeholder="Enter charge code" disabled>
                         </div>
                     </div>
 
-                    <!-- Fee Name and Charge Code -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div class="form-row">
                         <div class="form-group">
-                            <label for="fee-name-unit" class="form-label">Fee Name</label>
-                            <input type="text" id="fee-name-unit" class="form-input" value="${feeName}">
-                        </div>
-                        <div class="form-group">
-                            <label for="charge-code-unit" class="form-label">Charge Code</label>
-                            <input type="text" id="charge-code-unit" class="form-input" value="${chargeCode}">
-                        </div>
-                    </div>
-
-                    <!-- Fee Description -->
-                    <div class="form-group" style="margin-bottom: 16px;">
-                        <label for="fee-description-unit" class="form-label">Fee Description</label>
-                        <textarea id="fee-description-unit" class="form-input" rows="3" style="resize: vertical;">${description}</textarea>
-                    </div>
-
-                    <!-- Amount Type and Amount -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label for="amount-type-unit" class="form-label">Amount Type</label>
-                            <select id="amount-type-unit" class="form-select">
-                                <option selected>Fixed</option>
+                            <label class="form-label">Amount Type</label>
+                            <select class="form-select" id="amountTypeSelect" disabled>
+                                <option ${'Fixed' === 'Fixed' ? 'selected' : ''}>Fixed</option>
+                                <option>Variable</option>
                                 <option>Percentage</option>
-                                <option>Range</option>
-                                <option>Text</option>
-                                <option>Average</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="amount-unit" class="form-label">Amount</label>
-                            <input type="text" id="amount-unit" class="form-input" value="${amount}">
+                            <label class="form-label">Amount</label>
+                            <input type="text" class="form-input" id="amountInput" value="${amount}" placeholder="0.00" disabled>
                         </div>
                     </div>
 
-                    <!-- Category, Timing, Frequency -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                    <div class="form-row" id="chargeAtRow" style="display: none;">
                         <div class="form-group">
-                            <label for="category-unit" class="form-label">Category</label>
-                            <select id="category-unit" class="form-select">
-                                <option ${category === 'Move-in' ? 'selected' : ''}>Move-in</option>
-                                <option ${category === 'Add ons' ? 'selected' : ''}>Add ons</option>
-                                <option ${category === 'Situational' ? 'selected' : ''}>Situational</option>
-                                <option ${category === 'Monthly' ? 'selected' : ''}>Monthly</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="timing-unit" class="form-label">Timing</label>
-                            <select id="timing-unit" class="form-select">
-                                <option ${timing === 'Move-in' ? 'selected' : ''}>Move-in</option>
+                            <label class="form-label">Charge At</label>
+                            <select class="form-select" id="chargeAtSelect">
+                                <option value="">Select...</option>
                                 <option ${timing === 'Application' ? 'selected' : ''}>Application</option>
-                                <option ${timing === 'Recurring' ? 'selected' : ''}>Recurring</option>
-                                <option ${timing === 'Move-out' ? 'selected' : ''}>Move-out</option>
+                                <option ${timing === 'Move-in' ? 'selected' : ''}>Move In</option>
+                                <option ${timing === 'Move-out' ? 'selected' : ''}>Move Out</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="frequency-unit" class="form-label">Frequency</label>
-                            <select id="frequency-unit" class="form-select">
-                                <option selected>Per Lease</option>
-                                <option>One-Time</option>
-                                <option>Per Month</option>
-                                <option>Per Quarter</option>
-                                <option>Per Year</option>
-                            </select>
-                        </div>
+                        <div class="form-group"></div>
                     </div>
 
-                    <!-- Fee Properties -->
-                    <div style="margin-bottom: 24px;">
-                        <label class="form-label" style="margin-bottom: 12px; display: block;">Fee Properties</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <!-- Fee flags (match Edit Fee checkbox layout) -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 24px;">
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="hide-cost-unit" style="width: auto; height: auto;">
-                                <label for="hide-cost-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                                <input type="checkbox" id="required" ${requiredChecked} disabled style="width: auto; height: auto;">
+                                <label for="required" style="margin: 0; font-weight: 400; font-size: 14px !important;" class="text-gray">Required</label>
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="taxable-unit" checked style="width: auto; height: auto;">
-                                <label for="taxable-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                                <input type="checkbox" id="refundable" ${refundableChecked} disabled style="width: auto; height: auto;">
+                                <label for="refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;" class="text-gray">Refundable</label>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="taxable" ${taxableChecked} disabled style="width: auto; height: auto;">
+                                <label for="taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;" class="text-gray">Taxable</label>
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="required-unit" checked style="width: auto; height: auto;">
-                                <label for="required-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="refundable-unit" checked style="width: auto; height: auto;">
-                                <label for="refundable-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="display-only-unit" style="width: auto; height: auto;">
-                                <label for="display-only-unit" style="margin: 0; font-weight: 400; font-size: 14px !important;">Display only</label>
+                                <input type="checkbox" id="hideEstimate" style="width: auto; height: auto;">
+                                <label for="hideEstimate" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Charge Class and Method -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
+                    <div class="form-group full-width">
+                        <label class="form-label">Fee Description</label>
+                        <textarea class="form-textarea" id="feeDescription" placeholder="Describe the fee for applicants">${description}</textarea>
+                    </div>
+
+                    <div class="form-row-three">
                         <div class="form-group">
-                            <label for="charge-class-unit" class="form-label">Charge Class</label>
-                            <select id="charge-class-unit" class="form-select">
+                            <label class="form-label">Months to Start</label>
+                            <input type="number" class="form-input" id="monthsToStart" value="${monthsToStart}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Duration</label>
+                            <input type="number" class="form-input" id="duration" value="${duration}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Limit</label>
+                            <input type="number" class="form-input" id="limit" value="${limit}">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Charge Class</label>
+                            <select class="form-select" id="chargeClassSelect">
                                 <option ${chargeClass === 'Admin' ? 'selected' : ''}>Admin</option>
-                                <option ${chargeClass === 'Amenity' ? 'selected' : ''}>Amenity</option>
-                                <option ${chargeClass === 'Insurance' ? 'selected' : ''}>Insurance</option>
-                                <option ${chargeClass === 'Pet' ? 'selected' : ''}>Pet</option>
-                                <option ${chargeClass === 'Storage' ? 'selected' : ''}>Storage</option>
+                                <option ${chargeClass === 'Accounting' ? 'selected' : ''}>Accounting</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="method-unit" class="form-label">Method</label>
-                            <select id="method-unit" class="form-select">
-                                <option selected>Per Unit</option>
-                                <option>Per Applicant</option>
-                                <option>Per Resident</option>
-                                <option>Per Pet</option>
-                                <option>Per Vehicle</option>
+                            <label class="form-label">Category</label>
+                            <select class="form-select" id="categorySelect">
+                                <option ${category === 'Required' ? 'selected' : ''}>Required</option>
+                                <option ${category === 'Add-on' ? 'selected' : ''}>Add-on</option>
+                                <option ${category === 'Situational' ? 'selected' : ''}>Situational</option>
                             </select>
                         </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Timing</label>
+                            <select class="form-select" id="timingSelect">
+                                <option ${timing === 'Application' ? 'selected' : ''}>Application</option>
+                                <option ${timing === 'Move-in' ? 'selected' : ''}>Move-in</option>
+                                <option ${timing === 'Move-out' ? 'selected' : ''}>Move-out</option>
+                                <option ${timing === 'Monthly' ? 'selected' : ''}>Monthly</option>
+                                <option ${timing === 'Move-in and Monthly' ? 'selected' : ''}>Move-in and Monthly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Frequency</label>
+                            <select class="form-select" id="frequencySelect">
+                                <option ${frequency === 'One-Time' ? 'selected' : ''}>One-Time</option>
+                                <option ${frequency === 'Recurring' ? 'selected' : ''}>Recurring</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Method</label>
+                            <select class="form-select" id="methodSelect">
+                                <option ${method === 'Per Unit' ? 'selected' : ''}>Per Unit</option>
+                                <option ${method === 'Per Pet' ? 'selected' : ''}>Per Pet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Payment To</label>
+                            <select class="form-select" id="paymentToSelect">
+                                <option ${paymentTo === 'Property' ? 'selected' : ''}>Property</option>
+                                <option ${paymentTo === 'Third Party' ? 'selected' : ''}>Third Party</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Lease Doc Setting</label>
+                            <select class="form-select" id="leaseDocSettingSelect">
+                                <option ${leaseDocSetting === 'None' ? 'selected' : ''}>None</option>
+                                <option ${leaseDocSetting === 'Both' ? 'selected' : ''}>Both</option>
+                                <option ${leaseDocSetting === 'Lease' ? 'selected' : ''}>Lease</option>
+                                <option ${leaseDocSetting === 'Renewal' ? 'selected' : ''}>Renewal</option>
+                            </select>
+                        </div>
+                        <div class="form-group"></div>
+                    </div>
                 </div>
             `;
 
             const footerContent = `
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <button class="btn btn-link text-danger" style="padding-left: 0;">
-                        Remove Fee
+                <div style="display: flex; justify-content: flex-end; align-items: center; width: 100%; gap: 12px;">
+                    <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                    <button class="btn btn-primary">
+                        Save Changes
                     </button>
-                    <div style="display: flex; gap: 12px;">
-                        <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-save"></i>
-                            Save Changes
-                        </button>
-                    </div>
                 </div>
             `;
 
@@ -1351,31 +1861,29 @@
         // Function to open Add Fee pageslide
         function openAddFeePageslide() {
             const headerContent = `
-                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
-                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Add New Fee</h2>
-                    <p class="text-sm text-muted" style="margin: 0;">Create a new fee and select which unit types to apply it to</p>
-                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0;">Add New Charge and Fee</h2>
+                    <i class="fas fa-times" onclick="closeEditPageslide()" style="cursor: pointer;"></i>
                 </div>
             `;
 
             const formContent = `
                 <div style="">
+                    <div class="warning-banner" style="margin-bottom: 16px;">
+                        <div class="warning-banner-icon">⚠</div>
+                        <div class="warning-banner-text">This function will create a unit type charge as well as the fee structure.</div>
+                    </div>
+
                     <!-- Fee Name and Charge Code -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
                             <label for="new-fee-name" class="form-label">Fee Name</label>
-                            <input type="text" id="new-fee-name" class="form-input" placeholder="e.g., Pet Deposit">
+                            <input type="text" id="new-fee-name" class="form-input" placeholder="Enter fee name">
                         </div>
                         <div class="form-group">
                             <label for="new-charge-code" class="form-label">Charge Code</label>
-                            <input type="text" id="new-charge-code" class="form-input" placeholder="e.g., PET_DEP">
+                            <input type="text" id="new-charge-code" class="form-input" placeholder="Enter charge code">
                         </div>
-                    </div>
-
-                    <!-- Fee Description -->
-                    <div class="form-group" style="margin-bottom: 16px;">
-                        <label for="new-fee-description" class="form-label">Fee Description</label>
-                        <textarea id="new-fee-description" class="form-input" rows="3" style="resize: vertical;" placeholder="Describe the fee for applicants"></textarea>
                     </div>
 
                     <!-- Amount Type and Amount -->
@@ -1384,10 +1892,8 @@
                             <label for="new-amount-type" class="form-label">Amount Type</label>
                             <select id="new-amount-type" class="form-select">
                                 <option selected>Fixed</option>
+                                <option>Variable</option>
                                 <option>Percentage</option>
-                                <option>Range</option>
-                                <option>Text</option>
-                                <option>Average</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1396,49 +1902,9 @@
                         </div>
                     </div>
 
-                    <!-- Category, Timing, Frequency -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-                        <div class="form-group">
-                            <label for="new-category" class="form-label">Category</label>
-                            <select id="new-category" class="form-select">
-                                <option selected>Move-in</option>
-                                <option>Add ons</option>
-                                <option>Situational</option>
-                                <option>Monthly</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-timing" class="form-label">Timing</label>
-                            <select id="new-timing" class="form-select">
-                                <option selected>Move-in</option>
-                                <option>Application</option>
-                                <option>Recurring</option>
-                                <option>Move-out</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-frequency" class="form-label">Frequency</label>
-                            <select id="new-frequency" class="form-select">
-                                <option selected>One-Time</option>
-                                <option>Per Lease</option>
-                                <option>Per Month</option>
-                                <option>Per Quarter</option>
-                                <option>Per Year</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Fee Properties -->
-                    <div style="margin-bottom: 24px;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-hide-cost" style="width: auto; height: auto;">
-                                <label for="new-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-taxable" style="width: auto; height: auto;">
-                                <label for="new-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
-                            </div>
+                    <!-- Fee flags (match Edit Fee checkbox layout) -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 24px;">
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <input type="checkbox" id="new-required" checked style="width: auto; height: auto;">
                                 <label for="new-required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
@@ -1447,11 +1913,108 @@
                                 <input type="checkbox" id="new-refundable" style="width: auto; height: auto;">
                                 <label for="new-refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
                             </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-display-only" style="width: auto; height: auto;">
-                                <label for="new-display-only" style="margin: 0; font-weight: 400; font-size: 14px !important;">Display only</label>
+                                <input type="checkbox" id="new-taxable" style="width: auto; height: auto;">
+                                <label for="new-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="new-hide-cost" style="width: auto; height: auto;">
+                                <label for="new-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Fee Description -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="new-fee-description" class="form-label">Fee Description</label>
+                        <textarea id="new-fee-description" class="form-textarea" rows="3" placeholder="Describe the fee for applicants"></textarea>
+                    </div>
+
+                    <!-- Months to Start / Duration / Limit -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-months-to-start" class="form-label">Months to Start</label>
+                            <input type="number" id="new-months-to-start" class="form-input" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-duration" class="form-label">Duration</label>
+                            <input type="number" id="new-duration" class="form-input" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-limit" class="form-label">Limit</label>
+                            <input type="number" id="new-limit" class="form-input" value="0">
+                        </div>
+                    </div>
+
+                    <!-- Charge Class / Category -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-charge-class" class="form-label">Charge Class</label>
+                            <select id="new-charge-class" class="form-select">
+                                <option selected>Admin</option>
+                                <option>Accounting</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-category" class="form-label">Category</label>
+                            <select id="new-category" class="form-select">
+                                <option selected>Required</option>
+                                <option>Add-on</option>
+                                <option>Situational</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Timing / Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-timing" class="form-label">Timing</label>
+                            <select id="new-timing" class="form-select">
+                                <option selected>Application</option>
+                                <option>Move-in</option>
+                                <option>Move-out</option>
+                                <option>Monthly</option>
+                                <option>Move-in and Monthly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-frequency" class="form-label">Frequency</label>
+                            <select id="new-frequency" class="form-select">
+                                <option selected>One-Time</option>
+                                <option>Recurring</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Method / Payment To -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="new-method" class="form-label">Method</label>
+                            <select id="new-method" class="form-select">
+                                <option selected>Per Unit</option>
+                                <option>Per Pet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-payment-to" class="form-label">Payment To</label>
+                            <select id="new-payment-to" class="form-select">
+                                <option selected>Property</option>
+                                <option>Third Party</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Lease Doc Setting -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="new-lease-doc-setting" class="form-label">Lease Doc Setting</label>
+                        <select id="new-lease-doc-setting" class="form-select">
+                            <option selected>None</option>
+                            <option>Both</option>
+                            <option>Lease</option>
+                            <option>Renewal</option>
+                        </select>
                     </div>
 
                     <!-- Apply to Unit Types -->
@@ -1464,7 +2027,7 @@
                                 <a href="javascript:void(0)" onclick="deselectAllUnitTypes()" style="font-size: 14px;">Deselect All</a>
                             </div>
                         </div>
-                        <div style="max-height: 300px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px;">
+                        <div style="max-height: 300px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; background: white;">
                             <div style="display: flex; flex-direction: column; gap: 8px;">
                                 <div style="display: flex; align-items: center; gap: 8px;">
                                     <input type="checkbox" id="unit-1br-a" class="unit-type-checkbox" checked style="width: auto; height: auto;">
@@ -1499,7 +2062,7 @@
 
             const footerContent = `
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <span class="text-sm text-muted" id="unit-types-count">Adding to 5 unit types</span>
+                    <span class="text-sm text-muted" id="unit-types-count" data-prefix="Applying to">Applying to 5 unit types</span>
                     <div style="display: flex; gap: 12px;">
                         <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
                         <button class="btn btn-primary">
@@ -1547,179 +2110,6 @@
             }
         }
 
-        // Function to open Add Property Fee pageslide
-        function openAddPropertyFeePageslide() {
-            const headerContent = `
-                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
-                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Add Custom Property Fee</h2>
-                    <p class="text-sm text-muted" style="margin: 0;">Create a new property-level fee</p>
-                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
-                </div>
-            `;
-
-            const formContent = `
-                <div style="">
-                    <!-- Fee Name and Charge Code -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label for="new-property-fee-name" class="form-label">Fee Name</label>
-                            <input type="text" id="new-property-fee-name" class="form-input" placeholder="e.g., Pet Deposit">
-                        </div>
-                        <div class="form-group">
-                            <label for="new-property-charge-code" class="form-label">Charge Code</label>
-                            <input type="text" id="new-property-charge-code" class="form-input" placeholder="e.g., PET_DEP">
-                        </div>
-                    </div>
-
-                    <!-- Fee Description -->
-                    <div class="form-group" style="margin-bottom: 16px;">
-                        <label for="new-property-fee-description" class="form-label">Fee Description</label>
-                        <textarea id="new-property-fee-description" class="form-input" rows="3" style="resize: vertical;" placeholder="Describe the fee"></textarea>
-                    </div>
-
-                    <!-- Amount Type and Amount -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label for="new-property-amount-type" class="form-label">Amount Type</label>
-                            <select id="new-property-amount-type" class="form-select">
-                                <option selected>Fixed</option>
-                                <option>Percentage</option>
-                                <option>Range</option>
-                                <option>Text</option>
-                                <option>Average</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-property-amount" class="form-label">Amount</label>
-                            <input type="text" id="new-property-amount" class="form-input" value="0.00">
-                        </div>
-                    </div>
-
-                    <!-- Category, Timing, Frequency -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-                        <div class="form-group">
-                            <label for="new-property-category" class="form-label">Category</label>
-                            <select id="new-property-category" class="form-select">
-                                <option selected>Move-in</option>
-                                <option>Add ons</option>
-                                <option>Situational</option>
-                                <option>Monthly</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-property-timing" class="form-label">Timing</label>
-                            <select id="new-property-timing" class="form-select">
-                                <option selected>Move-in</option>
-                                <option>Application</option>
-                                <option>Recurring</option>
-                                <option>Move-out</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-property-frequency" class="form-label">Frequency</label>
-                            <select id="new-property-frequency" class="form-select">
-                                <option selected>One-Time</option>
-                                <option>Per Lease</option>
-                                <option>Per Month</option>
-                                <option>Per Quarter</option>
-                                <option>Per Year</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Fee Properties -->
-                    <div style="margin-bottom: 24px;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-property-hide-cost" style="width: auto; height: auto;">
-                                <label for="new-property-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-property-taxable" style="width: auto; height: auto;">
-                                <label for="new-property-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-property-required" checked style="width: auto; height: auto;">
-                                <label for="new-property-required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-property-refundable" style="width: auto; height: auto;">
-                                <label for="new-property-refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="new-property-display-only" style="width: auto; height: auto;">
-                                <label for="new-property-display-only" style="margin: 0; font-weight: 400; font-size: 14px !important;">Display only</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Charge Class and Method -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
-                        <div class="form-group">
-                            <label for="new-property-charge-class" class="form-label">Charge Class</label>
-                            <select id="new-property-charge-class" class="form-select">
-                                <option selected>Admin</option>
-                                <option>Amenity</option>
-                                <option>Insurance</option>
-                                <option>Pet</option>
-                                <option>Storage</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-property-method" class="form-label">Method</label>
-                            <select id="new-property-method" class="form-select">
-                                <option selected>Per Unit</option>
-                                <option>Per Applicant</option>
-                                <option>Per Resident</option>
-                                <option>Per Pet</option>
-                                <option>Per Vehicle</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            const footerContent = `
-                <div style="display: flex; justify-content: flex-end; align-items: center; width: 100%; gap: 12px;">
-                    <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
-                    <button class="btn btn-primary">
-                        Add Fee
-                    </button>
-                </div>
-            `;
-
-            // Open edit pageslide in second container
-            const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
-            const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
-            const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
-            const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
-            
-            if (editOverlay && editPageslide) {
-                // Set content
-                if (editBody) editBody.innerHTML = formContent;
-                if (editFooter) editFooter.innerHTML = footerContent;
-                
-                // Set size
-                editPageslide.setAttribute('data-pageslide-size', 'md');
-                
-                // Show pageslide
-                editOverlay.classList.add('active');
-                setTimeout(() => {
-                    editPageslide.classList.add('active');
-                }, 10);
-
-                // Replace default header with custom header
-                setTimeout(() => {
-                    const pageslideHeader = document.querySelector('#pageslide-edit-container .pageslide-header');
-                    if (pageslideHeader) {
-                        pageslideHeader.innerHTML = headerContent;
-                        pageslideHeader.style.padding = '0';
-                        pageslideHeader.style.borderBottom = 'none';
-                    }
-                }, 50);
-            }
-        }
-
         // Helper functions for unit type selection
         function selectAllUnitTypes() {
             document.querySelectorAll('.unit-type-checkbox').forEach(checkbox => {
@@ -1739,7 +2129,8 @@
             const checkedCount = document.querySelectorAll('.unit-type-checkbox:checked').length;
             const countElement = document.getElementById('unit-types-count');
             if (countElement) {
-                countElement.textContent = `Adding to ${checkedCount} unit type${checkedCount !== 1 ? 's' : ''}`;
+                const prefix = countElement.getAttribute('data-prefix') || 'Adding to';
+                countElement.textContent = `${prefix} ${checkedCount} unit type${checkedCount !== 1 ? 's' : ''}`;
             }
         }
 
