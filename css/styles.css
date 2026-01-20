@@ -586,6 +586,202 @@ body {
     color: #1f2937;
 }
 
+/* Unit Type Fee Flyout Layout */
+.flyout-body {
+    padding: 16px 20px 20px 20px;
+    max-width: 640px;
+}
+
+.warning-banner,
+.info-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.warning-banner {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.warning-banner-icon {
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.info-banner {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+}
+
+.info-banner-icon {
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.form-row,
+.form-row-three {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    margin-bottom: 12px;
+}
+
+.form-row-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+}
+
+.form-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 12px;
+    font-size: 12px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-checkbox input[type="checkbox"] {
+    width: auto;
+    height: auto;
+}
+
+.form-textarea {
+    width: 100%;
+    min-height: 72px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    font-size: 13px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.unit-types-section-flyout {
+    margin-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 12px;
+}
+
+.section-header-flyout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.unit-list {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.unit-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 13px;
+}
+
+.unit-item-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.unit-count-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.link-button {
+    border: none;
+    background: none;
+    color: #0072ce;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Danger-styled inline links inside fee meta (Settings Vary / Amount Varies) */
+.fee-meta.text-sm.text-danger .link-button {
+    color: #c62828;
+    text-decoration: underline;
+}
+
+.fee-meta.text-sm.text-danger .link-button:hover {
+    color: #b71c1c;
+}
+
+/* Disabled field styling */
+.form-input:disabled,
+.form-select:disabled,
+.form-textarea:disabled {
+    background-color: #f3f4f6 !important;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+}
+
+.text-gray {
+    color: #9ca3af;
+}
+
+/* Consistent settings/amount helper text */
+.text-consistent {
+    color: #2e7d32;
+}
+
+/* New checkbox layout for Unit Type fee flyout */
+.unit-fee-flags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 12px;
+}
+
+.unit-fee-flag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.unit-fee-flag input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    accent-color: #0072ce;
+}
+
+/* Checkbox layout in unit type fee flyout */
+.flyout-body .form-checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+.flyout-body .form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .table-search {
     position: relative;
     display: flex;
@@ -1165,8 +1361,56 @@ body {
 
 
 .card-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
+}
+
+/* Generic Bootstrap-style tooltip for inline info icons */
+.tooltip-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: default;
+}
+
+.tooltip-wrapper[data-tooltip]::after,
+.tooltip-wrapper[data-tooltip]::before {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tooltip-wrapper[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #212121;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.35;
+    width: max-content;
+    min-width: 260px;
+    max-width: min(720px, calc(100vw - 32px));
+    white-space: normal;
+    overflow-wrap: anywhere;
+    z-index: 100000;
+    opacity: 1;
+}
+
+.tooltip-wrapper[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #212121;
+    z-index: 100000;
+    opacity: 1;
 }
 
 .card-content {
@@ -1727,6 +1971,29 @@ body {
     cursor: pointer;
 }
 
+/* Checkbox layout specifically for pageslide edit forms (Unit Type fees) */
+.pageslide-body .form-checkbox-group {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+}
+
+.pageslide-body .form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: auto;
+    height: auto;
+}
+
+.pageslide-body .form-checkbox input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    accent-color: #0072ce;
+}
+
 .form-radio-group {
     display: flex;
     flex-wrap: wrap;
@@ -1999,7 +2266,10 @@ body {
     border-radius: 4px;
     font-size: 11px;
     font-weight: 500;
-    white-space: nowrap;
+    max-width: min(560px, calc(100vw - 32px));
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
     margin-bottom: 4px;
     z-index: 1000;
     opacity: 0;
@@ -6077,6 +6347,10 @@ input[type="number"].form-input {
     border-right: none;
 }
 
+.modal-body .fees-table thead th {
+    background: #ffffff;
+}
+
 
 /* Unit Type Header in Table */
 .unit-type-header {
@@ -6107,7 +6381,7 @@ input[type="number"].form-input {
 }
 
 .fees-table tbody tr:hover {
-    background-color: #00bdff08;
+    background-color: transparent;
 }
 
 .fees-table tbody tr.fees-section-header:hover {
@@ -6157,7 +6431,8 @@ input[type="number"].form-input {
     font-size: 14px;
 }
 
-.fees-table tbody tr:hover .fee-edit-icon {
+.fees-table .fee-name-wrapper:hover .fee-edit-icon,
+.fees-table tbody td:first-child:hover .fee-edit-icon {
     opacity: 1;
 }
 
@@ -6216,8 +6491,79 @@ input[type="number"].form-input {
     transition: background-color 0.2s ease;
 }
 
-.fee-cell-editable:hover {
-    background-color: #fff0b3 !important;
+.fee-cell-editable:not(.fee-incomplete-cell):hover {
+    background-color: #00bdff08 !important;
+}
+
+/* Hover highlight only for hovered cells (not entire rows) */
+.fees-table tbody tr:not(.fees-section-header) td:hover {
+    background-color: #00bdff08;
+}
+
+/* Preserve special cell backgrounds on hover */
+.fees-table tbody tr:not(.fees-section-header) td.fee-incomplete-cell:hover,
+.fee-cell-editable.fee-incomplete-cell:hover {
+    background-color: #fbd5d3 !important;
+}
+
+/* Incomplete unit-type fee cell (e.g., Cleaning Fee 3BR-A) */
+.fee-incomplete-cell {
+    background-color: #fde8e7;
+    color: #b91c1c;
+}
+
+.fee-incomplete-cell .fee-incomplete-main {
+    font-weight: 500;
+}
+
+.fee-incomplete-cell .fee-incomplete-sub {
+    font-size: 11px;
+}
+
+/* Amount variance modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 12000;
+}
+
+.modal-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    width: 520px;
+    max-width: 90%;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-close {
+    border: none;
+    background: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.modal-body {
+    padding: 16px 20px 20px 20px;
 }
 
 .fee-cell-value {
