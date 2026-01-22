@@ -699,13 +699,13 @@
             `;
 
             const bodyContent = `
-                <div style="padding: 24px; max-width: 1400px; margin: 0 auto;">
+                <div class="fees-pageslide-content" style="padding: 24px; max-width: 1400px; margin: 0 auto;">
                 <!-- Property Card with Accordions -->
                 <div class="card card-shadow-static" style="margin-bottom: 24px;">
                     <div class="card-content" style="padding: 16px 20px;">
                         <div class="card-section" style="margin-bottom: 0;">
-                            <div class="card-section-header" style="border-bottom: none; padding-bottom: 4px; margin-bottom: 8px;">
-                                <h3 class="card-title" style="font-size: 15px; font-weight: 600; margin: 0;">Property</h3>
+                            <div class="card-section-header" style="border-bottom: none; padding-bottom: 4px; margin-bottom: 16px;">
+                                <h3 class="card-title">Property</h3>
                             </div>
                             <div class="card-section-content">
                                 <div class="accordion" style="margin-bottom: 0;">
@@ -720,13 +720,13 @@
                                                     <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(4)</span>
                                                 </span>
                                                 <span class="tooltip-wrapper" data-tooltip="These fees pull from your property control settings">
-                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #0264b3;"></i>
                                                 </span>
                                             </span>
                                         </div>
                                         <div class="accordion-body show" id="content-property-control-fees">
                                             <div class="table-container">
-                                                <table class="data-table table-compact" style="max-width: 600px;">
+                                                <table class="data-table table-compact" style="width: 100%;">
                                                     <thead>
                                                         <tr>
                                                             <th>Fee Name</th>
@@ -786,7 +786,7 @@
                                                     <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(2)</span>
                                                 </span>
                                                 <span class="tooltip-wrapper" data-tooltip="These are custom fees that are not setup to bill in the system by default">
-                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #0264b3;"></i>
                                                 </span>
                                             </span>
                                         </div>
@@ -798,7 +798,7 @@
                                                 </button>
                                             </div>
                                             <div class="table-container">
-                                                <table class="data-table table-compact" style="max-width: 600px;">
+                                                <table class="data-table table-compact" style="width: 100%;">
                                                     <thead>
                                                         <tr>
                                                             <th>Fee Name</th>
@@ -840,8 +840,8 @@
                 <div class="card card-shadow-static">
                     <div class="card-content" style="padding: 16px 20px;">
                         <div class="card-section" style="margin-bottom: 0;">
-                            <div class="card-section-header" style="border-bottom: none; padding-bottom: 4px; margin-bottom: 8px;">
-                                <h3 class="card-title" style="font-size: 15px; font-weight: 600; margin: 0;">Unit Type</h3>
+                            <div class="card-section-header" style="border-bottom: none; padding-bottom: 4px; margin-bottom: 16px;">
+                                <h3 class="card-title">Unit Type</h3>
                             </div>
                             <div class="card-section-content">
                                 <div class="accordion" style="margin-bottom: 0;">
@@ -856,7 +856,7 @@
                                                     <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(5)</span>
                                                 </span>
                                                 <span class="tooltip-wrapper" data-tooltip="These fees pull from unit type setup screen">
-                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #0264b3;"></i>
                                                 </span>
                                             </span>
                                         </div>
@@ -1133,7 +1133,7 @@
                                                     <span style="font-size: 12px; color: #6b7280; font-weight: 400;">(1)</span>
                                                 </span>
                                                 <span class="tooltip-wrapper" data-tooltip="These are custom fees not setup to bill in the system by default">
-                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #9ca3af;"></i>
+                                                    <i class="fas fa-info-circle" style="font-size: 12px; color: #0264b3;"></i>
                                                 </span>
                                             </span>
                                         </div>
@@ -1875,6 +1875,11 @@
 
             const formContent = `
                 <div style="">
+                    <div class="alert alert-warning" style="margin-bottom: 16px; display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-triangle-exclamation text-warning" style="margin-top: 2px;"></i>
+                        <div>This function will create a unit type charge as well as the fee structure. These charges will be charged to the tenant at the time selected in the "Charge At" option.</div>
+                    </div>
+
                     <!-- Fee Name and Charge Code -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
@@ -1901,6 +1906,20 @@
                             <label for="new-amount" class="form-label">Amount</label>
                             <input type="text" id="new-amount" class="form-input" value="0.00">
                         </div>
+                    </div>
+
+                    <!-- Charge At -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label class="form-label">Charge At</label>
+                            <select class="form-select" id="chargeAtSelect">
+                                <option value="">Select...</option>
+                                <option>Application</option>
+                                <option>Move In</option>
+                                <option>Move Out</option>
+                            </select>
+                        </div>
+                        <div class="form-group"></div>
                     </div>
 
                     <!-- Fee flags (match Edit Fee checkbox layout) -->
@@ -2354,7 +2373,7 @@
 
                     <!-- Template Sync Mode Alert -->
                     <div class="alert alert-info" style="margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
-                        <i class="fas fa-info-circle" style="margin-top: 2px;"></i>
+                        <i class="fas fa-info-circle text-info" style="margin-top: 2px;"></i>
                         <div>
                             <div style="display: block; margin-bottom: 4px;">Template Sync Mode</div>
                             <span>This template has auto-sync enabled. Unit types will automatically receive future template updates.</span>
@@ -2520,7 +2539,7 @@
             const formContent = `
                 <div style="">
                     <div class="alert alert-info" style="margin-bottom: 16px; display: flex; align-items: flex-start; gap: 12px;">
-                        <i class="fas fa-circle-info" style="margin-top: 2px;"></i>
+                        <i class="fas fa-circle-info text-info" style="margin-top: 2px;"></i>
                         <div>The grayed out settings pull directly from Property Control Settings and cannot be modified here.</div>
                     </div>
 
