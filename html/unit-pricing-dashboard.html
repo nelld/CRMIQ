@@ -712,8 +712,8 @@
 
                                     <!-- Section 1: Property Control Fees -->
                                     <div class="accordion-item">
-                                        <div class="accordion-header" onclick="togglePropertyFeeSection('property-control-fees')">
-                                            <i class="fas fa-chevron-right" id="icon-property-control-fees"></i>
+                                        <div class="accordion-header expanded" onclick="togglePropertyFeeSection('property-control-fees')">
+                                            <i class="fas fa-chevron-right" id="icon-property-control-fees" style="transform: rotate(90deg);"></i>
                                             <span style="font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
                                                 <span>
                                                     Property Control Fees
@@ -724,7 +724,7 @@
                                                 </span>
                                             </span>
                                         </div>
-                                        <div class="accordion-body" id="content-property-control-fees">
+                                        <div class="accordion-body show" id="content-property-control-fees">
                                             <div class="table-container">
                                                 <table class="data-table table-compact" style="max-width: 600px;">
                                                     <thead>
@@ -739,7 +739,7 @@
                                                             <td style="text-align: right;">
                                                                 <span class="property-fee-amount" onclick="openEditPropertyFee('Late Fee', '30')">
                                                                     $30
-                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                    <i class="fas fa-pen" style="font-size: 14px; margin-left: 8px;"></i>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -748,7 +748,7 @@
                                                             <td style="text-align: right;">
                                                                 <span class="property-fee-amount" onclick="openEditPropertyFee('Month to Month', '175')">
                                                                     $175
-                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                    <i class="fas fa-pen" style="font-size: 14px; margin-left: 8px;"></i>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -757,7 +757,7 @@
                                                             <td style="text-align: right;">
                                                                 <span class="property-fee-amount" onclick="openEditPropertyFee('Transfer Fee', '125')">
                                                                     $125
-                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                    <i class="fas fa-pen" style="font-size: 14px; margin-left: 8px;"></i>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -766,7 +766,7 @@
                                                             <td style="text-align: right;">
                                                                 <span class="property-fee-amount" onclick="openEditPropertyFee('Lease Renewal Fee', '85')">
                                                                     $85
-                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                    <i class="fas fa-pen" style="font-size: 14px; margin-left: 8px;"></i>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -778,8 +778,8 @@
 
                                     <!-- Section 2: Display Only Fees -->
                                     <div class="accordion-item">
-                                        <div class="accordion-header" onclick="togglePropertyFeeSection('custom-property-fees')">
-                                            <i class="fas fa-chevron-right" id="icon-custom-property-fees"></i>
+                                        <div class="accordion-header expanded" onclick="togglePropertyFeeSection('custom-property-fees')">
+                                            <i class="fas fa-chevron-right" id="icon-custom-property-fees" style="transform: rotate(90deg);"></i>
                                             <span style="font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
                                                 <span>
                                                     Display Only Fees
@@ -790,7 +790,13 @@
                                                 </span>
                                             </span>
                                         </div>
-                                        <div class="accordion-body" id="content-custom-property-fees">
+                                        <div class="accordion-body show" id="content-custom-property-fees">
+                                            <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
+                                                <button class="btn btn-primary" onclick="openAddPropertyDisplayOnlyFeePageslide()">
+                                                    <i class="fas fa-circle-plus"></i>
+                                                    Add Fee
+                                                </button>
+                                            </div>
                                             <div class="table-container">
                                                 <table class="data-table table-compact" style="max-width: 600px;">
                                                     <thead>
@@ -805,7 +811,7 @@
                                                             <td style="text-align: right;">
                                                                 <span class="property-fee-amount" onclick="openEditPropertyFee('Utility billing setup fee', '15')">
                                                                     $15
-                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                    <i class="fas fa-pen" style="font-size: 14px; margin-left: 8px;"></i>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -814,7 +820,7 @@
                                                             <td style="text-align: right;">
                                                                 <span class="property-fee-amount" onclick="openEditPropertyFee('Club house rental fee', '50')">
                                                                     $50
-                                                                    <i class="fas fa-pen" style="font-size: 10px; margin-left: 8px;"></i>
+                                                                    <i class="fas fa-pen" style="font-size: 14px; margin-left: 8px;"></i>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -1869,11 +1875,6 @@
 
             const formContent = `
                 <div style="">
-                    <div class="warning-banner" style="margin-bottom: 16px;">
-                        <div class="warning-banner-icon">⚠</div>
-                        <div class="warning-banner-text">This function will create a unit type charge as well as the fee structure.</div>
-                    </div>
-
                     <!-- Fee Name and Charge Code -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
@@ -2110,6 +2111,196 @@
             }
         }
 
+        // Property > Display Only Fees: Add Fee pageslide (no unit type selection)
+        function openAddPropertyDisplayOnlyFeePageslide() {
+            const headerContent = `
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0;">Add New Fee</h2>
+                    <i class="fas fa-times" onclick="closeEditPageslide()" style="cursor: pointer;"></i>
+                </div>
+            `;
+
+            const formContent = `
+                <div style="">
+                    <!-- Fee Name and Charge Code -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-new-fee-name" class="form-label">Fee Name</label>
+                            <input type="text" id="property-new-fee-name" class="form-input" placeholder="Enter fee name">
+                        </div>
+                        <div class="form-group">
+                            <label for="property-new-charge-code" class="form-label">Charge Code</label>
+                            <input type="text" id="property-new-charge-code" class="form-input" placeholder="Enter charge code">
+                        </div>
+                    </div>
+
+                    <!-- Amount Type and Amount -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-new-amount-type" class="form-label">Amount Type</label>
+                            <select id="property-new-amount-type" class="form-select">
+                                <option selected>Fixed</option>
+                                <option>Variable</option>
+                                <option>Percentage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="property-new-amount" class="form-label">Amount</label>
+                            <input type="text" id="property-new-amount" class="form-input" value="0.00">
+                        </div>
+                    </div>
+
+                    <!-- Fee flags (match Edit Fee checkbox layout) -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 24px;">
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-new-required" checked style="width: auto; height: auto;">
+                                <label for="property-new-required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-new-refundable" style="width: auto; height: auto;">
+                                <label for="property-new-refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-new-taxable" style="width: auto; height: auto;">
+                                <label for="property-new-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-new-hide-cost" style="width: auto; height: auto;">
+                                <label for="property-new-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fee Description -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="property-new-fee-description" class="form-label">Fee Description</label>
+                        <textarea id="property-new-fee-description" class="form-textarea" rows="3" placeholder="Describe the fee for applicants"></textarea>
+                    </div>
+
+                    <!-- Months to Start / Duration / Limit -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-new-months-to-start" class="form-label">Months to Start</label>
+                            <input type="number" id="property-new-months-to-start" class="form-input" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="property-new-duration" class="form-label">Duration</label>
+                            <input type="number" id="property-new-duration" class="form-input" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="property-new-limit" class="form-label">Limit</label>
+                            <input type="number" id="property-new-limit" class="form-input" value="0">
+                        </div>
+                    </div>
+
+                    <!-- Charge Class / Category -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-new-charge-class" class="form-label">Charge Class</label>
+                            <select id="property-new-charge-class" class="form-select">
+                                <option selected>Admin</option>
+                                <option>Accounting</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="property-new-category" class="form-label">Category</label>
+                            <select id="property-new-category" class="form-select">
+                                <option selected>Required</option>
+                                <option>Add-on</option>
+                                <option>Situational</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Timing / Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-new-timing" class="form-label">Timing</label>
+                            <select id="property-new-timing" class="form-select">
+                                <option selected>Application</option>
+                                <option>Move-in</option>
+                                <option>Move-out</option>
+                                <option>Monthly</option>
+                                <option>Move-in and Monthly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="property-new-frequency" class="form-label">Frequency</label>
+                            <select id="property-new-frequency" class="form-select">
+                                <option selected>One-Time</option>
+                                <option>Recurring</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Method / Payment To -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-new-method" class="form-label">Method</label>
+                            <select id="property-new-method" class="form-select">
+                                <option selected>Per Unit</option>
+                                <option>Per Pet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="property-new-payment-to" class="form-label">Payment To</label>
+                            <select id="property-new-payment-to" class="form-select">
+                                <option selected>Property</option>
+                                <option>Third Party</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Lease Doc Setting -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="property-new-lease-doc-setting" class="form-label">Lease Doc Setting</label>
+                        <select id="property-new-lease-doc-setting" class="form-select">
+                            <option selected>None</option>
+                            <option>Both</option>
+                            <option>Lease</option>
+                            <option>Renewal</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+
+            const footerContent = `
+                <div style="display: flex; justify-content: flex-end; align-items: center; width: 100%; gap: 12px;">
+                    <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                    <button class="btn btn-primary">Add Fee</button>
+                </div>
+            `;
+
+            // Open edit pageslide in second container
+            const editOverlay = document.querySelector('#pageslide-edit-container .pageslide-overlay');
+            const editPageslide = document.querySelector('#pageslide-edit-container .pageslide');
+            const editBody = document.querySelector('#pageslide-edit-container .pageslide-body');
+            const editFooter = document.querySelector('#pageslide-edit-container .pageslide-footer');
+
+            if (editOverlay && editPageslide) {
+                if (editBody) editBody.innerHTML = formContent;
+                if (editFooter) editFooter.innerHTML = footerContent;
+
+                editPageslide.setAttribute('data-pageslide-size', 'md');
+                editOverlay.classList.add('active');
+                setTimeout(() => {
+                    editPageslide.classList.add('active');
+                }, 10);
+
+                setTimeout(() => {
+                    const pageslideHeader = document.querySelector('#pageslide-edit-container .pageslide-header');
+                    if (pageslideHeader) {
+                        pageslideHeader.innerHTML = headerContent;
+                        pageslideHeader.style.padding = '0';
+                        pageslideHeader.style.borderBottom = 'none';
+                    }
+                }, 50);
+            }
+        }
+
         // Helper functions for unit type selection
         function selectAllUnitTypes() {
             document.querySelectorAll('.unit-type-checkbox').forEach(checkbox => {
@@ -2320,43 +2511,39 @@
         // Function to open Edit Property Fee pageslide
         function openEditPropertyFee(feeName, amount) {
             const headerContent = `
-                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb;">
-                    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px 0;">Edit Property Fee</h2>
-                    <p class="text-sm text-muted" style="margin: 0;">Changes will apply to this property</p>
-                    <i class="fas fa-times" onclick="closeEditPageslide()"></i>
+                <div style="padding: 20px 24px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <h2 style="font-size: 18px; font-weight: 600; margin: 0;">Edit Fee</h2>
+                    <i class="fas fa-times" onclick="closeEditPageslide()" style="cursor: pointer;"></i>
                 </div>
             `;
 
             const formContent = `
                 <div style="">
+                    <div class="alert alert-info" style="margin-bottom: 16px; display: flex; align-items: flex-start; gap: 12px;">
+                        <i class="fas fa-circle-info" style="margin-top: 2px;"></i>
+                        <div>The grayed out settings pull directly from Property Control Settings and cannot be modified here.</div>
+                    </div>
+
                     <!-- Fee Name and Charge Code -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
                             <label for="property-fee-name" class="form-label">Fee Name</label>
-                            <input type="text" id="property-fee-name" class="form-input" value="${feeName}">
+                            <input type="text" id="property-fee-name" class="form-input" value="${feeName}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="property-charge-code" class="form-label">Charge Code</label>
-                            <input type="text" id="property-charge-code" class="form-input" value="">
+                            <input type="text" id="property-charge-code" class="form-input" value="" disabled>
                         </div>
                     </div>
 
-                    <!-- Fee Description -->
-                    <div class="form-group" style="margin-bottom: 16px;">
-                        <label for="property-fee-description" class="form-label">Fee Description</label>
-                        <textarea id="property-fee-description" class="form-input" rows="3" style="resize: vertical;"></textarea>
-                    </div>
-
                     <!-- Amount Type and Amount -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px;">
                         <div class="form-group">
                             <label for="property-amount-type" class="form-label">Amount Type</label>
-                            <select id="property-amount-type" class="form-select">
+                            <select id="property-amount-type" class="form-select" disabled>
                                 <option selected>Fixed</option>
+                                <option>Variable</option>
                                 <option>Percentage</option>
-                                <option>Range</option>
-                                <option>Text</option>
-                                <option>Average</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -2365,104 +2552,127 @@
                         </div>
                     </div>
 
-                    <!-- Category, Timing, Frequency -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                    <!-- Required/Refundable/Taxable/Hide from Cost Estimate -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 24px;">
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-required" checked disabled style="width: auto; height: auto;">
+                                <label for="property-required" style="margin: 0; font-weight: 400; font-size: 14px !important;" class="text-gray">Required</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-refundable" disabled style="width: auto; height: auto;">
+                                <label for="property-refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;" class="text-gray">Refundable</label>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-taxable" disabled style="width: auto; height: auto;">
+                                <label for="property-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;" class="text-gray">Taxable</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="property-hide-cost" style="width: auto; height: auto;">
+                                <label for="property-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fee Description -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="property-fee-description" class="form-label">Fee Description</label>
+                        <textarea id="property-fee-description" class="form-textarea" rows="3" placeholder="Describe the fee for applicants"></textarea>
+                    </div>
+
+                    <!-- Months to Start / Duration / Limit -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-months-to-start" class="form-label">Months to Start</label>
+                            <input type="number" id="property-months-to-start" class="form-input" value="0" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="property-duration" class="form-label">Duration</label>
+                            <input type="number" id="property-duration" class="form-input" value="0" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="property-limit" class="form-label">Limit</label>
+                            <input type="number" id="property-limit" class="form-input" value="0">
+                        </div>
+                    </div>
+
+                    <!-- Charge Class / Category -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="property-charge-class" class="form-label">Charge Class</label>
+                            <select id="property-charge-class" class="form-select">
+                                <option selected>Admin</option>
+                                <option>Accounting</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="property-category" class="form-label">Category</label>
                             <select id="property-category" class="form-select">
-                                <option selected>Move-in</option>
-                                <option>Add ons</option>
+                                <option selected>Required</option>
+                                <option>Add-on</option>
                                 <option>Situational</option>
-                                <option>Monthly</option>
                             </select>
                         </div>
+                    </div>
+
+                    <!-- Timing / Frequency -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
                             <label for="property-timing" class="form-label">Timing</label>
                             <select id="property-timing" class="form-select">
                                 <option selected>Move-in</option>
                                 <option>Application</option>
-                                <option>Recurring</option>
                                 <option>Move-out</option>
+                                <option>Monthly</option>
+                                <option>Move-in and Monthly</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="property-frequency" class="form-label">Frequency</label>
                             <select id="property-frequency" class="form-select">
-                                <option selected>Per Lease</option>
-                                <option>One-Time</option>
-                                <option>Per Month</option>
-                                <option>Per Quarter</option>
-                                <option>Per Year</option>
+                                <option selected>One-Time</option>
+                                <option>Recurring</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Fee Properties -->
-                    <div style="margin-bottom: 24px;">
-                        <label class="form-label" style="margin-bottom: 12px; display: block;">Fee Properties</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="property-hide-cost" style="width: auto; height: auto;">
-                                <label for="property-hide-cost" style="margin: 0; font-weight: 400; font-size: 14px !important;">Hide from Cost Estimate</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="property-taxable" style="width: auto; height: auto;">
-                                <label for="property-taxable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Taxable</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="property-required" checked style="width: auto; height: auto;">
-                                <label for="property-required" style="margin: 0; font-weight: 400; font-size: 14px !important;">Required</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="property-refundable" style="width: auto; height: auto;">
-                                <label for="property-refundable" style="margin: 0; font-weight: 400; font-size: 14px !important;">Refundable</label>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" id="property-display-only" style="width: auto; height: auto;">
-                                <label for="property-display-only" style="margin: 0; font-weight: 400; font-size: 14px !important;">Display only</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Charge Class and Method -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
-                        <div class="form-group">
-                            <label for="property-charge-class" class="form-label">Charge Class</label>
-                            <select id="property-charge-class" class="form-select">
-                                <option selected>Admin</option>
-                                <option>Amenity</option>
-                                <option>Insurance</option>
-                                <option>Pet</option>
-                                <option>Storage</option>
-                            </select>
-                        </div>
+                    <!-- Method / Payment To -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                         <div class="form-group">
                             <label for="property-method" class="form-label">Method</label>
                             <select id="property-method" class="form-select">
                                 <option selected>Per Unit</option>
-                                <option>Per Applicant</option>
-                                <option>Per Resident</option>
                                 <option>Per Pet</option>
-                                <option>Per Vehicle</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="property-payment-to" class="form-label">Payment To</label>
+                            <select id="property-payment-to" class="form-select">
+                                <option selected>Property</option>
+                                <option>Third Party</option>
                             </select>
                         </div>
                     </div>
 
+                    <!-- Lease Doc Setting -->
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="property-lease-doc-setting" class="form-label">Lease Doc Setting</label>
+                        <select id="property-lease-doc-setting" class="form-select">
+                            <option selected>None</option>
+                            <option>Both</option>
+                            <option>Lease</option>
+                            <option>Renewal</option>
+                        </select>
+                    </div>
                 </div>
             `;
 
             const footerContent = `
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <button class="btn btn-link text-danger" style="padding-left: 0;">
-                        Remove Fee
-                    </button>
-                    <div style="display: flex; gap: 12px;">
-                        <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-save"></i>
-                            Save Changes
-                        </button>
-                    </div>
+                <div style="display: flex; justify-content: flex-end; align-items: center; width: 100%; gap: 12px;">
+                    <button class="btn btn-light" onclick="closeEditPageslide()">Cancel</button>
+                    <button class="btn btn-primary">Save Changes</button>
                 </div>
             `;
 
