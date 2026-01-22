@@ -1361,8 +1361,14 @@ body {
 
 
 .card-title {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
+}
+
+/* Fees pageslide: larger titles + extra spacing */
+.fees-pageslide-content .card-title {
+    font-size: 20px;
+    margin: 0 0 6px 0;
 }
 
 /* Generic Bootstrap-style tooltip for inline info icons */
@@ -3479,7 +3485,7 @@ button.rounded-lg,
 .card-section-header {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     padding-bottom: 8px;
     border-bottom: 1px solid #e5e7eb;
 }
@@ -6574,8 +6580,8 @@ input[type="number"].form-input {
     opacity: 0;
     transition: opacity 0.2s ease;
     color: #6b7280;
-    font-size: 12px;
-    margin-left: 6px;
+    font-size: 14px;
+    margin-left: 8px;
 }
 
 .fee-cell-editable:hover .fee-cell-edit-icon {
